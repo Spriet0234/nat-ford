@@ -43,9 +43,31 @@ export function ScheduleDrive2({ calcButtons, mode, back }) {
   return (
     <View style={styles.container}>
       {mode === 0 ? (
-        <Text style={styles.title}>Choose a specific model</Text>
+        <Text
+          style={{
+            color: "#00095B",
+            fontWeight: 600,
+            fontSize: 21,
+            alignSelf: "center",
+            marginTop: 20,
+            marginBottom: 5,
+          }}
+        >
+          Choose a specific model
+        </Text>
       ) : (
-        <Text style={styles.title}>Choose a specific trim</Text>
+        <Text
+          style={{
+            color: "#00095B",
+            fontWeight: 600,
+            fontSize: 21,
+            alignSelf: "center",
+            marginTop: 20,
+            marginBottom: 5,
+          }}
+        >
+          Choose a specific trim
+        </Text>
       )}
 
       <View style={{ padding: 15 }}>
@@ -58,8 +80,10 @@ export function ScheduleDrive2({ calcButtons, mode, back }) {
         style={{
           display: "flex",
           flexDirection: "row",
-          marginBottom: 30,
-          marginTop: 20,
+          marginBottom: 15,
+          marginTop: -5,
+          paddingVertical: 20,
+          paddingHorizontal: 10,
           width: "90%",
         }}
       >
@@ -227,8 +251,20 @@ export function ScheduleDrive3({ info, handler }) {
 export function ScheduleDrive4({ calcButtons, locate }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Choose specific trim</Text>
-      <Text style={styles.text2}>Select 1-3 cars below</Text>
+      <View style={{ marginTop: 20 }}></View>
+      {/* <Text style={styles.title}>Choose specific trim</Text> */}
+      <Text
+        style={{
+          color: "#00095B",
+          fontWeight: 600,
+          fontSize: 21,
+          alignSelf: "center",
+
+          marginBottom: 5,
+        }}
+      >
+        Select 1-3 cars below
+      </Text>
       <ScrollView
         horizontal={true}
         style={{
@@ -248,13 +284,16 @@ export function ScheduleDrive4({ calcButtons, locate }) {
           paddingHorizontal: 20,
           paddingVertical: 5,
           borderRadius: 20,
-          marginBottom: 25,
+          marginBottom: 30,
+          marginTop: 5,
 
           alignSelf: "center",
         }}
         onPress={locate}
       >
-        <Text style={{ color: "white", fontSize: 17 }}>
+        <Text
+          style={{ color: "white", fontSize: 17, fontWeight: 500, padding: 5 }}
+        >
           Locate my closest dealerships
         </Text>
       </TouchableOpacity>
@@ -334,6 +373,15 @@ const styles = StyleSheet.create({
     position: "relative",
     paddingBottom: 25,
     marginBottom: 15,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    // Shadow settings for Android
+    elevation: 3,
   },
   container2: {
     textAlign: "flex-start",
@@ -346,10 +394,19 @@ const styles = StyleSheet.create({
     height: "auto",
     position: "relative",
     paddingleft: 140,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    // Shadow settings for Android
+    elevation: 5,
   },
-  title: {
+  titles: {
     color: "#00095B",
-    fontWeight: 500,
+    fontWeight: 600,
     fontSize: 21,
     alignSelf: "center",
     marginTop: 20,

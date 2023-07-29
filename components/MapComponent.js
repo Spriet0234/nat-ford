@@ -41,7 +41,18 @@ export function MapComponent({
       )}
       {!renderDealer && (
         <View style={styles.container}>
-          <Text style={styles.title}>Dealerships near you</Text>
+          <Text
+            style={{
+              color: "#00095B",
+              fontWeight: 600,
+              fontSize: 22,
+              alignSelf: "center",
+              marginTop: 20,
+              marginBottom: 20,
+            }}
+          >
+            Dealerships near you
+          </Text>
           {inf.map((d, index) => {
             return (
               <Dealers
@@ -84,8 +95,14 @@ export function Dealers({ setDealer, dealer, ind, setRenderDealer }) {
       }}
     >
       <View style={{ marginRight: 20, marginLeft: 10, flex: 1 }}>
-        {" "}
-        <Text style={{ color: "#00095B", fontWeight: 500, fontSize: 17 }}>
+        <Text
+          style={{
+            color: "#00095B",
+            fontWeight: 500,
+            fontSize: 17,
+            marginBottom: 10,
+          }}
+        >
           {ind}
         </Text>
         <Text
@@ -93,16 +110,16 @@ export function Dealers({ setDealer, dealer, ind, setRenderDealer }) {
             color: "#00095B",
             fontWeight: 400,
             fontSize: 15,
+            marginTop: 10,
           }}
         >
           {Math.round(dist[0], 4)} mi.
         </Text>
       </View>
-      <View style={{ flex: 3 }}>
-        {" "}
+      <View style={{ flex: 4 }}>
         <Text
           style={{
-            textAlign: "flex-start",
+            textAlign: "left",
             color: "#00095B",
             fontWeight: 500,
             fontSize: 19,
@@ -112,7 +129,7 @@ export function Dealers({ setDealer, dealer, ind, setRenderDealer }) {
         </Text>
         <Text
           style={{
-            textAlign: "flex-start",
+            textAlign: "left",
             color: "#00095B",
             fontWeight: 400,
             fontSize: 17,
@@ -122,7 +139,7 @@ export function Dealers({ setDealer, dealer, ind, setRenderDealer }) {
         </Text>
         <Text
           style={{
-            textAlign: "flex-start",
+            textAlign: "left",
             color: "#00095B",
             fontWeight: 400,
             fontSize: 17,
@@ -132,7 +149,6 @@ export function Dealers({ setDealer, dealer, ind, setRenderDealer }) {
         </Text>
       </View>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        {" "}
         <Image
           source={require("../assets/SqArrow.png")}
           resizeMode="contain" // Add this line
@@ -161,7 +177,7 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
   },
   container2: {
-    textAlign: "flex-start",
+    textAlign: "left",
     alignSelf: "center",
     alignItems: "flex-start",
     justifyContent: "flex-start",
@@ -174,11 +190,10 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "#00095B",
-    fontWeight: 500,
+    fontWeight: 600,
     fontSize: 21,
     alignSelf: "center",
     marginTop: 20,
-
     marginBottom: 15,
   },
 });
