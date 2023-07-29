@@ -8,7 +8,7 @@ import {ScheduleDrive3} from './ScheduleDrive.js'
 import {MapComponent} from './MapComponent.js'
 import CarInfoTable from './CarInfoTable.js';
 export default function ChatItem({msg, author, line, darkMode, textSize, zip, locs, dropDownOptions, carInfoData, carInfoMode, carSpecInfo, setMessages, setMenuButtons, handleUserInput, selectedCar, setSelectedCar, tableFunctions, messageIndex, selectedCars, setOptionButtons, len}){
-    return <View>{
+  return <View>{
       author === "Info" && (
         <ScheduleDrive3 info = {carSpecInfo} handler = {handleUserInput}></ScheduleDrive3>
       )
@@ -18,7 +18,7 @@ export default function ChatItem({msg, author, line, darkMode, textSize, zip, lo
     }
     {
         author === "Ford Chat." && (
-          <MapComponent zip={zip.zipcode} dist={zip.dist} loc={locs} deal = {zip.deal} coords = {zip.coordinates} maintenanceMode={zip.maintenanceMode} selectedModel={zip.model} selectedTrim={zip.trim} inf = {zip.inf}></MapComponent>
+          <MapComponent zip={zip.zipcode} dist={zip.dist} loc={locs} deal = {zip.deal} coords = {zip.coordinates} maintenanceMode={zip.maintenanceMode} selectedModel={zip.model} selectedTrim={zip.trim} inf = {zip.inf} selected = {zip.selected}></MapComponent>
         )
     }
     {author !== "Ford Chat." && author !== "Info" && <View style={styles.message(author === "You")}>

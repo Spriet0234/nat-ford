@@ -26,16 +26,16 @@ export function MapComponent({
   selectedModel,
   selectedTrim,
   inf,
+  selected
 }) {
   const [renderDealer, setRenderDealer] = useState(false);
   const [pickedDealer, setPickedDealer] = useState("");
-
   return (
     <View>
       {renderDealer && (
         <View>
           <DealerDrive dealer={pickedDealer} />
-          <DealerDrive2 dealer={pickedDealer} />
+          <DealerDrive2 dealer={pickedDealer} selected = {selected} />
           <DealerDrive3 />
         </View>
       )}
@@ -84,7 +84,6 @@ export function Dealers({ setDealer, dealer, ind, setRenderDealer }) {
       }}
     >
       <View style={{ marginRight: 20, marginLeft: 10, flex: 1 }}>
-        {" "}
         <Text style={{ color: "#00095B", fontWeight: 500, fontSize: 17 }}>
           {ind}
         </Text>
@@ -99,7 +98,6 @@ export function Dealers({ setDealer, dealer, ind, setRenderDealer }) {
         </Text>
       </View>
       <View style={{ flex: 3 }}>
-        {" "}
         <Text
           style={{
             textAlign: "flex-start",
@@ -132,7 +130,6 @@ export function Dealers({ setDealer, dealer, ind, setRenderDealer }) {
         </Text>
       </View>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        {" "}
         <Image
           source={require("../assets/SqArrow.png")}
           resizeMode="contain" // Add this line
