@@ -38,7 +38,6 @@ export const findLocationsGiven = async (query, distance, dealers) => {
           let shortStr = ""
           shortStr += (closestLocations[i][1].toString())+"))" + arr[0]+":"+arr[1];
           string += shortStr + "..";
-          console.log(string)
         }
         return string;
         }
@@ -88,13 +87,10 @@ export const calculateDistance = (lat1, lon1, lat2, lon2) => {
     return distance;
   }
 export const findLocations = async (query, distance) => {
-  console.log("reahfshfkfbdjfdjfkbdfsdkfbj")
     const zip = extractFiveDigitString(query);
-    console.log(zip)
     if(zip !=null){
       try{
           const result = await findLatLong(zip);
-          console.log(result)
           const distances = {}
         const l = [result.latitude,result.longitude];
         for (const coords in data){
@@ -163,11 +159,10 @@ export const findLocations = async (query, distance) => {
           }
       }
       setDealers(dealers);
-      console.log("reached")
       findLocationsGiven(zipCode,distance, dealers).then(loc=>{
        // setMessages((m)=>[...m,{msg:"",author:"Ford Chat.", line:false, zip: {zipcode: extractFiveDigitString(zipCode), dist:distance, deal: dealers}}]);
           const places = loc.split('..');
-          setMessages((m) => [...m, { msg: "", author: "Ford Chat.", line : false,zip: {zipcode: extractFiveDigitString(zipCode), dist:distance, deal: dealers, inf : places.slice(0,-1)}}]);
+          setMessages((m) => [...m, { msg: "", author: "Ford Chat.", line : false,zip: {zipcode: extractFiveDigitString(zipCode), dist:distance, deal: dealers, inf : places.slice(0,-1), selected:selected}}]);
           setZipMode(0);
   })
   setCalcButtons([]);
