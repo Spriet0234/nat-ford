@@ -21,9 +21,33 @@ export function DealerDrive({ dealer }) {
   const handlePress = () => Linking.openURL("https://www.example.com");
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.title}>{dealer}</Text>
+    <View
+      style={{
+        alignSelf: "center",
+        alignItems: "center",
+
+        backgroundColor: "#113B7A1A",
+        width: "90%",
+        borderRadius: 30,
+        marginTop: 0,
+        height: "auto",
+        position: "relative",
+        padding: 20,
+        paddingBottom: 30,
+        marginBottom: 20,
+      }}
+    >
+      <View style={{ marginHorizontal: 10 }}>
+        <Text
+          style={{
+            color: "#00095B",
+            fontWeight: 600,
+            fontSize: 22,
+            alignSelf: "center",
+          }}
+        >
+          {dealer}
+        </Text>
       </View>
       <Image
         source={require("../assets/deal.jpeg")}
@@ -38,7 +62,7 @@ export function DealerDrive({ dealer }) {
         }}
       ></Image>
       <View style={{ marginBottom: 25 }}>
-        <View
+        {/* <View
           style={{
             flexDirection: "row",
             justifyContent: "flex-start",
@@ -64,154 +88,157 @@ export function DealerDrive({ dealer }) {
           >
             <Text style={styles.linkText}>View on Google Maps</Text>
           </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            alignContent: "center",
-          }}
-        >
-          <Image
-            source={require("../assets/1.png")}
-            resizeMode="contain" // Add this line
+        </View> */}
+        <View style={{ marginLeft: 20, marginTop: 10 }}>
+          <View
             style={{
-              width: 30,
-              alignSelf: "center",
-              height: 20,
-              marginRight: 20,
-              marginTop: -7,
+              flexDirection: "row",
+              justifyContent: "flex-start",
+              alignContent: "center",
             }}
-          ></Image>
+          >
+            <Image
+              source={require("../assets/1.png")}
+              resizeMode="contain" // Add this line
+              style={{
+                width: 30,
+                alignSelf: "center",
+                height: 20,
+                marginRight: 20,
+                marginTop: -7,
+              }}
+            ></Image>
 
-          <Text
-            style={{
-              color: "#00095B",
-              fontWeight: 400,
-              fontSize: 17,
-              marginBottom: 10,
-            }}
-          >
-            {dealer.toLowerCase().replace(/\s/g, "") + ".com"}
-          </Text>
-        </View>
+            <Text
+              style={{
+                color: "#00095B",
+                fontWeight: 400,
+                fontSize: 17,
+                marginBottom: 10,
+              }}
+            >
+              {dealer.toLowerCase().replace(/\s/g, "") + ".com"}
+            </Text>
+          </View>
 
-        <View
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "flex-start",
+              alignContent: "center",
+            }}
+          >
+            <Image
+              source={require("../assets/2.png")}
+              resizeMode="contain" // Add this line
+              style={{
+                width: 30,
+                alignSelf: "center",
+                height: 20,
+                marginRight: 20,
+                marginTop: -5,
+              }}
+            ></Image>
+            <Text
+              style={{
+                color: "#00095B",
+                fontWeight: 400,
+                fontSize: 17,
+                marginBottom: 10,
+              }}
+            >
+              {info.number}
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "flex-start",
+              alignContent: "center",
+              paddingRight: 15,
+            }}
+          >
+            <Image
+              source={require("../assets/3.png")}
+              resizeMode="contain" // Add this line
+              style={{
+                width: 30,
+                alignSelf: "center",
+                height: 20,
+                marginRight: 20,
+                marginTop: -5,
+              }}
+            ></Image>
+            <Text
+              style={{
+                color: "#00095B",
+                fontWeight: 400,
+                fontSize: 17,
+                marginBottom: 10,
+                flexShrink: 1,
+              }}
+            >
+              {info.address}
+            </Text>
+          </View>
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              source={require("../assets/clock.png")}
+              resizeMode="contain" // Add this line
+              style={{
+                width: 30,
+                alignSelf: "center",
+                height: 20,
+                marginRight: 20,
+                marginTop: -5,
+              }}
+            ></Image>
+            <Text
+              style={{
+                color: "#00095B",
+                fontWeight: 400,
+                fontSize: 17,
+                marginBottom: 10,
+              }}
+            >
+              Open-closes at 8pm
+            </Text>
+          </View>
+        </View>
+        <TouchableOpacity
           style={{
+            display: "flex",
             flexDirection: "row",
             justifyContent: "flex-start",
-            alignContent: "center",
+            alignItems: "flex-start",
+            position: "absolute",
+            left: 20,
+            bottom: -30,
           }}
+          //onPress={back}
         >
           <Image
-            source={require("../assets/2.png")}
+            source={require("../assets/arrow.png")}
             resizeMode="contain" // Add this line
             style={{
               width: 30,
-              alignSelf: "center",
               height: 20,
-              marginRight: 20,
-              marginTop: -5,
+              alignSelf: "flex-start",
+              marginRight: 0,
             }}
           ></Image>
-          <Text
-            style={{
-              color: "#00095B",
-              fontWeight: 400,
-              fontSize: 17,
-              marginBottom: 10,
-            }}
-          >
-            {info.number}
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            alignContent: "center",
-          }}
-        >
-          <Image
-            source={require("../assets/3.png")}
-            resizeMode="contain" // Add this line
-            style={{
-              width: 30,
-              alignSelf: "center",
-              height: 20,
-              marginRight: 20,
-              marginTop: -5,
-            }}
-          ></Image>
-          <Text
-            style={{
-              color: "#00095B",
-              fontWeight: 400,
-              fontSize: 17,
-              marginBottom: 10,
-            }}
-          >
-            {info.address}
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Image
-            source={require("../assets/clock.png")}
-            resizeMode="contain" // Add this line
-            style={{
-              width: 30,
-              alignSelf: "center",
-              height: 20,
-              marginRight: 20,
-              marginTop: -5,
-            }}
-          ></Image>
-          <Text
-            style={{
-              color: "#00095B",
-              fontWeight: 400,
-              fontSize: 17,
-              marginBottom: 10,
-            }}
-          >
-            Open-closes at 8pm
-          </Text>
-        </View>
+          <Text> Back</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
-          position: "absolute",
-          left: 20,
-          bottom: 20,
-        }}
-        //onPress={back}
-      >
-        <Image
-          source={require("../assets/arrow.png")}
-          resizeMode="contain" // Add this line
-          style={{
-            width: 30,
-            height: 20,
-            alignSelf: "flex-start",
-            marginRight: 0,
-          }}
-        ></Image>
-        <Text> Back</Text>
-      </TouchableOpacity>
     </View>
   );
 }
-export function DealerDrive2({dealer,selected}) {
+export function DealerDrive2({ dealer, selected }) {
   let a = [];
-  for(var key in selected){
+  for (var key in selected) {
     let temp = selected[key];
     for(let i = 0; i < temp.length; i++){
       a.push([key+"::"+temp[i],images[key][temp[i]]])
-      console.log(images[key][temp[i]])
     }
   }
   return (
@@ -223,7 +250,20 @@ export function DealerDrive2({dealer,selected}) {
           width: "100%",
         }}
       >
-        <Text style={styles.title2}>Models & Trims Available</Text>
+        <Text
+          style={{
+            color: "#00095B",
+            fontWeight: 500,
+            fontSize: 22,
+            alignSelf: "flex-start",
+            marginTop: 20,
+            marginBottom: 10,
+
+            alignSelf: "center",
+          }}
+        >
+          Models & Trims Available
+        </Text>
         {/* <TouchableOpacity
           style={{ flexDirection: "row", alignSelf: "flex-end" }}
         >
@@ -242,7 +282,7 @@ export function DealerDrive2({dealer,selected}) {
       <Text style={styles.text22}>Based on your selection</Text>
       <View style={{ flexDirection: "row" }}>
         {a.map((d) => {
-          return <Conts2 inp = {d[0]} imag = {d[1]}/>;
+          return <Conts2 inp={d[0]} imag={d[1]} />;
         })}
       </View>
     </View>
@@ -253,7 +293,20 @@ export function DealerDrive3() {
   const arr = [1, 2, 3];
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Next Appointments Available</Text>
+      <Text
+        style={{
+          color: "#00095B",
+          fontWeight: 500,
+          fontSize: 22,
+          alignSelf: "flex-start",
+          marginTop: 20,
+          marginBottom: 10,
+          textAlign: "center",
+          alignSelf: "center",
+        }}
+      >
+        Next Appointments Available
+      </Text>
       {/* <TouchableOpacity
         style={{
           flexDirection: "row",
@@ -567,12 +620,22 @@ const styles = StyleSheet.create({
     backgroundColor: "#113B7A1A",
     width: "90%",
     borderRadius: 30,
-    marginTop: 30,
+    marginTop: 0,
     height: "auto",
     position: "relative",
     padding: 20,
     paddingTop: 15,
     marginBottom: 20,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    // Shadow settings for Android
+    elevation: 3,
   },
   container2: {
     textAlign: "flex-start",
@@ -586,6 +649,16 @@ const styles = StyleSheet.create({
     height: "auto",
     position: "relative",
     paddingleft: 140,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    // Shadow settings for Android
+    elevation: 3,
   },
   title: {
     color: "#00095B",

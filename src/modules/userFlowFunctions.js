@@ -324,70 +324,168 @@ export function handleUserFlow(
           break;
 
         case "I":
-            if (infoMode === 1) {
-                setCalcHeadingText("Choose specific model");
-                setCalcButtons(
-                    Object.keys(vehicles[cat]).map((model) => (
-                        <Conts2
-                            key={model}
-                            value={model}
-                            onPress = {() => {
-                                setQuery(model);
-                                setInfoMode(2);
-                                setModel(model);
-                            }}
-                            inp = {model}
-                            imag = {images["Default"][model]}
-                            />
-                    )));
-                setVehicle(query);
-                blockQueries.current = false;
-                break;}
-            else if(infoMode === 2){
-                setCalcHeadingText(query + ": Choose specific trim");
-                setCalcButtons(
-                    vehicles[vehicle][model].map((trim) => (
-                        <Conts2
-                            key={trim}
-                            value={trim}
-                            onPress = {() => {
-                                handleInfoFlow(handleMoreInfo,tableForceUpdate,setTableForceUpdate,forceUpdate,setForceUpdate,handleCarInfoButton,model,trim,setMessages,
-                                    setModel,setQuery,setInfoMode,setCalcButtons,setMenuButtons,handleUserInput,setShowCalcButtons,setCarInfoData,
-                                    infoMode,selected,changeSelected,setDealers,locateDealershipsFn,setSelect,setFind,query,setZipMode,setOptionButtons
-                                );
-                                setTrim(trim);
-                            }}
-                            inp = {trim}
-                            imag = {images[model][trim]}
-                            >
-                        </Conts2>)
-                    ));
-                      blockQueries.current = false;
-                      break;
-            }
-            else if(infoMode === 3){
-              handleInfoFlow(handleMoreInfo,tableForceUpdate,setTableForceUpdate,forceUpdate,setForceUpdate,handleCarInfoButton,model,trim,setMessages,
-                setModel,setQuery,setInfoMode,setCalcButtons,setMenuButtons,handleUserInput,setShowCalcButtons,setCarInfoData,
-                infoMode,selected,changeSelected,setDealers,locateDealershipsFn,setSelect,setFind,query,setZipMode,setOptionButtons);
-              blockQueries.current = false;
+          if (infoMode === 1) {
+            setCalcHeadingText("Choose specific model");
+            setCalcButtons(
+              Object.keys(vehicles[cat]).map((model) => (
+                <Conts2
+                  key={model}
+                  value={model}
+                  onPress={() => {
+                    setQuery(model);
+                    setInfoMode(2);
+                    setModel(model);
+                  }}
+                  inp={model}
+                  imag={images["Default"][model]}
+                />
+              ))
+            );
+            setVehicle(query);
+            blockQueries.current = false;
             break;
-            }
-            else if(infoMode === 4){
-              handleInfoFlow(handleMoreInfo,tableForceUpdate,setTableForceUpdate,forceUpdate,setForceUpdate,handleCarInfoButton, model,trim, setMessages, setModel, setQuery, setInfoMode, setCalcButtons, setMenuButtons, handleUserInput, setShowCalcButtons, setCarInfoData, infoMode, selected, changeSelected, setDealers, locateDealershipsFn, setSelect, setFind, query, setZipMode);
-              blockQueries.current = false;
-              break;
-            }
-            else if(infoMode === 10){
-                setCalcStep(2);
-                changeChoice('D');
-                handlePaymentFlow(calcStep,model,setModel,query,setQuery,
-                    setMessages,setMenuButtons,setCalcButtons,blockQueries,setCalcStep,trim,setTrim,calcMode,
-                    setCalcMode,setLeaseStep,setFinanceStep,leaseStep,financeStep,changeChoice,
-                    setShowCalcButtons,setCalcHeadingText,payment,setPayment,origButtons,setOptionButtons
-                );
-                blockQueries.current = false;
-                break;
-            }
+          } else if (infoMode === 2) {
+            setCalcHeadingText(query + ": Choose specific trim");
+            setCalcButtons(
+              vehicles[vehicle][model].map((trim) => (
+                <Conts2
+                  key={trim}
+                  value={trim}
+                  onPress={() => {
+                    handleInfoFlow(
+                      handleMoreInfo,
+                      tableForceUpdate,
+                      setTableForceUpdate,
+                      forceUpdate,
+                      setForceUpdate,
+                      handleCarInfoButton,
+                      model,
+                      trim,
+                      setMessages,
+                      setModel,
+                      setQuery,
+                      setInfoMode,
+                      setCalcButtons,
+                      setMenuButtons,
+                      handleUserInput,
+                      setShowCalcButtons,
+                      setCarInfoData,
+                      infoMode,
+                      selected,
+                      changeSelected,
+                      setDealers,
+                      locateDealershipsFn,
+                      setSelect,
+                      setFind,
+                      query,
+                      setZipMode,
+                      setOptionButtons
+                    );
+                    setTrim(trim);
+                  }}
+                  inp={trim}
+                  imag={images[model][trim]}
+                ></Conts2>
+              ))
+            );
+            blockQueries.current = false;
+            break;
+          } else if (infoMode === 3) {
+            handleInfoFlow(
+              handleMoreInfo,
+              tableForceUpdate,
+              setTableForceUpdate,
+              forceUpdate,
+              setForceUpdate,
+              handleCarInfoButton,
+              model,
+              trim,
+              setMessages,
+              setModel,
+              setQuery,
+              setInfoMode,
+              setCalcButtons,
+              setMenuButtons,
+              handleUserInput,
+              setShowCalcButtons,
+              setCarInfoData,
+              infoMode,
+              selected,
+              changeSelected,
+              setDealers,
+              locateDealershipsFn,
+              setSelect,
+              setFind,
+              query,
+              setZipMode,
+              setOptionButtons
+            );
+            blockQueries.current = false;
+            break;
+          } else if (infoMode === 4) {
+            handleInfoFlow(
+              handleMoreInfo,
+              tableForceUpdate,
+              setTableForceUpdate,
+              forceUpdate,
+              setForceUpdate,
+              handleCarInfoButton,
+              model,
+              trim,
+              setMessages,
+              setModel,
+              setQuery,
+              setInfoMode,
+              setCalcButtons,
+              setMenuButtons,
+              handleUserInput,
+              setShowCalcButtons,
+              setCarInfoData,
+              infoMode,
+              selected,
+              changeSelected,
+              setDealers,
+              locateDealershipsFn,
+              setSelect,
+              setFind,
+              query,
+              setZipMode
+            );
+            blockQueries.current = false;
+            break;
+          } else if (infoMode === 10) {
+            setCalcStep(2);
+            changeChoice("D");
+            handlePaymentFlow(
+              calcStep,
+              model,
+              setModel,
+              query,
+              setQuery,
+              setMessages,
+              setMenuButtons,
+              setCalcButtons,
+              blockQueries,
+              setCalcStep,
+              trim,
+              setTrim,
+              calcMode,
+              setCalcMode,
+              setLeaseStep,
+              setFinanceStep,
+              leaseStep,
+              financeStep,
+              changeChoice,
+              setShowCalcButtons,
+              setCalcHeadingText,
+              payment,
+              setPayment,
+              origButtons,
+              setOptionButtons
+            );
+            blockQueries.current = false;
+            break;
+          }
         case "A":
           setQuery("");
           sendRecommendRequestToServer(
@@ -623,15 +721,32 @@ export function Conts({ inp, onPress }) {
         height: 110,
         width: 180,
         backgroundColor: "white",
-        borderRadius: 10,
-        marginRight: 15,
+        borderRadius: 15,
+        marginRight: 10,
         justifyContent: "center",
         alignContent: "center",
         display: "flex",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        // Shadow settings for Android
+        elevation: 3,
       }}
       onPress={onPress}
     >
-      <Text style={{ fontSize: 19, alignSelf: "center", textAlign: "center" }}>
+      <Text
+        style={{
+          fontSize: 19,
+          alignSelf: "center",
+          textAlign: "center",
+          fontWeight: 500,
+          color: "#00095B",
+        }}
+      >
         {inp}
       </Text>
     </TouchableOpacity>
@@ -647,6 +762,15 @@ export function Conts2({ inp, imag, onPress }) {
         paddingHorizontal: 25,
         paddingVertical: 5,
         marginRight: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        // Shadow settings for Android
+        elevation: 3,
       }}
     >
       <Image
