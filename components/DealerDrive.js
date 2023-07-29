@@ -13,7 +13,7 @@ import {
 import DatePicker from "react-datepicker";
 import dealers from "../src/jsons/dealerInfo.json";
 import data from "../src/jsons/dealerToTrim.json";
-import images from "../src/jsons/trimToDealer.json";
+import images from "../src/images/image_link.json";
 //import "react-datepicker/dist/react-datepicker.css";
 
 export function DealerDrive({ dealer }) {
@@ -211,6 +211,7 @@ export function DealerDrive2({dealer,selected}) {
     let temp = selected[key];
     for(let i = 0; i < temp.length; i++){
       a.push([key+"::"+temp[i],images[key][temp[i]]])
+      console.log(images[key][temp[i]])
     }
   }
   return (
