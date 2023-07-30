@@ -84,7 +84,7 @@ export function ScheduleDrive2({ calcButtons, mode, back }) {
           marginTop: -5,
           paddingVertical: 20,
           paddingHorizontal: 10,
-          width: "90%",
+          width: "95%",
         }}
       >
         {calcButtons}
@@ -286,7 +286,6 @@ export function ScheduleDrive4({ calcButtons, locate }) {
           borderRadius: 20,
           marginBottom: 30,
           marginTop: 5,
-
           alignSelf: "center",
         }}
         onPress={locate}
@@ -367,7 +366,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#113B7A1A",
-    width: "90%",
+    width: "95%",
     borderRadius: 30,
     height: "auto",
     position: "relative",
@@ -389,7 +388,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
     backgroundColor: "#113B7A1A",
-    width: "90%",
+    width: "98%",
     borderRadius: 30,
     height: "auto",
     position: "relative",

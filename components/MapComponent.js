@@ -39,6 +39,10 @@ export function MapComponent({
   const [renderSched1, setRenderSched1] = useState(false);
   const [renderSched2, setRenderSched2] = useState(false);
   const [renderSched3, setRenderSched3] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [notes, setNotes] = useState("");
 
   const [count, setCount] = useState(0);
 
@@ -51,13 +55,28 @@ export function MapComponent({
   };
   const press2 = () => {
     //if time ... is clicked
+    setRenderDealer(false);
     setRenderSched1(false);
     setRenderSched2(true);
   };
-  const press3 = () => {
+  const press3 = (name, email, phone, notes) => {
     //if time ... is clicked
+    setRenderDealer(false);
     setRenderSched2(false);
     setRenderSched3(true);
+    setName(name);
+    setEmail(email);
+    setPhone(phone);
+    setNotes(notes);
+  };
+  const press4 = () => {
+    //if time ... is clicked
+    setCount(1);
+    setRenderDealer(false);
+    setRenderSched1(false);
+    setRenderSched2(true);
+    setRenderSched3(false);
+    console.log("aa");
   };
 
   return (
@@ -66,12 +85,19 @@ export function MapComponent({
         <View>
           <DealerDrive dealer={pickedDealer} />
           <DealerDrive2 dealer={pickedDealer} />
-          <DealerDrive3 press={press1} />
+          <DealerDrive3 press={press4} />
         </View>
       )}
       {count === 1 && renderSched1 && <DealerDrive4 press={press2} />}
       {renderSched2 && count === 1 && <DealerDrive5 press={press3} />}
-      {renderSched3 && count === 1 && <DealerDrive6 />}
+      {renderSched3 && count === 1 && (
+        <DealerDrive6
+          names={name}
+          emails={email}
+          phones={phone}
+          notess={notes}
+        />
+      )}
 
       {!renderDealer && count === 0 && (
         <View style={styles.container}>
@@ -116,7 +142,7 @@ export function Dealers({ setDealer, dealer, ind, setRenderDealer }) {
     <TouchableOpacity
       style={{
         height: "auto", // Make the height auto
-        width: "90%",
+        width: "95%",
         backgroundColor: "white",
         borderRadius: 20,
         marginBottom: 10,
@@ -205,7 +231,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#113B7A1A",
-    width: "90%",
+    width: "95%",
     borderRadius: 30,
     height: "auto",
     position: "relative",
@@ -217,7 +243,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
     backgroundColor: "#113B7A1A",
-    width: "90%",
+    width: "95%",
     borderRadius: 30,
     height: "auto",
     position: "relative",

@@ -28,7 +28,7 @@ export function DealerDrive({ dealer }) {
         alignItems: "center",
 
         backgroundColor: "#113B7A1A",
-        width: "90%",
+        width: "95%",
         borderRadius: 30,
         marginTop: 0,
         height: "auto",
@@ -371,6 +371,7 @@ export function DealerDrive3({ press }) {
               key={index}
               selectedDate={new Date()}
               selectedTime={adjustedTime}
+              press={press}
             />
           );
         })}
@@ -531,7 +532,7 @@ export function DealerDrive5({ press }) {
           backgroundColor: "white",
           borderRadius: 15,
           marginTop: 8,
-          width: "90%",
+          width: "95%",
           padding: 12,
         }}
       >
@@ -600,9 +601,9 @@ export function DealerDrive5({ press }) {
           >
             Guest Information
           </Text>
-          <TouchableOpacity onPress={handlePress} style={{ marginBottom: 10 }}>
+          {/* <TouchableOpacity onPress={handlePress} style={{ marginBottom: 10 }}>
             <Text style={styles.linkText}>Or Login/Create Ford account</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TextInput
             style={styles.input}
             onChangeText={(text) => setName(text)}
@@ -648,7 +649,9 @@ export function DealerDrive5({ press }) {
           // Shadow settings for Android
           elevation: 3,
         }}
-        onPress={press}
+        onPress={() => {
+          press(name, email, phone, notes);
+        }}
       >
         <Text
           style={{ color: "white", fontSize: 17, fontWeight: 500, padding: 5 }}
@@ -659,7 +662,7 @@ export function DealerDrive5({ press }) {
     </View>
   );
 }
-export function DealerDrive6() {
+export function DealerDrive6({ names, emails, phones, notess }) {
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -746,16 +749,16 @@ export function DealerDrive6() {
           </View>
 
           <View style={styles.input}>
-            <Text style={styles.text2}>Name</Text>
+            <Text style={styles.text2}>{names}</Text>
           </View>
           <View style={styles.input}>
-            <Text style={styles.text2}>Email</Text>
+            <Text style={styles.text2}>{emails}</Text>
           </View>
           <View style={styles.input}>
-            <Text style={styles.text2}>Phone number</Text>
+            <Text style={styles.text2}>{phones}</Text>
           </View>
           <View style={styles.input}>
-            <Text style={styles.text2}>Notes/Requests</Text>
+            <Text style={styles.text2}>{notess}</Text>
           </View>
         </View>
       </View>
@@ -835,7 +838,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#113B7A1A",
-    width: "90%",
+    width: "95%",
     borderRadius: 30,
     marginTop: 0,
     height: "auto",
@@ -860,7 +863,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
     backgroundColor: "#113B7A1A",
-    width: "90%",
+    width: "95%",
     borderRadius: 30,
     marginTop: 30,
     height: "auto",
@@ -895,12 +898,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   text2: {
-    color: "#00095B",
+    color: "black",
     fontWeight: 400,
-    fontSize: 17,
+    fontSize: 16,
     alignSelf: "center",
     marginTop: 0,
-    textAlign: "center",
+    textAlign: "left",
+    flexShrink: 1,
   },
   text22: {
     color: "#00095B",
@@ -933,15 +937,17 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   input: {
-    height: 30,
+    minHeight: 30,
     marginBottom: 10,
     paddingHorizontal: 20,
+    paddingVertical: 5,
     alignSelf: "center",
     borderRadius: 25,
     backgroundColor: "#fff",
     fontSize: 16,
     color: "#444",
-    width: "100%",
+    minWidth: "100%",
+    maxWidth: "100%",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

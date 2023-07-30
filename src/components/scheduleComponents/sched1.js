@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-export default function Sched1({ dealer, date, time, handleAppointment, backButton }) {
+export default function Sched1({
+  dealer,
+  date,
+  time,
+  handleAppointment,
+  backButton,
+}) {
   const [time1, setTime1] = useState(null);
   const [date1, setDate1] = useState(null);
   const [name, setName] = useState("");
@@ -25,7 +31,7 @@ export default function Sched1({ dealer, date, time, handleAppointment, backButt
         justifyContent: "flex-start",
         display: "flex",
         padding: 20,
-        marginLeft: '35px',
+        marginLeft: "35px",
         boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
       }}
     >
@@ -86,14 +92,14 @@ export default function Sched1({ dealer, date, time, handleAppointment, backButt
           >
             Guest Information
           </div>
-          <a
+          {/* <a
             style={{ marginBottom: 10, color: "#575757", fontWeight: 100 }}
             href="https://www.example.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             Or login/create a Ford account{" "}
-          </a>
+          </a> */}
           <input
             onChange={(e) => setName(e.target.value)}
             style={{
@@ -208,7 +214,7 @@ export default function Sched1({ dealer, date, time, handleAppointment, backButt
               fontSize: 18,
               width: 300,
               marginBottom: 10,
-              cursor: 'pointer'
+              cursor: "pointer",
             }}
           >
             Confirm appointment
@@ -223,7 +229,7 @@ export default function Sched1({ dealer, date, time, handleAppointment, backButt
           height: 22,
           marginTop: -30,
           marginLeft: 8,
-          cursor:'pointer'
+          cursor: "pointer",
         }}
         onClick={backButton}
       ></img>
