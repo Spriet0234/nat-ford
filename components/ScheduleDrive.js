@@ -30,7 +30,7 @@ export function ScheduleDrive({ calcButtons }) {
           flexDirection: "row",
           marginBottom: 30,
           marginTop: 20,
-          width: "90%",
+          width: "95%",
         }}
       >
         {calcButtons}
@@ -272,7 +272,7 @@ export function ScheduleDrive4({ calcButtons, locate }) {
           flexDirection: "row",
           marginBottom: 15,
           marginTop: 10,
-          width: "90%",
+          width: "95%",
         }}
       >
         {calcButtons}
