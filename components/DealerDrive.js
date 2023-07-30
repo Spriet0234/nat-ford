@@ -17,7 +17,6 @@ import images from "../src/jsons/trimToDealer.json";
 
 export function DealerDrive({ dealer }) {
   const info = dealers[dealer];
-  console.log(info);
   const handlePress = () => Linking.openURL("https://www.example.com");
 
   return (
@@ -233,19 +232,14 @@ export function DealerDrive({ dealer }) {
     </View>
   );
 }
-export function DealerDrive2(dealer) {
-  const a = [];
-  // console.log(data[dealer]);
-  // let a = data[dealer];
-  // let count = 0;
-  // let b = [];
-
-  // for (let i = 0; i < a.length; i++) {
-  //   b.push(a[i]);
-  //   count++;
-  //   if (count === 4) break;
-  // }
-
+export function DealerDrive2({ dealer, selected }) {
+  let a = [];
+  for (var key in selected) {
+    let temp = selected[key];
+    for (let i = 0; i < temp.length; i++) {
+      a.push([key + "::" + temp[i], images[key][temp[i]]]);
+    }
+  }
   return (
     <View style={styles.container}>
       <View
@@ -286,8 +280,8 @@ export function DealerDrive2(dealer) {
       </View>
       <Text style={styles.text22}>Based on your selection</Text>
       <View style={{ flexDirection: "row" }}>
-        {a.map(() => {
-          return <Conts2 />;
+        {a.map((d) => {
+          return <Conts2 inp={d[0]} imag={d[1]} />;
         })}
       </View>
     </View>
