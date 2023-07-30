@@ -10,10 +10,12 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-import DatePicker from "react-datepicker";
+import { Calendar } from "react-native-calendars";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import dealers from "../src/jsons/dealerInfo.json";
 import data from "../src/jsons/dealerToTrim.json";
 import images from "../src/jsons/trimToDealer.json";
+import RNPickerSelect from "react-native-picker-select";
 
 export function DealerDrive({ dealer }) {
   const info = dealers[dealer];
@@ -354,8 +356,23 @@ export function DealerDrive3({ press }) {
           marginTop: 0,
         }}
       >
-        {arr.map(() => {
-          return <Times />;
+        {arr.map((_, index) => {
+          // Create a new Date object based on the current time
+          let adjustedTime = new Date();
+
+          // Calculate the next half hour
+          let nextHalfHour = Math.ceil(adjustedTime.getMinutes() / 30) * 30;
+
+          // Adjust the time to the next half hour, plus 30 minutes multiplied by the current index
+          adjustedTime.setMinutes(nextHalfHour + 30 * index, 0, 0);
+
+          return (
+            <Times
+              key={index}
+              selectedDate={new Date()}
+              selectedTime={adjustedTime}
+            />
+          );
         })}
       </View>
     </View>
@@ -368,24 +385,35 @@ export function DealerDrive4({ press }) {
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(true);
 
+  const [time, setTime] = useState(new Date());
+  const [show2, setShow2] = useState(false);
+
+  const [hour, setHour] = useState();
+
+  const hours = Array.from({ length: 24 }, (_, i) => {
+    return { label: `${i}:00`, value: `${i}:00` };
+  });
+
+  const showTimepicker = () => {
+    setShow(true);
+  };
+
+  const onChange2 = (event, selectedTime) => {
+    const currentTime = selectedTime ? new Date(selectedTime) : new Date(time);
+    setShow(Platform.OS === "ios"); // to keep the picker open when changing times in iOS
+    setTime(currentTime);
+  };
+
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
-    setShow(Platform.OS === "ios");
+    setShow(Platform.OS === "ios"); // to keep the picker open when changing dates in iOS
     setDate(currentDate);
   };
 
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
-  };
-
   const showDatepicker = () => {
-    showMode("date");
+    setShow2(true);
   };
 
-  const showTimepicker = () => {
-    showMode("time");
-  };
   return (
     <View style={styles.container}>
       <Text
@@ -402,6 +430,35 @@ export function DealerDrive4({ press }) {
         Schedule a Test Drive Appointment
       </Text>
       <Text style={styles.text23}>Look up date and time</Text>
+      {show && (
+        <View style={{ marginTop: 10 }}>
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={date}
+            mode="date"
+            display="default"
+            onChange={onChange}
+          />
+        </View>
+      )}
+      {show && (
+        <View style={{ marginTop: 10 }}>
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={time}
+            mode="time"
+            display="default"
+            is24Hour={true}
+            minuteInterval={60} // works only on iOS
+            onChange={onChange2}
+          />
+        </View>
+      )}
+      {/* <RNPickerSelect
+        onValueChange={(value) => setHour(value)}
+        items={hours}
+        value={hour}
+      /> */}
 
       {/* <DatePicker selected={date} onChange={(date) => setDate(date)} /> */}
 
@@ -423,8 +480,23 @@ export function DealerDrive4({ press }) {
             width: "100%",
           }}
         >
-          {a.map(() => {
-            return <Times press={press} />;
+          {a.map((item, index) => {
+            // create a new Date object based on the selectedTime
+            let adjustedTime = new Date(time);
+            // add 30 minutes multiplied by the current index
+            adjustedTime.setMinutes(
+              time.getMinutes() - time.getMinutes() + 30 + 30 * index
+            );
+
+            return (
+              <Times
+                press={press}
+                key={index}
+                selectedDate={date}
+                selectedTime={adjustedTime}
+                num={1}
+              />
+            );
           })}
         </View>
       </View>
@@ -720,7 +792,21 @@ export function Conts2({ inp, imag }) {
     </TouchableOpacity>
   );
 }
-export function Times({ press }) {
+export function Times({ selectedDate, selectedTime, press, num }) {
+  if (num === 0) {
+    selectedDate = new Date();
+    selectedTime = new Date();
+  }
+  const formattedDate = selectedDate.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+  });
+  const formattedTime = selectedTime.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   return (
     <TouchableOpacity style={{ width: "100%", marginTop: 10 }} onPress={press}>
       <View
@@ -731,11 +817,11 @@ export function Times({ press }) {
           paddingVertical: 5,
         }}
       >
-        <Text style={{ fontSize: 18, fontWeight: 400, alignSelf: "center" }}>
-          Thursday, 7/13
+        <Text style={{ fontSize: 18, fontWeight: "400", alignSelf: "center" }}>
+          {formattedDate}
         </Text>
-        <Text style={{ fontSize: 16, fontWeight: 500, alignSelf: "center" }}>
-          12:00pm
+        <Text style={{ fontSize: 16, fontWeight: "500", alignSelf: "center" }}>
+          {formattedTime}
         </Text>
       </View>
     </TouchableOpacity>

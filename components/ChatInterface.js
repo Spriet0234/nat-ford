@@ -546,6 +546,7 @@ const ChatInterface = () => {
       );
     }
   };
+  /*
   useEffect(() => {
     // Check if speech recognition is supported
     if ("SpeechRecognition" in window || "webkitSpeechRecognition" in window) {
@@ -579,6 +580,7 @@ const ChatInterface = () => {
     }
     blockQueries.current = !blockQueries.current;
   };
+  */
   //---------------------------------------------
   //SEND MESSAGES
   const handleMoreInfo = () => {
