@@ -14,7 +14,14 @@ import {
 import data from "../src/jsons/zipLocations.json";
 import dealerToTrim from "../src/jsons/dealerToTrim.json";
 import info from "../src/jsons/dealerInfo.json";
-import { DealerDrive, DealerDrive2, DealerDrive3 } from "./DealerDrive";
+import {
+  DealerDrive,
+  DealerDrive2,
+  DealerDrive3,
+  DealerDrive4,
+  DealerDrive5,
+  DealerDrive6,
+} from "./DealerDrive";
 
 export function MapComponent({
   zip,
@@ -29,6 +36,29 @@ export function MapComponent({
 }) {
   const [renderDealer, setRenderDealer] = useState(false);
   const [pickedDealer, setPickedDealer] = useState("");
+  const [renderSched1, setRenderSched1] = useState(false);
+  const [renderSched2, setRenderSched2] = useState(false);
+  const [renderSched3, setRenderSched3] = useState(false);
+
+  const [count, setCount] = useState(0);
+
+  const press1 = () => {
+    //if click here to ... is clicked
+    setRenderDealer(false);
+    setRenderSched1(true);
+    setRenderSched2(false);
+    setCount(1);
+  };
+  const press2 = () => {
+    //if time ... is clicked
+    setRenderSched1(false);
+    setRenderSched2(true);
+  };
+  const press3 = () => {
+    //if time ... is clicked
+    setRenderSched2(false);
+    setRenderSched3(true);
+  };
 
   return (
     <View>
@@ -36,10 +66,14 @@ export function MapComponent({
         <View>
           <DealerDrive dealer={pickedDealer} />
           <DealerDrive2 dealer={pickedDealer} />
-          <DealerDrive3 />
+          <DealerDrive3 press={press1} />
         </View>
       )}
-      {!renderDealer && (
+      {count === 1 && renderSched1 && <DealerDrive4 press={press2} />}
+      {renderSched2 && count === 1 && <DealerDrive5 press={press3} />}
+      {renderSched3 && count === 1 && <DealerDrive6 />}
+
+      {!renderDealer && count === 0 && (
         <View style={styles.container}>
           <Text
             style={{
@@ -56,11 +90,12 @@ export function MapComponent({
           {inf.map((d, index) => {
             return (
               <Dealers
+                key={index}
                 setDealer={(a) => setPickedDealer(a)}
                 setRenderDealer={setRenderDealer}
                 dealer={d}
                 ind={index + 1}
-              ></Dealers>
+              />
             );
           })}
         </View>

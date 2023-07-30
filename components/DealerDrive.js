@@ -14,7 +14,6 @@ import DatePicker from "react-datepicker";
 import dealers from "../src/jsons/dealerInfo.json";
 import data from "../src/jsons/dealerToTrim.json";
 import images from "../src/jsons/trimToDealer.json";
-//import "react-datepicker/dist/react-datepicker.css";
 
 export function DealerDrive({ dealer }) {
   const info = dealers[dealer];
@@ -295,7 +294,7 @@ export function DealerDrive2(dealer) {
   );
 }
 
-export function DealerDrive3() {
+export function DealerDrive3({ press }) {
   const arr = [1, 2, 3];
   return (
     <View style={styles.container}>
@@ -341,11 +340,13 @@ export function DealerDrive3() {
           marginTop: 15,
           width: "100%",
         }}
+        onPress={press}
       >
         <Text
           style={{
             fontWeight: 500,
             fontSize: 17,
+            textAlign: "center",
           }}
         >
           Click here to select date and time to find closest appointments
@@ -366,7 +367,7 @@ export function DealerDrive3() {
     </View>
   );
 }
-export function DealerDrive4() {
+export function DealerDrive4({ press }) {
   const a = [1, 2, 3];
   const b = [4, 5, 6];
   const [date, setDate] = useState(new Date());
@@ -393,10 +394,22 @@ export function DealerDrive4() {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title2}>Schedule a Test Drive Appointment</Text>
+      <Text
+        style={{
+          color: "#00095B",
+          fontWeight: 500,
+          fontSize: 24,
+          marginTop: 20,
+          marginBottom: 10,
+          alignSelf: "center",
+          textAlign: "center",
+        }}
+      >
+        Schedule a Test Drive Appointment
+      </Text>
       <Text style={styles.text23}>Look up date and time</Text>
 
-      <DatePicker selected={date} onChange={(date) => setDate(date)} />
+      {/* <DatePicker selected={date} onChange={(date) => setDate(date)} /> */}
 
       <Text style={styles.text23}> Appointments available</Text>
 
@@ -413,29 +426,18 @@ export function DealerDrive4() {
 
             alignSelf: "center",
             alignContent: "center",
+            width: "100%",
           }}
         >
           {a.map(() => {
-            return <Times />;
-          })}
-        </View>
-        <View
-          style={{
-            flexDirection: "column",
-            height: 250,
-            alignSelf: "center",
-            alignContent: "center",
-          }}
-        >
-          {b.map(() => {
-            return <Times />;
+            return <Times press={press} />;
           })}
         </View>
       </View>
     </View>
   );
 }
-export function DealerDrive5() {
+export function DealerDrive5({ press }) {
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -445,24 +447,68 @@ export function DealerDrive5() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title2}>Schedule Test Drive Appointment</Text>
+      <Text
+        style={{
+          color: "#00095B",
+          fontWeight: 500,
+          fontSize: 24,
+          marginTop: 20,
+          marginBottom: 10,
+          alignSelf: "center",
+          textAlign: "center",
+        }}
+      >
+        Schedule Test Drive Appointment
+      </Text>
       <View
         style={{
           backgroundColor: "white",
           borderRadius: 15,
           marginTop: 8,
           width: "90%",
-          padding: 2,
+          padding: 12,
         }}
       >
-        <Text style={styles.text2}>Wayne Ford - Thursday, 7/13@ 12:00pm</Text>
+        <Text
+          style={{
+            color: "#00095B",
+            fontWeight: 400,
+            fontSize: 17,
+            alignSelf: "center",
+            marginTop: 0,
+            textAlign: "center",
+          }}
+        >
+          Wayne Ford - Thursday, 7/13@ 12:00pm
+        </Text>
       </View>
 
       <View style={{ flexDirection: "row" }}>
         <View>
           <View>
-            <Text style={styles.text23}>Trims to test drive</Text>
-            <Text>Limited to 2 cars to test drive during your appointment</Text>
+            <Text
+              style={{
+                color: "#00095B",
+                fontWeight: 500,
+                fontSize: 22,
+                textAlign: "center",
+                alignSelf: "center",
+                marginTop: 15,
+                marginBottom: 5,
+              }}
+            >
+              Trims to test drive
+            </Text>
+            <Text
+              style={{
+                textAlign: "center",
+                color: "#00095B",
+                fontSize: 16,
+                marginTop: 5,
+              }}
+            >
+              Limited to 2 cars to test drive during your appointment
+            </Text>
             <Image
               source={require("../assets/mustang.png")}
               resizeMode="contain" // Add this line
@@ -475,7 +521,19 @@ export function DealerDrive5() {
               }}
             ></Image>
           </View>
-          <Text style={styles.text23}>Guest Information</Text>
+          <Text
+            style={{
+              color: "#00095B",
+              fontWeight: 500,
+              fontSize: 22,
+              textAlign: "center",
+              alignSelf: "center",
+              marginTop: 15,
+              marginBottom: 10,
+            }}
+          >
+            Guest Information
+          </Text>
           <TouchableOpacity onPress={handlePress} style={{ marginBottom: 10 }}>
             <Text style={styles.linkText}>Or Login/Create Ford account</Text>
           </TouchableOpacity>
@@ -505,6 +563,33 @@ export function DealerDrive5() {
           />
         </View>
       </View>
+      <TouchableOpacity
+        style={{
+          backgroundColor: "#00095B",
+          paddingHorizontal: 20,
+          paddingVertical: 5,
+          borderRadius: 20,
+          marginBottom: 30,
+          marginTop: 10,
+          alignSelf: "center",
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.1,
+          shadowRadius: 2,
+          // Shadow settings for Android
+          elevation: 3,
+        }}
+        onPress={press}
+      >
+        <Text
+          style={{ color: "white", fontSize: 17, fontWeight: 500, padding: 5 }}
+        >
+          Confirm Appointment
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -518,8 +603,29 @@ export function DealerDrive6() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title2}>Your appointment is confirmed</Text>
-      <Text style={{ marginTop: 10 }}>
+      <Text
+        style={{
+          color: "#00095B",
+          fontWeight: 500,
+          fontSize: 24,
+          marginTop: 10,
+          marginBottom: 10,
+          alignSelf: "center",
+          textAlign: "center",
+        }}
+      >
+        Your appointment is confirmed
+      </Text>
+      <Text
+        style={{
+          marginTop: 10,
+          textAlign: "center",
+          marginBottom: 10,
+          color: "#00095B",
+          fontWeight: 400,
+          fontSize: 16,
+        }}
+      >
         A confirmation email has been sent. Please arrive 15 minutes before your
         scheduled appointment time.
       </Text>
@@ -528,17 +634,38 @@ export function DealerDrive6() {
           backgroundColor: "white",
           borderRadius: 15,
           marginTop: 8,
-          width: "90%",
-          padding: 2,
+          width: "100%",
+          padding: 12,
         }}
       >
-        <Text style={styles.text2}>Wayne Ford - Thursday, 7/13@ 12:00pm</Text>
+        <Text
+          style={{
+            color: "#00095B",
+            fontWeight: 400,
+            fontSize: 17,
+            alignSelf: "center",
+            marginTop: 0,
+            textAlign: "center",
+          }}
+        >
+          Wayne Ford - Thursday, 7/13@ 12:00pm
+        </Text>
       </View>
 
       <View style={{ flexDirection: "row" }}>
-        <View>
+        <View style={{ width: "100%" }}>
           <View>
-            <Text style={styles.text23}>Trims to test drive</Text>
+            <Text
+              style={{
+                marginTop: 15,
+                color: "#00095B",
+                fontWeight: 500,
+                fontSize: 22,
+                textAlign: "center",
+              }}
+            >
+              Trims to test drive
+            </Text>
             <Image
               source={require("../assets/mustang.png")}
               resizeMode="contain" // Add this line
@@ -552,17 +679,17 @@ export function DealerDrive6() {
             ></Image>
           </View>
 
-          <View style={styles.input2}>
-            <Text style={{ alignSelf: "center" }}>Name</Text>
+          <View style={styles.input}>
+            <Text style={styles.text2}>Name</Text>
           </View>
-          <View style={styles.input2}>
-            <Text style={{ alignSelf: "center" }}>Email</Text>
+          <View style={styles.input}>
+            <Text style={styles.text2}>Email</Text>
           </View>
-          <View style={styles.input2}>
-            <Text style={{ alignSelf: "center" }}>Phone number</Text>
+          <View style={styles.input}>
+            <Text style={styles.text2}>Phone number</Text>
           </View>
-          <View style={styles.input2}>
-            <Text style={{ alignSelf: "center" }}>Notes/Requests</Text>
+          <View style={styles.input}>
+            <Text style={styles.text2}>Notes/Requests</Text>
           </View>
         </View>
       </View>
@@ -599,9 +726,9 @@ export function Conts2({ inp, imag }) {
     </TouchableOpacity>
   );
 }
-export function Times() {
+export function Times({ press }) {
   return (
-    <TouchableOpacity style={{ width: "100%", marginTop: 10 }}>
+    <TouchableOpacity style={{ width: "100%", marginTop: 10 }} onPress={press}>
       <View
         style={{
           backgroundColor: "white",
@@ -610,8 +737,12 @@ export function Times() {
           paddingVertical: 5,
         }}
       >
-        <Text style={{ fontSize: 18, fontWeight: 400 }}>Thursday, 7/13</Text>
-        <Text style={{ fontSize: 16, fontWeight: 500 }}>12:00pm</Text>
+        <Text style={{ fontSize: 18, fontWeight: 400, alignSelf: "center" }}>
+          Thursday, 7/13
+        </Text>
+        <Text style={{ fontSize: 16, fontWeight: 500, alignSelf: "center" }}>
+          12:00pm
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -676,13 +807,12 @@ const styles = StyleSheet.create({
   },
   title2: {
     color: "#00095B",
-    fontWeight: 700,
+    fontWeight: 500,
     fontSize: 24,
-    alignSelf: "flex-start",
     marginTop: 20,
     marginBottom: 10,
-    alignContent: "flex-end",
     alignSelf: "center",
+    textAlign: "center",
   },
   text2: {
     color: "#00095B",
@@ -690,6 +820,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     alignSelf: "center",
     marginTop: 0,
+    textAlign: "center",
   },
   text22: {
     color: "#00095B",
@@ -730,15 +861,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     fontSize: 16,
     color: "#444",
-    width: "77%",
+    width: "100%",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    // Shadow settings for Android
+    elevation: 3,
   },
   input2: {
     height: 30,
