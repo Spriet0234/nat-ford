@@ -161,6 +161,7 @@ export function handleUserInputFn(
             { msg: "Car pricing estimator", author: "You" },
           ]);
           if (model === "") {
+            console.log("hheehrehre------")
             setMessages((m) => [
               ...m,
               { msg: "What model are you interested in?", author: "Ford Chat" },

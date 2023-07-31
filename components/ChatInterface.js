@@ -463,9 +463,12 @@ const ChatInterface = () => {
   const goBack = () => {
     if (choice === "D"){
       if(calcMode === 2){
+        setModel("")
         handleUserInput("D");
+        setCalcMode(0);
       }
     }
+    else{
     if (infoMode === 0) {
       setShowCalcButtons(false);
       setMenuButtons(buyingFordButtons);
@@ -550,6 +553,7 @@ const ChatInterface = () => {
         locateDealershipsRad
       );
     }
+  }
   };
   /*
   useEffect(() => {
