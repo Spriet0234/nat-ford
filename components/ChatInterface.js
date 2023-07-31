@@ -462,13 +462,15 @@ const ChatInterface = () => {
   );
   const goBack = () => {
     if (choice === "D"){
-      if(calcMode === 2){
-        setModel("")
+      if(calcMode === 0 && calcStep === 1){
+        setShowCalcButtons(false);
+        setMenuButtons(buyingFordButtons);
+      }
+      else if(calcMode === 0){
         handleUserInput("D");
-        setCalcMode(0);
       }
     }
-    else{
+    else if(choice === "I"){
     if (infoMode === 0) {
       setShowCalcButtons(false);
       setMenuButtons(buyingFordButtons);
@@ -553,6 +555,83 @@ const ChatInterface = () => {
         locateDealershipsRad
       );
     }
+  }
+  else{
+    setFind(0);
+    setQuery("back")
+    handleUserFlow(
+      origButtons,
+      tableForceUpdate,
+      setTableForceUpdate,
+      handleMoreInfo,
+      handleCarInfoButton,
+      fixTrimQueryQuotation,
+      query,
+      dealerList,
+      carInfoData,
+      setCarInfoData,
+      extractFiveDigitString,
+      findLocations,
+      handleUserInput,
+      blockQueries,
+      choice,
+      setQuery,
+      zipMode,
+      setZipCode,
+      messages,
+      setMessages,
+      setZipMode,
+      setDistance,
+      setCalcButtons,
+      calcButtonHandler,
+      zipCode,
+      distance,
+      findMode,
+      selectHandler,
+      setFind,
+      appendSelect,
+      setSelect,
+      questionnaireStep,
+      setQuestionnaireAnswers,
+      setQuestionnaireStep,
+      questionnaireAnswers,
+      setForceUpdate,
+      forceUpdate,
+      calcStep,
+      model,
+      setModel,
+      setCalcStep,
+      trim,
+      setTrim,
+      calcMode,
+      setCalcMode,
+      setLeaseStep,
+      setFinanceStep,
+      leaseStep,
+      financeStep,
+      changeChoice,
+      history,
+      setHistory,
+      infoMode,
+      setInfoMode,
+      vehicle,
+      setVehicle,
+      showCalcButtons,
+      setShowCalcButtons,
+      calcHeadingText,
+      setCalcHeadingText,
+      payment,
+      setPayment,
+      setMenuButtons,
+      locateDealershipsFn,
+      changeSelected,
+      setDealers,
+      selected,
+      cat,
+      setCat,
+      setOptionButtons,
+      locateDealershipsRad
+    );
   }
   };
   /*
@@ -681,6 +760,7 @@ const ChatInterface = () => {
     menuButtons,
     model,
     trim,
+    findMode
   ]);
 
   const sendMessage = (optionMessage) => {
@@ -835,6 +915,7 @@ const ChatInterface = () => {
                 <ScheduleDrive4
                   calcButtons={calcButtons}
                   heading = {calcHeadingText}
+                  back = {goBack}
                   locate={() => {
                     locateDealershipsFn(
                       setDealers,

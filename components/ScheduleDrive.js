@@ -249,7 +249,7 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
   );
 }
 //Selecting trim
-export function ScheduleDrive4({ calcButtons, locate }) {
+export function ScheduleDrive4({ calcButtons, locate, back }) {
   return (
     <View style={styles.container}>
       <View style={{ marginTop: 20 }}></View>
@@ -308,7 +308,7 @@ export function ScheduleDrive4({ calcButtons, locate }) {
           left: 20,
           bottom: 20,
         }}
-        //onPress={back}
+        onPress={back}
       >
         <Image
           source={require("../assets/arrow.png")}

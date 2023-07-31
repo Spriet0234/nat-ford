@@ -156,12 +156,32 @@ export function handleUserInputFn(
           blockQueries.current = false;
           break;
         case "D":
-          setMessages((m) => [
-            ...m,
-            { msg: "Car pricing estimator", author: "You" },
-          ]);
-          if (model === "") {
-            console.log("hheehrehre------")
+          if (model !== ""){
+            setCalcHeadingText("Choose specific model");
+            setShowCalcButtons(true);
+            setCalcButtons(
+              Object.keys(trims).map((model) => (
+                <Conts2
+                  key={model}
+                  value={model}
+                  onPress={() => {
+                    setQuery(model);
+                    setModel(model);
+                    setCalcButtons([]);
+                    setShowCalcButtons(false);
+                  }}
+                  inp={model}
+                  imag={images["Default"][model]}
+                />
+              ))
+            );
+            setCalcStep(1);
+          }
+          else if (model === "") {
+            setMessages((m) => [
+              ...m,
+              { msg: "Car pricing estimator", author: "You" },
+            ]);
             setMessages((m) => [
               ...m,
               { msg: "What model are you interested in?", author: "Ford Chat" },
@@ -176,7 +196,6 @@ export function handleUserInputFn(
                   onPress={() => {
                     setQuery(model);
                     setModel(model);
-                    setMessages((m) => [...m, { msg: model, author: "You" }]);
                     setCalcButtons([]);
                     setShowCalcButtons(false);
                   }}
@@ -525,9 +544,27 @@ export function handleUserFlow(
         case "C": {
           if (findMode === 0) {
             const numberRegex = /\d+/g;
-            if (
-              extractFiveDigitString(query) === null ||
-              query.match(numberRegex)[0].length != 5
+            if (query === "back"){
+              setShowCalcButtons(true);
+              let currCalcs = Object.keys(trims).map((model) => (
+                <Conts2
+                  key={model}
+                  value={model}
+                  onPress={() => {
+                    setQuery(model);
+                    setModel(model);
+                    setCalcButtons([]);
+                    setFind(1);
+                  }}
+                  inp={model}
+                  imag={images["Default"][model]}
+                ></Conts2>
+              ));
+              setCalcButtons(currCalcs);
+            }
+            else if (
+              (extractFiveDigitString(query) === null ||
+              query.match(numberRegex)[0].length != 5)
             ) {
               setMessages((m) => [
                 ...m,
