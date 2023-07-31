@@ -101,14 +101,15 @@ export function MapComponent({
           <DealerDrive3 press={pressHandler} />
         </View>
       )}
-      {count === 1 && renderSched1 && <DealerDrive4 press={press2} />}
-      {renderSched2 && count === 1 && <DealerDrive5 press={press3} />}
+      {count === 1 && renderSched1 && <DealerDrive4 press={press2} selected = {selected} />}
+      {renderSched2 && count === 1 && <DealerDrive5 press={press3} selected = {selected}/>}
       {renderSched3 && count === 1 && (
         <DealerDrive6
           names={name}
           emails={email}
           phones={phone}
           notess={notes}
+          selected = {selected}
         />
       )}
 

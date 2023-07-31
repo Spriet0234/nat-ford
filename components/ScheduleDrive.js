@@ -13,10 +13,10 @@ import {
   ScrollView,
 } from "react-native";
 //choose vehicle category
-export function ScheduleDrive({ calcButtons }) {
+export function ScheduleDrive({ calcButtons, heading }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Choose vehicle category</Text>
+      <Text style={styles.title}>{heading}</Text>
 
       <View style={{ padding: 15 }}>
         <Text style={styles.text2}>
@@ -39,7 +39,7 @@ export function ScheduleDrive({ calcButtons }) {
   );
 }
 //model with back button
-export function ScheduleDrive2({ calcButtons, mode, back }) {
+export function ScheduleDrive2({ calcButtons, mode, back, heading }) {
   return (
     <View style={styles.container}>
       {mode === 0 ? (
@@ -53,7 +53,7 @@ export function ScheduleDrive2({ calcButtons, mode, back }) {
             marginBottom: 5,
           }}
         >
-          Choose a specific model
+          {heading}
         </Text>
       ) : (
         <Text
@@ -66,7 +66,7 @@ export function ScheduleDrive2({ calcButtons, mode, back }) {
             marginBottom: 5,
           }}
         >
-          Choose a specific trim
+          {heading}
         </Text>
       )}
 

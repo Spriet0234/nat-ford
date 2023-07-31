@@ -379,7 +379,7 @@ export function DealerDrive3({ press }) {
     </View>
   );
 }
-export function DealerDrive4({ press }) {
+export function DealerDrive4({ press, selected }) {
   const a = [1, 2, 3];
   const b = [4, 5, 6];
   const [date, setDate] = useState(new Date());
@@ -504,7 +504,14 @@ export function DealerDrive4({ press }) {
     </View>
   );
 }
-export function DealerDrive5({ press }) {
+export function DealerDrive5({ press, selected }) {
+  let a = [];
+  for (var key in selected) {
+    let temp = selected[key];
+    for (let i = 0; i < temp.length; i++) {
+      a.push([key + " " + temp[i], images[key][temp[i]]]);
+    }
+  }
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -576,17 +583,12 @@ export function DealerDrive5({ press }) {
             >
               Limited to 2 cars to test drive during your appointment
             </Text>
-            <Image
-              source={require("../assets/mustang.png")}
-              resizeMode="contain" // Add this line
-              style={{
-                width: 180,
-                height: 180,
-                alignSelf: "center",
-                marginRight: 10,
-                marginBottom: -30,
-              }}
-            ></Image>
+
+            <ScrollView horizontal = {true}  style={{ flexDirection: "row" }}>
+        {a.map((d) => {
+          return <Conts2 inp={d[0]} imag={d[1]} />;
+        })}
+      </ScrollView>
           </View>
           <Text
             style={{
@@ -662,7 +664,14 @@ export function DealerDrive5({ press }) {
     </View>
   );
 }
-export function DealerDrive6({ names, emails, phones, notess }) {
+export function DealerDrive6({ names, emails, phones, notess, selected }) {
+  let a = [];
+  for (var key in selected) {
+    let temp = selected[key];
+    for (let i = 0; i < temp.length; i++) {
+      a.push([key + " " + temp[i], images[key][temp[i]]]);
+    }
+  }
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -735,17 +744,11 @@ export function DealerDrive6({ names, emails, phones, notess }) {
             >
               Trims to test drive
             </Text>
-            <Image
-              source={require("../assets/mustang.png")}
-              resizeMode="contain" // Add this line
-              style={{
-                width: 180,
-                height: 180,
-                alignSelf: "center",
-                marginRight: 10,
-                marginBottom: 0,
-              }}
-            ></Image>
+            <ScrollView horizontal = {true}  style={{ flexDirection: "row" }}>
+        {a.map((d) => {
+          return <Conts2 inp={d[0]} imag={d[1]} />;
+        })}
+      </ScrollView>
           </View>
 
           <View style={styles.input}>

@@ -819,10 +819,12 @@ const ChatInterface = () => {
                 <ScheduleDrive
                   calcButtons={calcButtons}
                   back={goBack}
+                  heading = {calcHeadingText}
                 ></ScheduleDrive>
               ) : findMode === 1 ? (
                 <ScheduleDrive4
                   calcButtons={calcButtons}
+                  heading = {calcHeadingText}
                   locate={() => {
                     locateDealershipsFn(
                       setDealers,
@@ -843,6 +845,7 @@ const ChatInterface = () => {
                 showCalcButtons && (
                   <ScheduleDrive2
                     calcButtons={calcButtons}
+                    heading = {calcHeadingText}
                     mode={infoMode - 1}
                     back={goBack}
                   ></ScheduleDrive2>
