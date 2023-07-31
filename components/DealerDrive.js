@@ -491,7 +491,7 @@ export function DealerDrive4({ press, selected }) {
 
             return (
               <Times
-                press={press}
+                onPress={press}
                 key={index}
                 selectedDate={date}
                 selectedTime={adjustedTime}

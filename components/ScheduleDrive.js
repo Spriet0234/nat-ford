@@ -117,7 +117,7 @@ export function ScheduleDrive2({ calcButtons, mode, back, heading }) {
   );
 }
 //specific car display
-export function ScheduleDrive3({ info, handler }) {
+export function ScheduleDrive3({ info, handler, handleMore }) {
   return (
     <View style={styles.container2}>
       <View
@@ -232,7 +232,7 @@ export function ScheduleDrive3({ info, handler }) {
           <Text> Back</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{ flexDirection: "row" }}>
+        <TouchableOpacity style={{ flexDirection: "row" }} onPress = {handleMore}>
           <Text> Detailed info</Text>
           <Image
             source={require("../assets/RArrow.png")}

@@ -43,7 +43,12 @@ export default function handleInfoFlow(
         let arr = {};
         for (let i = 0; i < data.length; i++) {
             if (data[i]["model"] === model && data[i]["trim"] === trim) {
-                setMessages((m) => [...m, { msg: "", author: "Info", line: true, zip: "", carInfo: data[i] }]);
+                setMessages((m) => [...m, { msg: "", author: "Info", line: true, zip: "", carInfo: data[i], handleMore: (()=>{
+                  setMenuButtons([]);
+                    handleCarInfoButton(model, trim);
+                    setForceUpdate(!forceUpdate);
+                    handleMoreInfo();
+                }) }]);
                 arr = data[i];
                 break;
             }

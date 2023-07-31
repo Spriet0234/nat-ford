@@ -812,6 +812,7 @@ const ChatInterface = () => {
                 selectedCars={selectedCars}
                 setOptionButtons={setOptionButtons}
                 len={index}
+                handleMore = {item.handleMore}
               />
             ))}
             {showCalcButtons &&
