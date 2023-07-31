@@ -14,7 +14,7 @@ import { Calendar } from "react-native-calendars";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import dealers from "../src/jsons/dealerInfo.json";
 import data from "../src/jsons/dealerToTrim.json";
-import images from "../src/jsons/trimToDealer.json";
+import images from "../src/images/image_link.json";
 import RNPickerSelect from "react-native-picker-select";
 
 export function DealerDrive({ dealer }) {
@@ -239,9 +239,10 @@ export function DealerDrive2({ dealer, selected }) {
   for (var key in selected) {
     let temp = selected[key];
     for (let i = 0; i < temp.length; i++) {
-      a.push([key + "::" + temp[i], images[key][temp[i]]]);
+      a.push([key + " " + temp[i], images[key][temp[i]]]);
     }
   }
+  console.log(selected)
   return (
     <View style={styles.container}>
       <View
@@ -281,11 +282,11 @@ export function DealerDrive2({ dealer, selected }) {
         </TouchableOpacity> */}
       </View>
       <Text style={styles.text22}>Based on your selection</Text>
-      <View style={{ flexDirection: "row" }}>
+      <ScrollView horizontal = {true}  style={{ flexDirection: "row" }}>
         {a.map((d) => {
           return <Conts2 inp={d[0]} imag={d[1]} />;
         })}
-      </View>
+      </ScrollView>
     </View>
   );
 }

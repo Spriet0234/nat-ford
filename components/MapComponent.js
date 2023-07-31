@@ -33,6 +33,7 @@ export function MapComponent({
   selectedModel,
   selectedTrim,
   inf,
+  selected
 }) {
   const [renderDealer, setRenderDealer] = useState(false);
   const [pickedDealer, setPickedDealer] = useState("");
@@ -84,7 +85,7 @@ export function MapComponent({
       {renderDealer && (
         <View>
           <DealerDrive dealer={pickedDealer} />
-          <DealerDrive2 dealer={pickedDealer} />
+          <DealerDrive2 dealer={pickedDealer} selected = {selected} />
           <DealerDrive3 press={press4} />
         </View>
       )}
