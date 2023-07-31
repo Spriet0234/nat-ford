@@ -50,14 +50,6 @@ export default function handlePaymentFlow(
         setModel(query);
       }
       setCalcHeadingText("Choose specific trim");
-      setMessages((m) => [
-        ...m,
-        {
-          msg: "What trim are you interested in?",
-          author: "Ford Chat",
-          line: true,
-        },
-      ]);
       setShowCalcButtons(true);
       setCalcButtons(
         trims[model].map((trim) => (
@@ -66,7 +58,6 @@ export default function handlePaymentFlow(
             value={trim}
             onPress={() => {
               setQuery(trim);
-              setMessages((m) => [...m, { msg: trim, author: "You" }]);
               setCalcButtons([]);
               setShowCalcButtons(false);
             }}

@@ -461,6 +461,11 @@ const ChatInterface = () => {
     setOptionButtons
   );
   const goBack = () => {
+    if (choice === "D"){
+      if(calcMode === 2){
+        handleUserInput("D");
+      }
+    }
     if (infoMode === 0) {
       setShowCalcButtons(false);
       setMenuButtons(buyingFordButtons);
