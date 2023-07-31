@@ -217,7 +217,8 @@ export function ScheduleDrive3({ info, handler }) {
             left: 20,
             bottom: 20,
           }}
-        >
+          onPress = {() =>{handler('I')}}
+        > 
           <Image
             source={require("../assets/arrow.png")}
             resizeMode="contain" // Add this line

@@ -242,7 +242,6 @@ export function DealerDrive2({ dealer, selected }) {
       a.push([key + " " + temp[i], images[key][temp[i]]]);
     }
   }
-  console.log(selected)
   return (
     <View style={styles.container}>
       <View
@@ -337,7 +336,7 @@ export function DealerDrive3({ press }) {
           marginTop: 15,
           width: "100%",
         }}
-        onPress={press}
+        onPress={() =>{press('1')}}
       >
         <Text
           style={{
@@ -372,7 +371,7 @@ export function DealerDrive3({ press }) {
               key={index}
               selectedDate={new Date()}
               selectedTime={adjustedTime}
-              press={press}
+              onPress={() =>{press('2');}}
             />
           );
         })}
@@ -796,7 +795,7 @@ export function Conts2({ inp, imag }) {
     </TouchableOpacity>
   );
 }
-export function Times({ selectedDate, selectedTime, press, num }) {
+export function Times({ selectedDate, selectedTime, onPress, num }) {
   if (num === 0) {
     selectedDate = new Date();
     selectedTime = new Date();
@@ -812,7 +811,7 @@ export function Times({ selectedDate, selectedTime, press, num }) {
   });
 
   return (
-    <TouchableOpacity style={{ width: "100%", marginTop: 10 }} onPress={press}>
+    <TouchableOpacity style={{ width: "100%", marginTop: 10 }} onPress={onPress}>
       <View
         style={{
           backgroundColor: "white",

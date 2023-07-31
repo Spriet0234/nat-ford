@@ -79,6 +79,18 @@ export function MapComponent({
     setRenderSched3(false);
     console.log("aa");
   };
+  const pressHandler = (option) => {
+    if(option === "1"){
+      setCount(1);
+      setRenderSched1(true);
+    }
+    else{
+      setCount(1);
+      setRenderSched2(true);
+      console.log("here")
+    }
+    setRenderSched3(false);
+  }
 
   return (
     <View>
@@ -86,7 +98,7 @@ export function MapComponent({
         <View>
           <DealerDrive dealer={pickedDealer} />
           <DealerDrive2 dealer={pickedDealer} selected = {selected} />
-          <DealerDrive3 press={press4} />
+          <DealerDrive3 press={pressHandler} />
         </View>
       )}
       {count === 1 && renderSched1 && <DealerDrive4 press={press2} />}
