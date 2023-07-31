@@ -298,6 +298,12 @@ const ChatInterface = () => {
   const buyACarButtons = (
     <View style={styles.optionsContainer}>
       <ScrollView horizontal={true}>
+        <TouchableOpacity  key={""}
+          style={styles.optionButton}
+          onPress = {()=>{
+            setMenuButtons([buyingFordButtons])
+          }}><Text>Back</Text>
+        </TouchableOpacity>
         <TouchableOpacity
           key={""}
           style={styles.optionButton}
