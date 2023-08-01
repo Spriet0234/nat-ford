@@ -756,8 +756,8 @@ export function Conts({ inp, onPress }) {
   return (
     <TouchableOpacity
       style={{
-        height: 110,
-        width: 180,
+        height: 90,
+        width: 130,
         backgroundColor: "white",
         borderRadius: 15,
         marginRight: 10,
@@ -778,7 +778,7 @@ export function Conts({ inp, onPress }) {
     >
       <Text
         style={{
-          fontSize: 19,
+          fontSize: 12,
           alignSelf: "center",
           textAlign: "center",
           fontWeight: 500,
@@ -797,7 +797,7 @@ export function Conts2({ inp, imag, onPress }) {
       style={{
         backgroundColor: "white",
         borderRadius: 20,
-        paddingHorizontal: 25,
+        paddingHorizontal: 14,
         paddingVertical: 5,
         marginRight: 10,
         shadowColor: "#000",
@@ -821,7 +821,8 @@ export function Conts2({ inp, imag, onPress }) {
           marginBottom: 7,
           color: "#00095B",
           fontWeight: 400,
-          fontSize: 17,
+          fontSize: 12,
+          alignSelf: "center"
         }}
       >
         {inp}

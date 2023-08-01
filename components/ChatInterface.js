@@ -74,7 +74,7 @@ const ChatInterface = () => {
   const [message, setMessage] = useState("");
   const [optionMess, setOptionMess] = useState("");
   const [messages, setMessages] = useState([
-    { author: "Ford Chat", msg: "What's your name?" },
+    { author: "Ford Chat", msg: "Hi there, what's your name?" },
   ]);
   const [count, setCount] = useState(0);
   const [name, setName] = useState("");

@@ -19,7 +19,7 @@ export function ScheduleDrive({ calcButtons, heading }) {
       <Text style={styles.title}>{heading}</Text>
 
       <View style={{ padding: 15 }}>
-        <Text style={styles.text2}>
+        <Text style={styles.textSub}>
           Select from the options to specify which cars you are looking for.
         </Text>
       </View>
@@ -70,8 +70,8 @@ export function ScheduleDrive2({ calcButtons, mode, back, heading }) {
         </Text>
       )}
 
-      <View style={{ padding: 15 }}>
-        <Text style={styles.text2}>
+      <View style={{ padding: 12 }}>
+        <Text style={styles.textSub}>
           Select from the options to specify which cars you are looking for.
         </Text>
       </View>
@@ -120,20 +120,16 @@ export function ScheduleDrive2({ calcButtons, mode, back, heading }) {
 export function ScheduleDrive3({ info, handler, handleMore }) {
   return (
     <View style={styles.container2}>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignContent: "space-between",
-          width: "100%",
-          alignItems: "flex-start",
-        }}
-      >
-        <View style={{ marginLeft: 30, marginBottom: 20 }}>
-          <View>
-            <Text style={styles.title2}>
-              {info.model}&#x24C7;{" " + info.trim + " model"}
+    <View
+      style={{
+        // Removed unnecessary styles
+        marginBottom: 30,
+      }}
+    >
+      <View style={{ marginLeft: 30, marginBottom: 20 }}>
+        <View>
+            <Text style={styles.title2} numberOfLines={0}>
+              2023 <strong>{info.model+" "}</strong>&#x24C7;<strong>{" " + info.trim+ " "}</strong>&#x24C7;{" model"}
             </Text>
             <View>
               <Image
@@ -155,7 +151,7 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
                 color: "#00095B",
                 fontWeight: 400,
                 fontSize: 17,
-                alignSelf: "flex-start",
+                alignSelf: "center",
                 marginTop: 0,
                 marginBottom: 10,
                 marginLeft: 10,
@@ -168,13 +164,13 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
                 color: "#00095B",
                 fontWeight: 400,
                 fontSize: 17,
-                alignSelf: "flex-start",
+                alignSelf: "center",
                 marginTop: 0,
                 marginBottom: 10,
                 marginLeft: 10,
               }}
             >
-              Available at{" "}
+              Available at
               {" " +
                 dealerships[info.model][info.trim][0] +
                 ", " +
@@ -184,29 +180,21 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
           <View style={{ marginLeft: 10 }}>
             <Text style={styles.title2}>Your Vehicle </Text>
             <Text style={styles.text22}>
-              Engine {" " + info["engine_aspiration"]}
+              Engine: {" " + info["engine_aspiration"]}
             </Text>
             <Text style={styles.text22}>
-              Drivetrain {" " + info["drivetrain"]}
+              Drivetrain: {" " + info["drivetrain"]}
             </Text>
             <Text style={styles.text22}>
-              Tramsmission {" " + info["transmission"]}
+              Tramsmission: {" " + info["transmission"]}
             </Text>
             <Text style={styles.text22}>
-              Body Style {" " + info["body_style"]}
+              Body Style: {" " + info["body_style"]}
             </Text>
           </View>
         </View>
       </View>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          marginLeft: 20,
-          marginBottom: 20,
-          marginTop: 20,
-        }}
-      >
+      
         <TouchableOpacity
           style={{
             display: "flex",
@@ -232,7 +220,7 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
           <Text> Back</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{ flexDirection: "row" }} onPress = {handleMore}>
+        <TouchableOpacity style={{ flexDirection: "row",position:'absolute', right:20,bottom:20 }} onPress = {handleMore}>
           <Text> Detailed info</Text>
           <Image
             source={require("../assets/RArrow.png")}
@@ -244,7 +232,7 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
             }}
           />
         </TouchableOpacity>
-      </View>
+     
     </View>
   );
 }
@@ -392,7 +380,7 @@ const styles = StyleSheet.create({
     width: "98%",
     borderRadius: 30,
     height: "auto",
-    position: "relative",
+    position: 'relative',
     paddingleft: 140,
     shadowColor: "#000",
     shadowOffset: {
@@ -416,9 +404,19 @@ const styles = StyleSheet.create({
     color: "#00095B",
     fontWeight: 500,
     fontSize: 24,
-    alignSelf: "flex-start",
+    alignSelf: "flex-center",
     marginTop: 20,
     marginBottom: 20,
+    textAlign:'center',
+    flexWrap:'wrap'
+  },
+  textSub:{
+    color: "#00095B",
+    fontWeight: 400,
+    fontSize: 13,
+    alignSelf: "center",
+    marginTop: 0,
+    textAlign:'center'
   },
   text2: {
     color: "#00095B",
@@ -426,14 +424,16 @@ const styles = StyleSheet.create({
     fontSize: 17,
     alignSelf: "center",
     marginTop: 0,
+    textAlign:'center'
   },
   text22: {
     color: "#00095B",
     fontWeight: 400,
     fontSize: 17,
-    alignSelf: "flex-start",
+    alignSelf: "center",
     marginTop: -4,
     marginBottom: 0,
     padding: 0,
+    textAlign:'center'
   },
 });
