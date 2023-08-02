@@ -118,24 +118,31 @@ export function ScheduleDrive2({ calcButtons, mode, back, heading }) {
 }
 //specific car display
 export function ScheduleDrive3({ info, handler, handleMore }) {
-  const moneyFormatter = new Intl.NumberFormat('en-US', {
+  const moneyFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "USD"
-})
+    currency: "USD",
+  });
   return (
     <View style={styles.container2}>
-    <View
-      style={{
-        // Removed unnecessary styles
-        marginBottom: 30,
-      }}
-    >
-      <View style={{ marginLeft: 30, marginBottom: 20 }}>
-        <View>
+      <View
+        style={{
+          // Removed unnecessary styles
+          marginBottom: 30,
+        }}
+      >
+        <View style={{ marginLeft: 30, marginBottom: 20 }}>
+          <View>
             <Text style={styles.title2} numberOfLines={0}>
-              2023 <strong>{info.model+" "}</strong>&#x24C7;<strong>{" " + info.trim+ " "}</strong>&#x24C7;{" model"}
+              2023 <strong>{info.model + " "}</strong>&#x24C7;
+              <strong>{" " + info.trim + " "}</strong>&#x24C7;{" model"}
             </Text>
-            <View>
+            <View
+              style={{
+                backgroundColor: "white",
+                borderRadius: 20,
+                marginBottom: 10,
+              }}
+            >
               <Image
                 source={{ uri: data[info.model][info.trim] }}
                 resizeMode="contain" // Add this line
@@ -161,8 +168,14 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
                 marginLeft: 10,
               }}
             >
-              <strong>Estimated net price</strong> {moneyFormatter.format(info.msrp)}
-              <TouchableOpacity><Text>{' '}<u>...more</u></Text></TouchableOpacity>
+              <strong>Estimated net price</strong>{" "}
+              {moneyFormatter.format(info.msrp)}
+              <TouchableOpacity>
+                <Text>
+                  {" "}
+                  <u>...more</u>
+                </Text>
+              </TouchableOpacity>
             </Text>
             <Text
               style={{
@@ -180,11 +193,18 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
                 dealerships[info.model][info.trim][0] +
                 ", " +
                 dealerships[info.model][info.trim][1]}
-                <TouchableOpacity><Text>{' '}<u>...more</u></Text></TouchableOpacity>
+              <TouchableOpacity>
+                <Text>
+                  {" "}
+                  <u>...more</u>
+                </Text>
+              </TouchableOpacity>
             </Text>
           </View>
           <View style={{ marginLeft: 10 }}>
-            <Text style={styles.title2}><strong>Your Vehicle</strong></Text>
+            <Text style={styles.title2}>
+              <strong>Your Vehicle</strong>
+            </Text>
             <Text style={styles.text22}>
               Engine: {" " + info["engine_aspiration"]}
             </Text>
@@ -200,45 +220,54 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
           </View>
         </View>
       </View>
-      
-        <TouchableOpacity
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            alignItems: "flex-start",
-            position: "absolute",
-            left: 20,
-            bottom: 20,
-          }}
-          onPress = {() =>{handler('I')}}
-        > 
-          <Image
-            source={require("../assets/arrow.png")}
-            resizeMode="contain" // Add this line
-            style={{
-              width: 30,
-              height: 20,
-              alignSelf: "flex-start",
-              marginRight: 0,
-            }}
-          ></Image>
-          <Text> Back</Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity style={{ flexDirection: "row",position:'absolute', right:20,bottom:20 }} onPress = {handleMore}>
-          <Text> Detailed info</Text>
-          <Image
-            source={require("../assets/RArrow.png")}
-            resizeMode="contain"
-            style={{
-              width: 30,
-              height: 20,
-              marginLeft: 5, // you might want a little space between the text and the icon
-            }}
-          />
-        </TouchableOpacity>
-     
+      <TouchableOpacity
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+          position: "absolute",
+          left: 20,
+          bottom: 20,
+        }}
+        onPress={() => {
+          handler("I");
+        }}
+      >
+        <Image
+          source={require("../assets/arrow.png")}
+          resizeMode="contain" // Add this line
+          style={{
+            width: 30,
+            height: 20,
+            alignSelf: "flex-start",
+            marginRight: 0,
+          }}
+        ></Image>
+        <Text> Back</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={{
+          flexDirection: "row",
+          position: "absolute",
+          right: 20,
+          bottom: 20,
+        }}
+        onPress={handleMore}
+      >
+        <Text> Detailed info</Text>
+        <Image
+          source={require("../assets/RArrow.png")}
+          resizeMode="contain"
+          style={{
+            width: 30,
+            height: 20,
+            marginLeft: 5, // you might want a little space between the text and the icon
+          }}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -386,7 +415,7 @@ const styles = StyleSheet.create({
     width: "98%",
     borderRadius: 30,
     height: "auto",
-    position: 'relative',
+    position: "relative",
     paddingleft: 140,
     shadowColor: "#000",
     shadowOffset: {
@@ -413,16 +442,16 @@ const styles = StyleSheet.create({
     alignSelf: "flex-center",
     marginTop: 20,
     marginBottom: 20,
-    textAlign:'center',
-    flexWrap:'wrap'
+    textAlign: "center",
+    flexWrap: "wrap",
   },
-  textSub:{
+  textSub: {
     color: "#00095B",
     fontWeight: 400,
     fontSize: 13,
     alignSelf: "center",
     marginTop: 0,
-    textAlign:'center'
+    textAlign: "center",
   },
   text2: {
     color: "#00095B",
@@ -430,7 +459,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     alignSelf: "center",
     marginTop: 0,
-    textAlign:'center'
+    textAlign: "center",
   },
   text22: {
     color: "#00095B",
@@ -438,8 +467,8 @@ const styles = StyleSheet.create({
     fontSize: 17,
     alignSelf: "center",
     marginTop: -4,
-    marginBottom: 0,
+    marginBottom: 10,
     padding: 0,
-    textAlign:'center'
+    textAlign: "center",
   },
 });

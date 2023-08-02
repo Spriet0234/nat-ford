@@ -77,7 +77,7 @@ export default function ChatItem({
           )}
 
           <View style={styles.messageContent(author === "You")}>
-            <Text style={{ color: "white", marginLeft: 5 }}>{msg}</Text>
+            <Text style={{ color: "white", padding: 3 }}>{msg}</Text>
           </View>
         </View>
       )}
