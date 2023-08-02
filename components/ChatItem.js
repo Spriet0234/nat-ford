@@ -7,10 +7,10 @@ import {
 import {ScheduleDrive3} from './ScheduleDrive.js'
 import {MapComponent} from './MapComponent.js'
 import CarInfoTable from './CarInfoTable.js';
-export default function ChatItem({msg, author, line, darkMode, textSize, zip, locs, dropDownOptions, carInfoData, carInfoMode, carSpecInfo, setMessages, setMenuButtons, handleUserInput, selectedCar, setSelectedCar, tableFunctions, messageIndex, selectedCars, setOptionButtons, len, handleMore}){
+export default function ChatItem({msg, author, line, darkMode, textSize, zip, locs, dropDownOptions, carInfoData, carInfoMode, carSpecInfo, setMessages, setMenuButtons, handleUserInput, selectedCar, setSelectedCar, tableFunctions, messageIndex, selectedCars, setOptionButtons, len, handleMore, setInfoMode}){
   return <View>{
       author === "Info" && (
-        <ScheduleDrive3 info = {carSpecInfo} handler = {handleUserInput} handleMore = {handleMore}></ScheduleDrive3>
+        <ScheduleDrive3 info = {carSpecInfo} handler = {handleUserInput} handleMore = {handleMore} setInfoMode = {setInfoMode} setMenuButtons = {setMenuButtons}></ScheduleDrive3>
       )
     }
     {
