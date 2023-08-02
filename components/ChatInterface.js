@@ -374,6 +374,12 @@ const ChatInterface = () => {
   const innovateButtons = (
     <View style={styles.optionsContainer}>
       <ScrollView horizontal={true}>
+      <TouchableOpacity  key={""}
+          style={styles.optionButton}
+          onPress = {() => {
+            setMenuButtons(infoButtons)
+          }}><Text>Back</Text>
+        </TouchableOpacity>
         <TouchableOpacity  key={""}
           style={styles.optionButton} onPress = {() => {
             handleUserInput('NF');
@@ -390,6 +396,12 @@ const ChatInterface = () => {
   const sustainButtons = (
     <View style={styles.optionsContainer}>
       <ScrollView horizontal={true}>
+      <TouchableOpacity  key={""}
+          style={styles.optionButton}
+          onPress = {() => {
+            setMenuButtons(infoButtons)
+          }}><Text>Back</Text>
+        </TouchableOpacity>
         <TouchableOpacity  key={""}
           style={styles.optionButton}
           onPress = {() => {

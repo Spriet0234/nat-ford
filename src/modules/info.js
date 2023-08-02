@@ -1,30 +1,35 @@
-const certifications = `I'd be happy to share some of the certifications related to our company's commitment to environmental sustainability. Some certifications include ISO 14001 Certification, Zero Waste to Landfill, Water Stewardship, Energy Efficiency, Sustainable Materials, Climate Change Initiatives, and Corporate Sustainability Reporting. These reports provide a transparent view of our environmental performance and our efforts to drive positive change.\
+const certifications = `I'd be happy to share some of the certifications related to our company's commitment to environmental sustainability. 
 
-These certifications and initiatives represent our ongoing commitment to environmental stewardship. We understand the importance of sustainable practices, and we continuously strive to make a positive impact on the environment and communities where we operate.\
+Some certifications include ISO 14001 Certification, Zero Waste to Landfill, Water Stewardship, Energy Efficiency, Sustainable Materials, Climate Change Initiatives, and Corporate Sustainability Reporting. These reports provide a transparent view of our environmental performance and our efforts to drive positive change.
 
-As we move forward, we will continue to evolve our sustainability practices, set ambitious goals, and collaborate with partners to create a brighter, greener future for generations to come. `;
+These certifications and initiatives represent our ongoing commitment to environmental stewardship. We understand the importance of sustainable practices, and we continuously strive to make a positive impact on the environment and communities where we operate.
 
-const evmarket = `Here are some key points about our EV market efforts:\
+As we move forward, we will continue to evolve our sustainability practices, set ambitious goals, and collaborate with partners to create a brighter, greener future for generations to come.
+
+`;
+
+const evmarket = `Here are some key points about our EV market efforts:
 
 (1) Electrification Strategy:
-We recognize that EVs offer a cleaner, more efficient, and environmentally friendly mode of transportation, and we're committed to being at the forefront of this shift.\
+We recognize that EVs offer a cleaner, more efficient, and environmentally friendly mode of transportation, and we're committed to being at the forefront of this shift.
 
 (2) Expanding EV Lineup:
-We are continuously working on expanding our EV lineup to offer diverse options for our customers.\
+We are continuously working on expanding our EV lineup to offer diverse options for our customers.
 
 (3) Charging Infrastructure:
-We are collaborating with charging networks and stakeholders to expand the availability of charging stations, ensuring that our customers have the convenience and confidence to drive their EVs without range anxiety.\
+We are collaborating with charging networks and stakeholders to expand the availability of charging stations, ensuring that our customers have the convenience and confidence to drive their EVs without range anxiety.
 
 (4) Electric Commercial Vehicles:
-We are also developing electric commercial vehicles to cater to businesses and fleet operators. These electric vans and trucks will offer cost-effective, zero-emission solutions for various industries, contributing to a greener future.\
+We are also developing electric commercial vehicles to cater to businesses and fleet operators. These electric vans and trucks will offer cost-effective, zero-emission solutions for various industries, contributing to a greener future.
 
 (5) Collaborations and Partnerships:
-We understand that tackling the challenges of electrification requires collaboration. Ford actively seeks partnerships with industry leaders, technology innovators, and government agencies to accelerate the development and adoption of electric vehicles.\
+We understand that tackling the challenges of electrification requires collaboration. Ford actively seeks partnerships with industry leaders, technology innovators, and government agencies to accelerate the development and adoption of electric vehicles.
 
 (6) Customer Education and Support:
-We are committed to educating customers about the benefits of EVs and providing excellent support throughout their ownership journey.\
+We are committed to educating customers about the benefits of EVs and providing excellent support throughout their ownership journey.
 
 By combining our legacy of innovation with cutting-edge electric technologies, we aim to create a future where electric vehicles are accessible, reliable, and transformative for both our customers and the environment. Together, we are driving toward a cleaner, more sustainable future, one electrifying step at a time!
+
 `
 
 const commitments = `(1) Environmental Responsibility: At Ford, we take our environmental responsibility seriously. We understand the challenges posed by vehicle emissions and are committed to mitigating their impact on the environment and society.
@@ -44,7 +49,6 @@ const commitments = `(1) Environmental Responsibility: At Ford, we take our envi
 (8)Social and Environmental Impact: Beyond emissions reduction, we aim to have a positive impact on the communities we serve. This includes initiatives to support environmental conservation, social responsibility, and sustainability-focused projects.
 
 In conclusion, Ford is steadfast in its commitment to emissions reduction and sustainable practices. As a global automotive leader, we are continuously striving to create a better, cleaner future for the planet and its inhabitants.
-
 
 `
 
@@ -72,10 +76,6 @@ const emissions = `We acknowledge that emissions from vehicles have historically
 
 While there is still work to be done, Ford remains dedicated to making a positive environmental impact through our emissions reduction efforts and sustainable practices. We understand the importance of a greener future and are actively working towards a more sustainable transportation ecosystem.
 
-
-
-
-
 `
 
 const endoflife = `We take comprehensive measures to ensure that our vehicles are responsibly managed when they reach the end of their useful life:
@@ -99,11 +99,6 @@ const endoflife = `We take comprehensive measures to ensure that our vehicles ar
 (9) Sustainability Reporting: Ford is committed to transparency in our sustainability efforts, including end-of-life management. We regularly report our progress to stakeholders, including customers, investors, and regulatory authorities.
 
 Overall, Ford's end-of-life management practices are aligned with our broader sustainability goals. We strive to minimize the environmental impact of our vehicles throughout their lifecycle and contribute positively to the well-being of the planet and its inhabitants.
-
-
-
-
-
 
 `
 
@@ -151,11 +146,6 @@ const newfeatures = `I'd be happy to share some of our latest innovative vehicle
 (8) B&O Sound System by Bang & Olufsen: Immerse yourself in exceptional audio quality with the available B&O Sound System. Expertly tuned by Bang & Olufsen, this premium audio system delivers a concert-like experience, elevating your journeys.
 
 These are just some of the exciting innovations we have integrated into our vehicles. At Ford, we are committed to pushing the boundaries of technology, safety, and sustainability to create the best driving experience for our customers. We are continuously exploring new ideas to make driving more enjoyable, efficient, and convenient. Stay tuned for more groundbreaking features to come!
-
-
-
-
-
 
 `
 
