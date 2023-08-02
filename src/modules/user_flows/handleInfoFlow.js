@@ -2,7 +2,29 @@ import data from "../../jsons/data.json";
 import styles from "../../styles/ChatStyle.js"
 import {View,TextInput,Button,Text,FlatList,StyleSheet,KeyboardAvoidingView,
     Platform,TouchableOpacity,Image,ScrollView} from "react-native";
-export default function handleInfoFlow(
+
+    const fixTrimQueryQuotation = (model, trim) => {
+      if (model !== "Transit Cargo Van" && model !== "E-Transit Cargo Van" && model !== "Transit Crew Van" && model !== "Transit Passenger Van") {
+          return trim;
+      }
+      trim = trim.replaceAll('"', '\\"');
+      return trim;
+    };
+    const queryDatabase = async (model, trim) => {
+      let fixedTrim = fixTrimQueryQuotation(model,trim);
+      let sqlQuery = `SELECT * FROM car_info WHERE model = "${model}" AND trim = "${fixedTrim}"`;
+      let data = await fetch(`https://fordchat.franklinyin.com:5000/data?query=${sqlQuery}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => {
+        return res.json();
+      });
+      return data;
+    }
+    
+export default async function handleInfoFlow(
     handleMoreInfo,
     tableForceUpdate,
     setTableForceUpdate,
@@ -40,19 +62,13 @@ export default function handleInfoFlow(
           setInfoMode(5);
           return;
         }
-        let arr = {};
-        for (let i = 0; i < data.length; i++) {
-            if (data[i]["model"] === model && data[i]["trim"] === trim) {
-                setMessages((m) => [...m, { msg: "", author: "Info", line: true, zip: "", carInfo: data[i], handleMore: (()=>{
-                  setMenuButtons([]);
-                    handleCarInfoButton(model, trim);
-                    setForceUpdate(!forceUpdate);
-                    handleMoreInfo();
-                }) }]);
-                arr = data[i];
-                break;
-            }
-        }
+        const data = await queryDatabase(model, trim);
+        setMessages((m) => [...m, { msg: "", author: "Info", line: true, zip: "", carInfo: data[0], handleMore: (()=>{
+          setMenuButtons([]);
+            handleCarInfoButton(model, trim);
+            setForceUpdate(!forceUpdate);
+            handleMoreInfo();
+        }) }]);
         setMessages((m) => [...m, { msg: "What other information/services would you like for this car?", author: "", line: true, zip: "" }]);
         setShowCalcButtons(false);
         setMenuButtons(

@@ -118,6 +118,10 @@ export function ScheduleDrive2({ calcButtons, mode, back, heading }) {
 }
 //specific car display
 export function ScheduleDrive3({ info, handler, handleMore }) {
+  const moneyFormatter = new Intl.NumberFormat('en-US', {
+    style: "currency",
+    currency: "USD"
+})
   return (
     <View style={styles.container2}>
     <View
@@ -157,7 +161,8 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
                 marginLeft: 10,
               }}
             >
-              Estimated net price $36,630
+              <strong>Estimated net price</strong> {moneyFormatter.format(info.msrp)}
+              <TouchableOpacity><Text>{' '}<u>...more</u></Text></TouchableOpacity>
             </Text>
             <Text
               style={{
@@ -170,15 +175,16 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
                 marginLeft: 10,
               }}
             >
-              Available at
+              <strong>Available at</strong>
               {" " +
                 dealerships[info.model][info.trim][0] +
                 ", " +
                 dealerships[info.model][info.trim][1]}
+                <TouchableOpacity><Text>{' '}<u>...more</u></Text></TouchableOpacity>
             </Text>
           </View>
           <View style={{ marginLeft: 10 }}>
-            <Text style={styles.title2}>Your Vehicle </Text>
+            <Text style={styles.title2}><strong>Your Vehicle</strong></Text>
             <Text style={styles.text22}>
               Engine: {" " + info["engine_aspiration"]}
             </Text>
