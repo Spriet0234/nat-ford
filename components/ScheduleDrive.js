@@ -124,7 +124,7 @@ export function ScheduleDrive3({
   setInfoMode,
   setMenuButtons,
 }) {
-  console.log(info)
+  console.log(info);
   const moneyFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -137,7 +137,7 @@ export function ScheduleDrive3({
           marginBottom: 30,
         }}
       >
-        <View style={{ marginLeft: 30, marginBottom: 20 }}>
+        <View style={{ marginLeft: 30, marginRight: 30, marginBottom: 20 }}>
           <View>
             <Text style={styles.title2} numberOfLines={0}>
               2023 <strong>{info.model + " "}</strong>&#x24C7;
