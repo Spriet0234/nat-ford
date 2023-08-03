@@ -91,7 +91,7 @@ export function DealerDrive({ dealer, back }) {
                 marginBottom: 10,
               }}
             >
-              {dealer.toLowerCase().replace(/\s/g, "") + ".com"}
+              {dealer.toLowerCase().replace(/[^0-9a-z-A-Z]/g, "")+ ".com"}
             </Text>
           </View>
 
