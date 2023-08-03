@@ -10,7 +10,10 @@ export default function handleDealerFlow(
   findLocations,
   zipCode,
   distance,
-  locateDealershipsRad
+  locateDealershipsRad,
+  maintenanceMode = "",
+  model = "",
+  trim = ""
 ) {
   switch (zipMode) {
     case 0: {
@@ -55,7 +58,7 @@ export default function handleDealerFlow(
         locateDealershipsRad(
           extractFiveDigitString(zipCode),
           query === "NONE" ? 10 : query,
-          setMessages
+          setMessages, maintenanceMode, model, trim
         )();
         // setMessages((m) => [...m, { msg: "", author: "Ford Chat.", line : false,zip: {zipcode: extractFiveDigitString(zipCode), dist:(query==="NONE")?10:query, deal: dealerList}}]);
         setZipMode(0);
@@ -76,6 +79,9 @@ export default function handleDealerFlow(
             zipcode: extractFiveDigitString(zipCode),
             dist: distance,
             deal: dealerList,
+            maintenanceMode: maintenanceMode,
+            model: model,
+            trim: trim,
           },
         },
       ]);

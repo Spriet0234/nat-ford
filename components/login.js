@@ -23,7 +23,7 @@ import images from "../src/images/image_link.json";
 let maintenanceButtons
 let ownerButtons
 let scheduleButtons
-export function Login({setMessages, setMenuButtons, handleUserInput, justSelect, selectedCar, setSelectedCar, onResaleButton, setOptionButtons}) {
+export function Login({setMessages, setMenuButtons, handleUserInput, justSelect, selectedCar, setSelectedCar, setOptionButtons}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth] = useState(getAuth(firebase));
@@ -47,19 +47,46 @@ export function Login({setMessages, setMenuButtons, handleUserInput, justSelect,
         year: "2011"
     }
 ])
+const moneyFormatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});
+const onResaleButton = async (car) => {
+  setMessages((m) => {
+      return [...m, { msg: "Car resale value", author: "You" }];
+  });
+  var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+  };
+
+  let data = await fetch(`http://marketvalue.vinaudit.com/getmarketvalue.php?key=VA_DEMO_KEY&vin=${car.vin}&format=json&period=90&mileage=average`, requestOptions).then((response) => {
+      return response.json();
+  });
+  console.log(data)
+  setMessages((m) => {
+      return [
+          ...m,
+          {
+              msg: `After looking up your car's vin number, your ${car.year} Ford ${car.model} ${car.trim} has an average resale value of ${moneyFormatter.format(data.prices.average)}. The lowest price sold in the past 90 days was ${moneyFormatter.format(data.prices.below)} and the highest was ${moneyFormatter.format(data.prices.above)}.`,
+              author: "Ford Chat",
+          },
+      ];
+  });
+};
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(()=>{
     scheduleButtons = ((
       <View style={styles.optionsContainer}>
       <ScrollView horizontal={true}>
-                <TouchableOpacity style={styles.optionButton} onClick={()=>{handleUserInput('SCHEDRegular maintenance MODEL:'+myCars[selectedCar].model+"TRIM:"+myCars[selectedCar].trim);}}>
+                <TouchableOpacity style={styles.optionButton} onPress={()=>{handleUserInput('SCHEDRegular maintenance MODEL:'+myCars[selectedCar].model+"TRIM:"+myCars[selectedCar].trim);}}>
                     <Text>Regular maintenance</Text>
                 </TouchableOpacity>
-         <TouchableOpacity style={styles.optionButton} onClick={()=>{handleUserInput('SCHEDTire service MODEL:'+myCars[selectedCar].model+"TRIM:"+myCars[selectedCar].trim);}}>Tire service</TouchableOpacity>
-          <TouchableOpacity style={styles.optionButton} onClick={()=>{handleUserInput('SCHEDBrake service MODEL:'+myCars[selectedCar].model+"TRIM:"+myCars[selectedCar].trim);}}>
+         <TouchableOpacity style={styles.optionButton} onPress={()=>{handleUserInput('SCHEDTire service MODEL:'+myCars[selectedCar].model+"TRIM:"+myCars[selectedCar].trim);}}>Tire service</TouchableOpacity>
+          <TouchableOpacity style={styles.optionButton} onPress={()=>{handleUserInput('SCHEDBrake service MODEL:'+myCars[selectedCar].model+"TRIM:"+myCars[selectedCar].trim);}}>
           <Text>Brake service</Text></TouchableOpacity>
-           <TouchableOpacity style={styles.optionButton} onClick={()=>{handleUserInput('SCHEDVehicle diagnostics MODEL:'+myCars[selectedCar].model+"TRIM:"+myCars[selectedCar].trim);}}>
+           <TouchableOpacity style={styles.optionButton} onPress={()=>{handleUserInput('SCHEDVehicle diagnostics MODEL:'+myCars[selectedCar].model+"TRIM:"+myCars[selectedCar].trim);}}>
            <Text>Vehicle diagnostics</Text></TouchableOpacity>
               </ScrollView>
         </View>
@@ -67,16 +94,16 @@ export function Login({setMessages, setMenuButtons, handleUserInput, justSelect,
     maintenanceButtons=(
       <View style={styles.optionsContainer}>
       <ScrollView horizontal={true}>
-          <TouchableOpacity style={styles.optionButton} onClick={()=>{
+          <TouchableOpacity style={styles.optionButton} onPress={()=>{
                 setMessages(m=>{return [...m, {msg: "Schedule a maintenance appointment", author: "You"}, {msg: "What type of help with maintenance would you like?", author: "Ford Chat"}]})
                 setMenuButtons([scheduleButtons])
             }}><Text>Schedule a maintenance appointment</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.optionButton} onClick={()=>{
+          <TouchableOpacity style={styles.optionButton} onPress={()=>{
             console.log(selectedCar)
             setMessages(m=>{return [...m, {msg: "When is my service due?", author: "You"}, {msg: "Based on the information we have on your "+myCars[selectedCar].model+" "+myCars[selectedCar].trim+", you should schedule a maintenance appointment before August 11th. This is one year after the purchase date, following a regular schedule of maintenance annually.", author: "Ford Chat"}, {msg:"Or, you can schedule maintenance before you hit 10,000 miles.", author: "Ford Chat"}, {msg: "Please select a maintenance option for your "+myCars[selectedCar].model+" "+myCars[selectedCar].trim+", or select another car to restart the flow.", author: "Login"}]})
             setMenuButtons([scheduleButtons])
             }}><Text>When is my service due?</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.optionButton} onClick={()=>{
+          <TouchableOpacity style={styles.optionButton} onPress={()=>{
             setMessages(m=>{return [...m, {msg: "Questions about maintenance", author: "You"}, {msg: "What would you like to know for maintenance?", author: "Ford Chat"}]})
             setMenuButtons([])
             handleUserInput("maintenanceQuestions")
@@ -161,6 +188,8 @@ export function Login({setMessages, setMenuButtons, handleUserInput, justSelect,
             onResaleButton(myCars[index])
             }}><Text>Car resale value</Text></TouchableOpacity>
           <TouchableOpacity style={styles.optionButton} onPress={()=>{
+            setMessages(m=>{return [...m, {msg: "Owner service center", author: "You"}, {msg: "Welcome to the owner service center! How can I help you?", author: "Ford Chat"}]})
+            setMenuButtons([maintenanceButtons])
             }}><Text>Owner service center</Text></TouchableOpacity>
           <TouchableOpacity style={styles.optionButton} onPress={()=>{
             handleUserInput('B');

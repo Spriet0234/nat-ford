@@ -445,9 +445,10 @@ export function handleUserFlow(
         findLocations,
         zipCode,
         distance,
+        locateDealershipsRad,
         maintenanceMode.split("MODEL:")[0],
         model,
-        trim
+        trim        
       );
       blockQueries.current = false;
     } else

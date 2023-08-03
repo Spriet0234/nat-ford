@@ -33,9 +33,9 @@ export function MapComponent({
   loc,
   deal,
   coords,
-  maintenanceMode,
-  selectedModel,
-  selectedTrim,
+  maintenanceMode="",
+  selectedModel="",
+  selectedTrim="",
   inf,
   selected,
 }) {
@@ -118,15 +118,15 @@ export function MapComponent({
       {renderDealer && (
         <View>
           <DealerDrive dealer={pickedDealer} back={backDealer} />
-          <DealerDrive2 dealer={pickedDealer} selected={selected} />
+          {maintenanceMode.length==0&&<DealerDrive2 dealer={pickedDealer} selected={selected} />}
           <DealerDrive3 press={pressHandler} />
         </View>
       )}
       {count === 1 && renderSched1 && (
-        <DealerDrive4 press={press2} selected={selected} />
+        <DealerDrive4 press={press2} selected={selected} maintenanceMode={maintenanceMode} model={selectedModel} trim={selectedTrim}/>
       )}
       {renderSched2 && count === 1 && (
-        <DealerDrive5 press={press3} selected={selected} />
+        <DealerDrive5 press={press3} selected={selected} maintenanceMode={maintenanceMode}/>
       )}
       {renderSched3 && count === 1 && (
         <DealerDrive6

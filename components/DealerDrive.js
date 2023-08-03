@@ -356,7 +356,7 @@ export function DealerDrive3({ press }) {
     </View>
   );
 }
-export function DealerDrive4({ press, selected }) {
+export function DealerDrive4({ press, selected, maintenanceMode="", model="", trim="" }) {
   const a = [1, 2, 3];
   const b = [4, 5, 6];
   const [date, setDate] = useState(new Date());
@@ -405,7 +405,7 @@ export function DealerDrive4({ press, selected }) {
           textAlign: "center",
         }}
       >
-        Schedule a Test Drive Appointment
+        Schedule a {maintenanceMode.length==0?"Test Drive":maintenanceMode} Appointment
       </Text>
       <Text style={styles.text23}>Look up date and time</Text>
       {show && (
@@ -481,7 +481,7 @@ export function DealerDrive4({ press, selected }) {
     </View>
   );
 }
-export function DealerDrive5({ press, selected }) {
+export function DealerDrive5({ press, selected, maintenanceMode="" }) {
   let a = [];
   for (var key in selected) {
     let temp = selected[key];
@@ -509,7 +509,7 @@ export function DealerDrive5({ press, selected }) {
           textAlign: "center",
         }}
       >
-        Schedule Test Drive Appointment
+        Schedule a {maintenanceMode.length==0?"Test Drive":maintenanceMode} Appointment
       </Text>
       <View
         style={{
@@ -536,7 +536,7 @@ export function DealerDrive5({ press, selected }) {
 
       <View style={{ flexDirection: "row" }}>
         <View>
-          <View>
+          {maintenanceMode.length>0&&<View>
             <Text
               style={{
                 color: "#00095B",
@@ -567,7 +567,7 @@ export function DealerDrive5({ press, selected }) {
                 return <Conts2 inp={d[0]} imag={d[1]} />;
               })}
             </ScrollView>
-          </View>
+          </View>}
           <Text
             style={{
               color: "#00095B",
