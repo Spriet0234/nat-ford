@@ -15,10 +15,7 @@ let onPresses = [];
 
 export default function CarInfoTable({ data, num }) {
   //Array which will be used to generate table
-  console.log("I  FIRST", num)
-  console.log("THE DATA", data)
   const [tableData, setTableData] = useState([]);
-  console.log("I RECEIVED", tableData)
   const [visible, setVisible] = useState(false);
   const [popupTitle, setPopupTitle] = useState("Info about...");
   const [popupContent, setPopupContent] = useState(
