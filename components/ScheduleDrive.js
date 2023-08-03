@@ -13,13 +13,13 @@ import {
   ScrollView,
 } from "react-native";
 //choose vehicle category
-export function ScheduleDrive({ calcButtons }) {
+export function ScheduleDrive({ calcButtons, heading }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Choose vehicle category</Text>
+      <Text style={styles.title}>{heading}</Text>
 
       <View style={{ padding: 15 }}>
-        <Text style={styles.text2}>
+        <Text style={styles.textSub}>
           Select from the options to specify which cars you are looking for.
         </Text>
       </View>
@@ -39,7 +39,7 @@ export function ScheduleDrive({ calcButtons }) {
   );
 }
 //model with back button
-export function ScheduleDrive2({ calcButtons, mode, back }) {
+export function ScheduleDrive2({ calcButtons, mode, back, heading }) {
   return (
     <View style={styles.container}>
       {mode === 0 ? (
@@ -53,7 +53,7 @@ export function ScheduleDrive2({ calcButtons, mode, back }) {
             marginBottom: 5,
           }}
         >
-          Choose a specific model
+          {heading}
         </Text>
       ) : (
         <Text
@@ -66,12 +66,12 @@ export function ScheduleDrive2({ calcButtons, mode, back }) {
             marginBottom: 5,
           }}
         >
-          Choose a specific trim
+          {heading}
         </Text>
       )}
 
-      <View style={{ padding: 15 }}>
-        <Text style={styles.text2}>
+      <View style={{ padding: 12 }}>
+        <Text style={styles.textSub}>
           Select from the options to specify which cars you are looking for.
         </Text>
       </View>
@@ -117,25 +117,39 @@ export function ScheduleDrive2({ calcButtons, mode, back }) {
   );
 }
 //specific car display
-export function ScheduleDrive3({ info, handler }) {
+export function ScheduleDrive3({
+  info,
+  handler,
+  handleMore,
+  setInfoMode,
+  setMenuButtons,
+}) {
+  console.log(info);
+  const moneyFormatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
   return (
     <View style={styles.container2}>
       <View
         style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignContent: "space-between",
-          width: "100%",
-          alignItems: "flex-start",
+          // Removed unnecessary styles
+          marginBottom: 30,
         }}
       >
-        <View style={{ marginLeft: 30, marginBottom: 20 }}>
+        <View style={{ marginLeft: 30, marginRight: 30, marginBottom: 20 }}>
           <View>
-            <Text style={styles.title2}>
-              {info.model}&#x24C7;{" " + info.trim + " model"}
+            <Text style={styles.title2} numberOfLines={0}>
+              2023 <strong>{info.model + " "}</strong>&#x24C7;
+              <strong>{" " + info.trim + " "}</strong>&#x24C7;{" model"}
             </Text>
-            <View>
+            <View
+              style={{
+                backgroundColor: "white",
+                borderRadius: 20,
+                marginBottom: 10,
+              }}
+            >
               <Image
                 source={{ uri: data[info.model][info.trim] }}
                 resizeMode="contain" // Add this line
@@ -155,100 +169,127 @@ export function ScheduleDrive3({ info, handler }) {
                 color: "#00095B",
                 fontWeight: 400,
                 fontSize: 17,
-                alignSelf: "flex-start",
+                alignSelf: "center",
                 marginTop: 0,
                 marginBottom: 10,
                 marginLeft: 10,
               }}
             >
-              Estimated net price $36,630
+              <strong>Estimated net price</strong>{" "}
+              {moneyFormatter.format(info.msrp)}
+              <TouchableOpacity
+                onPress={() => {
+                  setMenuButtons([]);
+                  setInfoMode(10);
+                }}
+              >
+                <Text>
+                  {" "}
+                  <u>...more</u>
+                </Text>
+              </TouchableOpacity>
             </Text>
             <Text
               style={{
                 color: "#00095B",
                 fontWeight: 400,
                 fontSize: 17,
-                alignSelf: "flex-start",
+                alignSelf: "center",
                 marginTop: 0,
                 marginBottom: 10,
                 marginLeft: 10,
               }}
             >
-              Available at{" "}
+              <strong>Available at</strong>
               {" " +
                 dealerships[info.model][info.trim][0] +
                 ", " +
                 dealerships[info.model][info.trim][1]}
+              <TouchableOpacity
+                onPress={() => {
+                  setMenuButtons([]);
+                  setInfoMode(3);
+                }}
+              >
+                <Text>
+                  {" "}
+                  <u>...more</u>
+                </Text>
+              </TouchableOpacity>
             </Text>
           </View>
           <View style={{ marginLeft: 10 }}>
-            <Text style={styles.title2}>Your Vehicle </Text>
-            <Text style={styles.text22}>
-              Engine {" " + info["engine_aspiration"]}
+            <Text style={styles.title2}>
+              <strong>Your Vehicle</strong>
             </Text>
             <Text style={styles.text22}>
-              Drivetrain {" " + info["drivetrain"]}
+              Engine: {" " + info["engine_aspiration"]}
             </Text>
             <Text style={styles.text22}>
-              Tramsmission {" " + info["transmission"]}
+              Drivetrain: {" " + info["drivetrain"]}
             </Text>
             <Text style={styles.text22}>
-              Body Style {" " + info["body_style"]}
+              Tramsmission: {" " + info["transmission"]}
+            </Text>
+            <Text style={styles.text22}>
+              Body Style: {" " + info["body_style"]}
             </Text>
           </View>
         </View>
       </View>
-      <View
+
+      <TouchableOpacity
         style={{
+          display: "flex",
           flexDirection: "row",
-          justifyContent: "space-between",
-          marginLeft: 20,
-          marginBottom: 20,
-          marginTop: 20,
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+          position: "absolute",
+          left: 20,
+          bottom: 20,
+        }}
+        onPress={() => {
+          handler("I");
         }}
       >
-        <TouchableOpacity
+        <Image
+          source={require("../assets/arrow.png")}
+          resizeMode="contain" // Add this line
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            alignItems: "flex-start",
-            position: "absolute",
-            left: 20,
-            bottom: 20,
+            width: 30,
+            height: 20,
+            alignSelf: "flex-start",
+            marginRight: 0,
           }}
-        >
-          <Image
-            source={require("../assets/arrow.png")}
-            resizeMode="contain" // Add this line
-            style={{
-              width: 30,
-              height: 20,
-              alignSelf: "flex-start",
-              marginRight: 0,
-            }}
-          ></Image>
-          <Text> Back</Text>
-        </TouchableOpacity>
+        ></Image>
+        <Text> Back</Text>
+      </TouchableOpacity>
 
-        <TouchableOpacity style={{ flexDirection: "row" }}>
-          <Text> Detailed info</Text>
-          <Image
-            source={require("../assets/RArrow.png")}
-            resizeMode="contain"
-            style={{
-              width: 30,
-              height: 20,
-              marginLeft: 5, // you might want a little space between the text and the icon
-            }}
-          />
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        style={{
+          flexDirection: "row",
+          position: "absolute",
+          right: 20,
+          bottom: 20,
+        }}
+        onPress={handleMore}
+      >
+        <Text> Detailed info</Text>
+        <Image
+          source={require("../assets/RArrow.png")}
+          resizeMode="contain"
+          style={{
+            width: 30,
+            height: 20,
+            marginLeft: 5, // you might want a little space between the text and the icon
+          }}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
 //Selecting trim
-export function ScheduleDrive4({ calcButtons, locate }) {
+export function ScheduleDrive4({ calcButtons, locate, back }) {
   return (
     <View style={styles.container}>
       <View style={{ marginTop: 20 }}></View>
@@ -307,7 +348,7 @@ export function ScheduleDrive4({ calcButtons, locate }) {
           left: 20,
           bottom: 20,
         }}
-        //onPress={back}
+        onPress={back}
       >
         <Image
           source={require("../assets/arrow.png")}
@@ -415,9 +456,19 @@ const styles = StyleSheet.create({
     color: "#00095B",
     fontWeight: 500,
     fontSize: 24,
-    alignSelf: "flex-start",
+    alignSelf: "flex-center",
     marginTop: 20,
     marginBottom: 20,
+    textAlign: "center",
+    flexWrap: "wrap",
+  },
+  textSub: {
+    color: "#00095B",
+    fontWeight: 400,
+    fontSize: 13,
+    alignSelf: "center",
+    marginTop: 0,
+    textAlign: "center",
   },
   text2: {
     color: "#00095B",
@@ -425,14 +476,16 @@ const styles = StyleSheet.create({
     fontSize: 17,
     alignSelf: "center",
     marginTop: 0,
+    textAlign: "center",
   },
   text22: {
     color: "#00095B",
     fontWeight: 400,
     fontSize: 17,
-    alignSelf: "flex-start",
+    alignSelf: "center",
     marginTop: -4,
-    marginBottom: 0,
+    marginBottom: 10,
     padding: 0,
+    textAlign: "center",
   },
 });

@@ -24,6 +24,10 @@ import {
 } from "./DealerDrive";
 
 export function MapComponent({
+  setMessages,
+  origButtons,
+  buyingFordButtons,
+  setMenuButtons,
   zip,
   dist,
   loc,
@@ -33,6 +37,7 @@ export function MapComponent({
   selectedModel,
   selectedTrim,
   inf,
+  selected,
 }) {
   const [renderDealer, setRenderDealer] = useState(false);
   const [pickedDealer, setPickedDealer] = useState("");
@@ -68,6 +73,16 @@ export function MapComponent({
     setEmail(email);
     setPhone(phone);
     setNotes(notes);
+    setMenuButtons(origButtons);
+    setMessages((m) => {
+      return [
+        ...m,
+        {
+          msg: "What else can I help you with?",
+          author: "Ford Chat",
+        },
+      ];
+    });
   };
   const press4 = () => {
     //if time ... is clicked
@@ -78,24 +93,48 @@ export function MapComponent({
     setRenderSched3(false);
     console.log("aa");
   };
+  const pressHandler = (option) => {
+    if (option === "1") {
+      setCount(1);
+      setRenderSched1(true);
+    } else {
+      setCount(1);
+      setRenderSched2(true);
+      console.log("here");
+    }
+    setRenderSched3(false);
+  };
+  const backDealer = () => {
+    setCount(0);
+    setRenderDealer(false);
+    setRenderSched1(false);
+    setRenderSched2(false);
+    setRenderSched3(false);
+    console.log("pressed");
+  };
 
   return (
     <View>
       {renderDealer && (
         <View>
-          <DealerDrive dealer={pickedDealer} />
-          <DealerDrive2 dealer={pickedDealer} />
-          <DealerDrive3 press={press4} />
+          <DealerDrive dealer={pickedDealer} back={backDealer} />
+          <DealerDrive2 dealer={pickedDealer} selected={selected} />
+          <DealerDrive3 press={pressHandler} />
         </View>
       )}
-      {count === 1 && renderSched1 && <DealerDrive4 press={press2} />}
-      {renderSched2 && count === 1 && <DealerDrive5 press={press3} />}
+      {count === 1 && renderSched1 && (
+        <DealerDrive4 press={press2} selected={selected} />
+      )}
+      {renderSched2 && count === 1 && (
+        <DealerDrive5 press={press3} selected={selected} />
+      )}
       {renderSched3 && count === 1 && (
         <DealerDrive6
           names={name}
           emails={email}
           phones={phone}
           notess={notes}
+          selected={selected}
         />
       )}
 

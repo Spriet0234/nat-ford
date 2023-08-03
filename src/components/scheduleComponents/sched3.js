@@ -28,7 +28,7 @@ export default function Sched3({
         padding: 20,
         marginBottom: 20,
         boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
-        marginLeft:'30px'
+        marginLeft: "30px",
       }}
     >
       <div
@@ -48,6 +48,7 @@ export default function Sched3({
       </div>
       <div
         style={{
+          marginTop: 10,
           backgroundColor: "white",
           width: "100%",
           color: "#00095B",

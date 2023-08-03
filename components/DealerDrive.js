@@ -14,10 +14,10 @@ import { Calendar } from "react-native-calendars";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import dealers from "../src/jsons/dealerInfo.json";
 import data from "../src/jsons/dealerToTrim.json";
-import images from "../src/jsons/trimToDealer.json";
+import images from "../src/images/image_link.json";
 import RNPickerSelect from "react-native-picker-select";
 
-export function DealerDrive({ dealer }) {
+export function DealerDrive({ dealer, back }) {
   const info = dealers[dealer];
   const handlePress = () => Linking.openURL("https://www.example.com");
 
@@ -63,33 +63,6 @@ export function DealerDrive({ dealer }) {
         }}
       ></Image>
       <View style={{ marginBottom: 25 }}>
-        {/* <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            alignContent: "center",
-          }}
-        >
-          <Image
-            source={require("../assets/maps.png")}
-            resizeMode="contain" // Add this line
-            style={{
-              width: 30,
-              alignSelf: "center",
-              height: 22,
-              marginRight: 20,
-              marginTop: -7,
-              marginBottom: 5,
-              marginLeft: -1,
-            }}
-          ></Image>
-          <TouchableOpacity
-            onPress={handlePress}
-            style={{ alignSelf: "center" }}
-          >
-            <Text style={styles.linkText}>View on Google Maps</Text>
-          </TouchableOpacity>
-        </View> */}
         <View style={{ marginLeft: 20, marginTop: 10 }}>
           <View
             style={{
@@ -199,7 +172,7 @@ export function DealerDrive({ dealer }) {
                 color: "#00095B",
                 fontWeight: 400,
                 fontSize: 17,
-                marginBottom: 10,
+                marginBottom: 20,
               }}
             >
               Open-closes at 8pm
@@ -216,7 +189,7 @@ export function DealerDrive({ dealer }) {
             left: 20,
             bottom: -30,
           }}
-          //onPress={back}
+          onPress={back}
         >
           <Image
             source={require("../assets/arrow.png")}
@@ -239,7 +212,7 @@ export function DealerDrive2({ dealer, selected }) {
   for (var key in selected) {
     let temp = selected[key];
     for (let i = 0; i < temp.length; i++) {
-      a.push([key + "::" + temp[i], images[key][temp[i]]]);
+      a.push([key + " " + temp[i], images[key][temp[i]]]);
     }
   }
   return (
@@ -281,11 +254,11 @@ export function DealerDrive2({ dealer, selected }) {
         </TouchableOpacity> */}
       </View>
       <Text style={styles.text22}>Based on your selection</Text>
-      <View style={{ flexDirection: "row" }}>
+      <ScrollView horizontal={true} style={{ flexDirection: "row" }}>
         {a.map((d) => {
           return <Conts2 inp={d[0]} imag={d[1]} />;
         })}
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -336,7 +309,9 @@ export function DealerDrive3({ press }) {
           marginTop: 15,
           width: "100%",
         }}
-        onPress={press}
+        onPress={() => {
+          press("1");
+        }}
       >
         <Text
           style={{
@@ -371,7 +346,9 @@ export function DealerDrive3({ press }) {
               key={index}
               selectedDate={new Date()}
               selectedTime={adjustedTime}
-              press={press}
+              onPress={() => {
+                press("2");
+              }}
             />
           );
         })}
@@ -379,7 +356,7 @@ export function DealerDrive3({ press }) {
     </View>
   );
 }
-export function DealerDrive4({ press }) {
+export function DealerDrive4({ press, selected }) {
   const a = [1, 2, 3];
   const b = [4, 5, 6];
   const [date, setDate] = useState(new Date());
@@ -491,7 +468,7 @@ export function DealerDrive4({ press }) {
 
             return (
               <Times
-                press={press}
+                onPress={press}
                 key={index}
                 selectedDate={date}
                 selectedTime={adjustedTime}
@@ -504,7 +481,14 @@ export function DealerDrive4({ press }) {
     </View>
   );
 }
-export function DealerDrive5({ press }) {
+export function DealerDrive5({ press, selected }) {
+  let a = [];
+  for (var key in selected) {
+    let temp = selected[key];
+    for (let i = 0; i < temp.length; i++) {
+      a.push([key + " " + temp[i], images[key][temp[i]]]);
+    }
+  }
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -572,21 +556,17 @@ export function DealerDrive5({ press }) {
                 color: "#00095B",
                 fontSize: 16,
                 marginTop: 5,
+                marginBottom: 10,
               }}
             >
               Limited to 2 cars to test drive during your appointment
             </Text>
-            <Image
-              source={require("../assets/mustang.png")}
-              resizeMode="contain" // Add this line
-              style={{
-                width: 180,
-                height: 180,
-                alignSelf: "center",
-                marginRight: 10,
-                marginBottom: -30,
-              }}
-            ></Image>
+
+            <ScrollView horizontal={true} style={{ flexDirection: "row" }}>
+              {a.map((d) => {
+                return <Conts2 inp={d[0]} imag={d[1]} />;
+              })}
+            </ScrollView>
           </View>
           <Text
             style={{
@@ -662,7 +642,14 @@ export function DealerDrive5({ press }) {
     </View>
   );
 }
-export function DealerDrive6({ names, emails, phones, notess }) {
+export function DealerDrive6({ names, emails, phones, notess, selected }) {
+  let a = [];
+  for (var key in selected) {
+    let temp = selected[key];
+    for (let i = 0; i < temp.length; i++) {
+      a.push([key + " " + temp[i], images[key][temp[i]]]);
+    }
+  }
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -731,21 +718,17 @@ export function DealerDrive6({ names, emails, phones, notess }) {
                 fontWeight: 500,
                 fontSize: 22,
                 textAlign: "center",
+                marginBottom: 10,
               }}
             >
               Trims to test drive
             </Text>
-            <Image
-              source={require("../assets/mustang.png")}
-              resizeMode="contain" // Add this line
-              style={{
-                width: 180,
-                height: 180,
-                alignSelf: "center",
-                marginRight: 10,
-                marginBottom: 0,
-              }}
-            ></Image>
+            <ScrollView horizontal={true} style={{ flexDirection: "row" }}>
+              {a.map((d) => {
+                return <Conts2 inp={d[0]} imag={d[1]} />;
+              })}
+            </ScrollView>
+            <View style={{ marginBottom: 20 }}></View>
           </View>
 
           <View style={styles.input}>
@@ -795,7 +778,7 @@ export function Conts2({ inp, imag }) {
     </TouchableOpacity>
   );
 }
-export function Times({ selectedDate, selectedTime, press, num }) {
+export function Times({ selectedDate, selectedTime, onPress, num }) {
   if (num === 0) {
     selectedDate = new Date();
     selectedTime = new Date();
@@ -811,7 +794,10 @@ export function Times({ selectedDate, selectedTime, press, num }) {
   });
 
   return (
-    <TouchableOpacity style={{ width: "100%", marginTop: 10 }} onPress={press}>
+    <TouchableOpacity
+      style={{ width: "100%", marginTop: 10 }}
+      onPress={onPress}
+    >
       <View
         style={{
           backgroundColor: "white",
@@ -938,7 +924,7 @@ const styles = StyleSheet.create({
   },
   input: {
     minHeight: 30,
-    marginBottom: 10,
+    marginBottom: 15,
     paddingHorizontal: 20,
     paddingVertical: 5,
     alignSelf: "center",

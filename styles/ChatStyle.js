@@ -29,11 +29,13 @@ const styles = StyleSheet.create({
     justifyContent: isUser ? "flex-end" : "flex-start",
     marginBottom: 10,
     padding: 10,
+    position: "relative",
   }),
   messageContent: (isUser) => ({
     backgroundColor: isUser ? "#1D74F5" : "#00095B",
     borderTopLeftRadius: isUser ? 20 : 3,
     borderBottomLeftRadius: isUser ? 20 : 30,
+    marginLeft: isUser ? 0 : 65,
     borderRadius: 20,
     paddingHorizontal: 20,
     paddingVertical: 10,
