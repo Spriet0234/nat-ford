@@ -124,6 +124,7 @@ export function ScheduleDrive3({
   setInfoMode,
   setMenuButtons,
 }) {
+  console.log(info)
   const moneyFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
