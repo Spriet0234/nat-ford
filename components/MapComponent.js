@@ -24,6 +24,10 @@ import {
 } from "./DealerDrive";
 
 export function MapComponent({
+  setMessages,
+  origButtons,
+  buyingFordButtons,
+  setMenuButtons,
   zip,
   dist,
   loc,
@@ -69,6 +73,16 @@ export function MapComponent({
     setEmail(email);
     setPhone(phone);
     setNotes(notes);
+    setMenuButtons(origButtons);
+    setMessages((m) => {
+      return [
+        ...m,
+        {
+          msg: "What else can I help you with?",
+          author: "Ford Chat",
+        },
+      ];
+    });
   };
   const press4 = () => {
     //if time ... is clicked

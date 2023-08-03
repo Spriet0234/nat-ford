@@ -4,6 +4,8 @@ import { ScheduleDrive3 } from "./ScheduleDrive.js";
 import { MapComponent } from "./MapComponent.js";
 import CarInfoTable from "./CarInfoTable.js";
 export default function ChatItem({
+  origButtons,
+  buyingFordButtons,
   msg,
   author,
   line,
@@ -42,6 +44,10 @@ export default function ChatItem({
       {author === "Table" && <CarInfoTable data={carInfoData} num={len} />}
       {author === "Ford Chat." && (
         <MapComponent
+          setMessages={setMessages}
+          origButtons={origButtons}
+          buyingFordButtons={buyingFordButtons}
+          setMenuButtons={setMenuButtons}
           zip={zip.zipcode}
           dist={zip.dist}
           loc={locs}

@@ -213,8 +213,16 @@ const ChatInterface = () => {
             setMessages((m) => {
               return [...m, { msg: "Info about Ford", author: "You" }];
             });
-            setMessages(m=>{return [...m, {msg: "I'd be happy to tell you more about Ford! Feel free to ask any of your own questions or choose from the following options to learn more on a specific path.", author: "Ford Chat"}]})
-            setMenuButtons(infoButtons)	
+            setMessages((m) => {
+              return [
+                ...m,
+                {
+                  msg: "I'd be happy to tell you more about Ford! Feel free to ask any of your own questions or choose from the following options to learn more on a specific path.",
+                  author: "Ford Chat",
+                },
+              ];
+            });
+            setMenuButtons(infoButtons);
           }}
         >
           <Text>Info about Ford</Text>
@@ -226,7 +234,15 @@ const ChatInterface = () => {
             setMessages((m) => {
               return [...m, { msg: "Negotiation Assistance", author: "You" }];
             });
-            setMessages(m=>{return [...m, {msg: "What kind of car would you like to know the price for?", author: "Ford Chat"}]});	
+            setMessages((m) => {
+              return [
+                ...m,
+                {
+                  msg: "What kind of car would you like to know the price for?",
+                  author: "Ford Chat",
+                },
+              ];
+            });
           }}
         >
           <Text>Negotiation Assistance</Text>
@@ -301,11 +317,14 @@ const ChatInterface = () => {
   const buyACarButtons = (
     <View style={styles.optionsContainer}>
       <ScrollView horizontal={true}>
-        <TouchableOpacity  key={""}
+        <TouchableOpacity
+          key={""}
           style={styles.optionButton}
-          onPress = {()=>{
-            setMenuButtons([buyingFordButtons])
-          }}><Text>Back</Text>
+          onPress={() => {
+            setMenuButtons([buyingFordButtons]);
+          }}
+        >
+          <Text>Back</Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={""}
@@ -352,85 +371,125 @@ const ChatInterface = () => {
       </ScrollView>
     </View>
   );
-  const infoButtons = ( 
+  const infoButtons = (
     <View style={styles.optionsContainer}>
       <ScrollView horizontal={true}>
-        <TouchableOpacity  key={""}
+        <TouchableOpacity
+          key={""}
           style={styles.optionButton}
-          onPress = {() => {
-            setMenuButtons(sustainButtons)
-            handleUserInput('SU');
-          }}><Text>Sustainability</Text>
+          onPress={() => {
+            setMenuButtons(sustainButtons);
+            handleUserInput("SU");
+          }}
+        >
+          <Text>Sustainability</Text>
         </TouchableOpacity>
-        <TouchableOpacity  key={""}
-          style={styles.optionButton} onPress = {() => {
-            setMenuButtons(innovateButtons)
-            handleUserInput('INN');
-          }}><Text>Innovation</Text>
+        <TouchableOpacity
+          key={""}
+          style={styles.optionButton}
+          onPress={() => {
+            setMenuButtons(innovateButtons);
+            handleUserInput("INN");
+          }}
+        >
+          <Text>Innovation</Text>
         </TouchableOpacity>
-        </ScrollView>
-        </View>
-  )
+      </ScrollView>
+    </View>
+  );
   const innovateButtons = (
     <View style={styles.optionsContainer}>
       <ScrollView horizontal={true}>
-      <TouchableOpacity  key={""}
+        <TouchableOpacity
+          key={""}
           style={styles.optionButton}
-          onPress = {() => {
-            setMenuButtons(infoButtons)
-          }}><Text>Back</Text>
+          onPress={() => {
+            setMenuButtons(infoButtons);
+          }}
+        >
+          <Text>Back</Text>
         </TouchableOpacity>
-        <TouchableOpacity  key={""}
-          style={styles.optionButton} onPress = {() => {
-            handleUserInput('NF');
-          }}><Text>New features</Text>
+        <TouchableOpacity
+          key={""}
+          style={styles.optionButton}
+          onPress={() => {
+            handleUserInput("NF");
+          }}
+        >
+          <Text>New features</Text>
         </TouchableOpacity>
-        <TouchableOpacity  key={""}
-          style={styles.optionButton} onPress = {() => {
-            handleUserInput('EV');
-          }}><Text>EV market</Text>
+        <TouchableOpacity
+          key={""}
+          style={styles.optionButton}
+          onPress={() => {
+            handleUserInput("EV");
+          }}
+        >
+          <Text>EV market</Text>
         </TouchableOpacity>
-        </ScrollView>
-        </View>
-  )
+      </ScrollView>
+    </View>
+  );
   const sustainButtons = (
     <View style={styles.optionsContainer}>
       <ScrollView horizontal={true}>
-      <TouchableOpacity  key={""}
+        <TouchableOpacity
+          key={""}
           style={styles.optionButton}
-          onPress = {() => {
-            setMenuButtons(infoButtons)
-          }}><Text>Back</Text>
+          onPress={() => {
+            setMenuButtons(infoButtons);
+          }}
+        >
+          <Text>Back</Text>
         </TouchableOpacity>
-        <TouchableOpacity  key={""}
+        <TouchableOpacity
+          key={""}
           style={styles.optionButton}
-          onPress = {() => {
-            handleUserInput('Cer');
-          }}><Text>Certifications</Text>
+          onPress={() => {
+            handleUserInput("Cer");
+          }}
+        >
+          <Text>Certifications</Text>
         </TouchableOpacity>
-        <TouchableOpacity  key={""}
-          style={styles.optionButton} onPress = {() => {
-            handleUserInput('Em');
-          }}><Text>Emissions</Text>
+        <TouchableOpacity
+          key={""}
+          style={styles.optionButton}
+          onPress={() => {
+            handleUserInput("Em");
+          }}
+        >
+          <Text>Emissions</Text>
         </TouchableOpacity>
-        <TouchableOpacity  key={""}
-          style={styles.optionButton} onPress = {() => {
-            handleUserInput('Comm');
-          }}><Text>Our commitments</Text>
+        <TouchableOpacity
+          key={""}
+          style={styles.optionButton}
+          onPress={() => {
+            handleUserInput("Comm");
+          }}
+        >
+          <Text>Our commitments</Text>
         </TouchableOpacity>
-        <TouchableOpacity  key={""}
-          style={styles.optionButton} onPress = {() => {
-            handleUserInput('Pr');
-          }}><Text>Production management</Text>
+        <TouchableOpacity
+          key={""}
+          style={styles.optionButton}
+          onPress={() => {
+            handleUserInput("Pr");
+          }}
+        >
+          <Text>Production management</Text>
         </TouchableOpacity>
-        <TouchableOpacity  key={""}
-          style={styles.optionButton} onPress = {() => {
-            handleUserInput('EOF');
-          }}><Text>End of life management</Text>
+        <TouchableOpacity
+          key={""}
+          style={styles.optionButton}
+          onPress={() => {
+            handleUserInput("EOF");
+          }}
+        >
+          <Text>End of life management</Text>
         </TouchableOpacity>
-        </ScrollView>
-        </View>
-  )
+      </ScrollView>
+    </View>
+  );
   //map functions -------------------------------------------------------->
   const selectHandler = selectHandlerFn(
     setQuery,
@@ -549,26 +608,101 @@ const ChatInterface = () => {
     setOptionButtons
   );
   const goBack = () => {
-    if (choice === "D"){
-      if(calcMode === 0 && calcStep === 1){
+    if (choice === "D") {
+      if (calcMode === 0 && calcStep === 1) {
+        setShowCalcButtons(false);
+        setMenuButtons(buyingFordButtons);
+      } else if (calcMode === 0) {
+        handleUserInput("D");
+      }
+    } else if (choice === "I") {
+      if (infoMode === 0) {
         setShowCalcButtons(false);
         setMenuButtons(buyingFordButtons);
       }
-      else if(calcMode === 0){
-        handleUserInput("D");
+      if (infoMode === 1) {
+        handleUserInput("I");
+        setInfoMode(0);
+      } else {
+        setQuery(cat);
+        setInfoMode(infoMode - 1);
+        handleUserFlow(
+          origButtons,
+          tableForceUpdate,
+          setTableForceUpdate,
+          handleMoreInfo,
+          handleCarInfoButton,
+          fixTrimQueryQuotation,
+          query,
+          dealerList,
+          carInfoData,
+          setCarInfoData,
+          extractFiveDigitString,
+          findLocations,
+          handleUserInput,
+          blockQueries,
+          choice,
+          setQuery,
+          zipMode,
+          setZipCode,
+          messages,
+          setMessages,
+          setZipMode,
+          setDistance,
+          setCalcButtons,
+          calcButtonHandler,
+          zipCode,
+          distance,
+          findMode,
+          selectHandler,
+          setFind,
+          appendSelect,
+          setSelect,
+          questionnaireStep,
+          setQuestionnaireAnswers,
+          setQuestionnaireStep,
+          questionnaireAnswers,
+          setForceUpdate,
+          forceUpdate,
+          calcStep,
+          model,
+          setModel,
+          setCalcStep,
+          trim,
+          setTrim,
+          calcMode,
+          setCalcMode,
+          setLeaseStep,
+          setFinanceStep,
+          leaseStep,
+          financeStep,
+          changeChoice,
+          history,
+          setHistory,
+          infoMode,
+          setInfoMode,
+          vehicle,
+          setVehicle,
+          showCalcButtons,
+          setShowCalcButtons,
+          calcHeadingText,
+          setCalcHeadingText,
+          payment,
+          setPayment,
+          setMenuButtons,
+          locateDealershipsFn,
+          changeSelected,
+          setDealers,
+          selected,
+          cat,
+          setCat,
+          setOptionButtons,
+          locateDealershipsRad
+        );
       }
-    }
-    else if(choice === "I"){
-    if (infoMode === 0) {
-      setShowCalcButtons(false);
-      setMenuButtons(buyingFordButtons);
-    }
-    if (infoMode === 1) {
-      handleUserInput("I");
-      setInfoMode(0);
     } else {
-      setQuery(cat);
-      setInfoMode(infoMode - 1);
+      setFind(0);
+      setQuery("back");
       handleUserFlow(
         origButtons,
         tableForceUpdate,
@@ -643,84 +777,6 @@ const ChatInterface = () => {
         locateDealershipsRad
       );
     }
-  }
-  else{
-    setFind(0);
-    setQuery("back")
-    handleUserFlow(
-      origButtons,
-      tableForceUpdate,
-      setTableForceUpdate,
-      handleMoreInfo,
-      handleCarInfoButton,
-      fixTrimQueryQuotation,
-      query,
-      dealerList,
-      carInfoData,
-      setCarInfoData,
-      extractFiveDigitString,
-      findLocations,
-      handleUserInput,
-      blockQueries,
-      choice,
-      setQuery,
-      zipMode,
-      setZipCode,
-      messages,
-      setMessages,
-      setZipMode,
-      setDistance,
-      setCalcButtons,
-      calcButtonHandler,
-      zipCode,
-      distance,
-      findMode,
-      selectHandler,
-      setFind,
-      appendSelect,
-      setSelect,
-      questionnaireStep,
-      setQuestionnaireAnswers,
-      setQuestionnaireStep,
-      questionnaireAnswers,
-      setForceUpdate,
-      forceUpdate,
-      calcStep,
-      model,
-      setModel,
-      setCalcStep,
-      trim,
-      setTrim,
-      calcMode,
-      setCalcMode,
-      setLeaseStep,
-      setFinanceStep,
-      leaseStep,
-      financeStep,
-      changeChoice,
-      history,
-      setHistory,
-      infoMode,
-      setInfoMode,
-      vehicle,
-      setVehicle,
-      showCalcButtons,
-      setShowCalcButtons,
-      calcHeadingText,
-      setCalcHeadingText,
-      payment,
-      setPayment,
-      setMenuButtons,
-      locateDealershipsFn,
-      changeSelected,
-      setDealers,
-      selected,
-      cat,
-      setCat,
-      setOptionButtons,
-      locateDealershipsRad
-    );
-  }
   };
   /*
   useEffect(() => {
@@ -848,7 +904,7 @@ const ChatInterface = () => {
     menuButtons,
     model,
     trim,
-    findMode
+    findMode,
   ]);
 
   const sendMessage = (optionMessage) => {
@@ -966,6 +1022,8 @@ const ChatInterface = () => {
           >
             {messages.map((item, index) => (
               <ChatItem
+                origButtons={origButtons}
+                buyingFordButtons={buyingFordButtons}
                 key={index}
                 author={item.author}
                 msg={item.msg}
@@ -989,8 +1047,8 @@ const ChatInterface = () => {
                 selectedCars={selectedCars}
                 setOptionButtons={setOptionButtons}
                 len={index}
-                handleMore = {item.handleMore}
-                setInfoMode = {setInfoMode}
+                handleMore={item.handleMore}
+                setInfoMode={setInfoMode}
               />
             ))}
             {showCalcButtons &&
@@ -998,13 +1056,13 @@ const ChatInterface = () => {
                 <ScheduleDrive
                   calcButtons={calcButtons}
                   back={goBack}
-                  heading = {calcHeadingText}
+                  heading={calcHeadingText}
                 ></ScheduleDrive>
               ) : findMode === 1 ? (
                 <ScheduleDrive4
                   calcButtons={calcButtons}
-                  heading = {calcHeadingText}
-                  back = {goBack}
+                  heading={calcHeadingText}
+                  back={goBack}
                   locate={() => {
                     locateDealershipsFn(
                       setDealers,
@@ -1025,7 +1083,7 @@ const ChatInterface = () => {
                 showCalcButtons && (
                   <ScheduleDrive2
                     calcButtons={calcButtons}
-                    heading = {calcHeadingText}
+                    heading={calcHeadingText}
                     mode={infoMode - 1}
                     back={goBack}
                   ></ScheduleDrive2>
@@ -1046,7 +1104,10 @@ const ChatInterface = () => {
             {message ? (
               <TouchableOpacity
                 style={styles.sendButton}
-                onPress={() => sendMessage("null")}
+                onPress={() => {
+                  sendMessage("null");
+                  setMessage("");
+                }}
               >
                 <Text>Send</Text>
               </TouchableOpacity>

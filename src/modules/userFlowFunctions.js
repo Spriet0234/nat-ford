@@ -8,7 +8,15 @@ import handleDealerFlow from "./user_flows/handleDealerFlow";
 import handlePaymentFlow from "./user_flows/handlePaymentFlow";
 import handleInfoFlow from "./user_flows/handleInfoFlow";
 import images from "../images/image_link.json";
-import { certifications, evmarket, commitments, emissions, endoflife, pm, newfeatures } from './info.js';
+import {
+  certifications,
+  evmarket,
+  commitments,
+  emissions,
+  endoflife,
+  pm,
+  newfeatures,
+} from "./info.js";
 import {
   View,
   TextInput,
@@ -157,7 +165,7 @@ export function handleUserInputFn(
           blockQueries.current = false;
           break;
         case "D":
-          if (model !== ""){
+          if (model !== "") {
             setCalcHeadingText("Choose specific model");
             setShowCalcButtons(true);
             setCalcButtons(
@@ -177,8 +185,7 @@ export function handleUserInputFn(
               ))
             );
             setCalcStep(1);
-          }
-          else if (model === "") {
+          } else if (model === "") {
             setMessages((m) => [
               ...m,
               { msg: "Car pricing estimator", author: "You" },
@@ -219,47 +226,121 @@ export function handleUserInputFn(
           //setMenuButtons([]);
           break;
         case "SU":
-            setMessages((m) => [...m, { msg: "Sustainability", author: "You", line: true, zip: {} }]);
-            setMessages((m) => [...m, { msg: "Ford sustainability it super important to us. We have various certifications and a pledge to use 100% local, renewable electricity in all manufacturing by 2035. Click to learn more specifics.", author: "Ford Chat", line: true, zip: "" }]); 
-            break; 
+          setMessages((m) => [
+            ...m,
+            { msg: "Sustainability", author: "You", line: true, zip: {} },
+          ]);
+          setMessages((m) => [
+            ...m,
+            {
+              msg: "Ford sustainability it super important to us. We have various certifications and a pledge to use 100% local, renewable electricity in all manufacturing by 2035. Click to learn more specifics.",
+              author: "Ford Chat",
+              line: true,
+              zip: "",
+            },
+          ]);
+          break;
         case "INN":
-            setMessages((m) => [...m, { msg: "Innovation", author: "You", line: true, zip: {} }]);
-            setMessages((m) => [...m, { msg: "Ford's up and coming innovation efforts.", author: "Ford Chat", line: true, zip: "" }]); 
-            break; 
-            case "NF":
-              setMessages((m) => [...m, { msg: "New features", author: "You", line: true, zip: {} }]);
-              setMessages((m) => [...m, { msg: newfeatures, author: "Ford Chat", line: true, zip: "" }]); 
-              setMenuButtons([])
-              break; 
-          case "EV":
-              setMessages((m) => [...m, { msg: "EV Market", author: "You", line: true, zip: {} }]);
-              setMessages((m) => [...m, { msg: evmarket, author: "Ford Chat", line: true, zip: "" }]); 
-              setMenuButtons([])
-              break; 
-          case "Cer":
-              setMessages((m) => [...m, { msg: "Certifications", author: "You", line: true, zip: {} }]);
-              setMessages((m) => [...m, { msg: certifications, author: "Ford Chat", line: true, zip: "" }]); 
-              setMenuButtons([])
-              break; 
-          case "Em":
-              setMessages((m) => [...m, { msg: "Emissions", author: "You", line: true, zip: {} }]);
-              setMessages((m) => [...m, { msg: emissions, author: "Ford Chat", line: true, zip: "" }]); 
-              setMenuButtons([])
-              break; 
-          case "Comm":
-              setMessages((m) => [...m, { msg: "Our Commitments", author: "You", line: true, zip: {} }]);
-              setMessages((m) => [...m, { msg: commitments, author: "Ford Chat", line: true, zip: "" }]); 
-              setMenuButtons([])
-              break; 
-          case "Pr":
-              setMessages((m) => [...m, { msg: "Production management", author: "You", line: true, zip: {} }]);
-              setMessages((m) => [...m, { msg: pm, author: "Ford Chat", line: true, zip: "" }]); 
-              setMenuButtons([])
-              break; 
-          case "EOF":
-              setMessages((m) => [...m, { msg: "End of life management", author: "You", line: true, zip: {} }]);
-              setMessages((m) => [...m, { msg: endoflife, author: "Ford Chat", line: true, zip: "" }]); 
-              break;
+          setMessages((m) => [
+            ...m,
+            { msg: "Innovation", author: "You", line: true, zip: {} },
+          ]);
+          setMessages((m) => [
+            ...m,
+            {
+              msg: "Ford's up and coming innovation efforts.",
+              author: "Ford Chat",
+              line: true,
+              zip: "",
+            },
+          ]);
+          break;
+        case "NF":
+          setMessages((m) => [
+            ...m,
+            { msg: "New features", author: "You", line: true, zip: {} },
+          ]);
+          setMessages((m) => [
+            ...m,
+            { msg: newfeatures, author: "Ford Chat", line: true, zip: "" },
+          ]);
+          setMenuButtons([]);
+          break;
+        case "EV":
+          setMessages((m) => [
+            ...m,
+            { msg: "EV Market", author: "You", line: true, zip: {} },
+          ]);
+          setMessages((m) => [
+            ...m,
+            { msg: evmarket, author: "Ford Chat", line: true, zip: "" },
+          ]);
+          setMenuButtons([]);
+          break;
+        case "Cer":
+          setMessages((m) => [
+            ...m,
+            { msg: "Certifications", author: "You", line: true, zip: {} },
+          ]);
+          setMessages((m) => [
+            ...m,
+            { msg: certifications, author: "Ford Chat", line: true, zip: "" },
+          ]);
+          setMenuButtons([]);
+          break;
+        case "Em":
+          setMessages((m) => [
+            ...m,
+            { msg: "Emissions", author: "You", line: true, zip: {} },
+          ]);
+          setMessages((m) => [
+            ...m,
+            { msg: emissions, author: "Ford Chat", line: true, zip: "" },
+          ]);
+          setMenuButtons([]);
+          break;
+        case "Comm":
+          setMessages((m) => [
+            ...m,
+            { msg: "Our Commitments", author: "You", line: true, zip: {} },
+          ]);
+          setMessages((m) => [
+            ...m,
+            { msg: commitments, author: "Ford Chat", line: true, zip: "" },
+          ]);
+          setMenuButtons([]);
+          break;
+        case "Pr":
+          setMessages((m) => [
+            ...m,
+            {
+              msg: "Production management",
+              author: "You",
+              line: true,
+              zip: {},
+            },
+          ]);
+          setMessages((m) => [
+            ...m,
+            { msg: pm, author: "Ford Chat", line: true, zip: "" },
+          ]);
+          setMenuButtons([]);
+          break;
+        case "EOF":
+          setMessages((m) => [
+            ...m,
+            {
+              msg: "End of life management",
+              author: "You",
+              line: true,
+              zip: {},
+            },
+          ]);
+          setMessages((m) => [
+            ...m,
+            { msg: endoflife, author: "Ford Chat", line: true, zip: "" },
+          ]);
+          break;
         case "maintenanceQuestions":
           changeChoice("maintenanceQuestions");
           break;
@@ -587,7 +668,7 @@ export function handleUserFlow(
         case "C": {
           if (findMode === 0) {
             const numberRegex = /\d+/g;
-            if (query === "back"){
+            if (query === "back") {
               setShowCalcButtons(true);
               let currCalcs = Object.keys(trims).map((model) => (
                 <Conts2
@@ -604,20 +685,19 @@ export function handleUserFlow(
                 ></Conts2>
               ));
               setCalcButtons(currCalcs);
-            }
-            else if (
-              (extractFiveDigitString(query) === null ||
-              query.match(numberRegex)[0].length != 5)
+            } else if (
+              extractFiveDigitString(query) === null ||
+              query.match(numberRegex)[0].length != 5
             ) {
-              setMessages((m) => [
-                ...m,
-                {
-                  msg: "Please input a valid zipcode",
-                  author: "Ford Chat",
-                  line: false,
-                  zip: "",
-                },
-              ]);
+              // setMessages((m) => [
+              //   ...m,
+              //   {
+              //     msg: "Please input a valid zipcode",
+              //     author: "Ford Chat",
+              //     line: false,
+              //     zip: "",
+              //   },
+              // ]);
             } else {
               setZipCode(query);
               setMessages((m) => [
@@ -778,7 +858,7 @@ export function handleUserFlow(
             setOptionButtons
           );
           break;
-        
+
         default:
           setQuery("");
           if (query === "table")
@@ -866,7 +946,7 @@ export function Conts2({ inp, imag, onPress }) {
           color: "#00095B",
           fontWeight: 400,
           fontSize: 12,
-          alignSelf: "center"
+          alignSelf: "center",
         }}
       >
         {inp}
