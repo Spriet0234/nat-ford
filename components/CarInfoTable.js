@@ -8,7 +8,7 @@ import { Button, Text } from "react-native-paper";
 import images from "../src/images/image_link.json";
 import { Image } from "react-native";
 const tables = {};
-const tableHead = ["Make", "Model", "MSRP"];
+const tableHead = ["Model", "Trim", "MSRP"];
 let onPresses = [];
 
 //import '../src/styles/Table.css'
