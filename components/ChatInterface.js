@@ -202,6 +202,7 @@ const ChatInterface = () => {
             setMessages((m) => {
               return [...m, { msg: "", author: "Login" }];
             });
+            setMenuButtons([])
           }}
         >
           <Text>I'm an existing owner</Text>
