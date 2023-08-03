@@ -75,12 +75,12 @@ export default async function handleInfoFlow(
     if (trim === "All Trims") {
       setMessages((m) => [
         ...m,
-        { msg: "Here are all the trims", author: "", line: true, zip: "" },
+        { msg: "Here are all the trims:", author: "", line: true, zip: "" },
       ]);
       setMessages((m) => [
         ...m,
         {
-          msg: "You can select which ones to compare",
+          msg: "You can tap one to see more info",
           author: "",
           line: true,
           zip: "",
@@ -89,7 +89,6 @@ export default async function handleInfoFlow(
       setShowCalcButtons(false);
       handleCarInfoButton(model, trim);
       handleMoreInfo();
-      setInfoMode(5);
       return;
     }
     const data = await queryDatabase(model, trim);
@@ -164,10 +163,6 @@ export default async function handleInfoFlow(
             key={"exist"}
             style={styles.optionButton}
             onPress={() => {
-              setMessages((m) => [
-                ...m,
-                { msg: "More information", author: "You", line: true, zip: "" },
-              ]);
               setMenuButtons([]);
               handleCarInfoButton(model, trim);
               setForceUpdate(!forceUpdate);

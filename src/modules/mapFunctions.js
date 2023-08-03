@@ -174,7 +174,7 @@ export const selectHandlerFn = function (
     setFind(1);
   };
 };
-export const locateDealershipsRad = function (zipCode, distance, setMessages) {
+export const locateDealershipsRad = function (zipCode, distance, setMessages, maintenanceMode="", model="", trim="") {
   return () => {
     findLocations(zipCode, distance).then((loc) => {
       const places = loc.split("..");
@@ -187,6 +187,9 @@ export const locateDealershipsRad = function (zipCode, distance, setMessages) {
             zipcode: extractFiveDigitString(zipCode),
             dist: distance,
             inf: places.slice(0, -1),
+            maintenanceMode: maintenanceMode,
+            model: model,
+            trim: trim
           },
         },
       ]);

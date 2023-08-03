@@ -8,17 +8,14 @@ import { Button, Text } from "react-native-paper";
 import images from "../src/images/image_link.json";
 import { Image } from "react-native";
 const tables = {};
-const tableHead = ["Make", "Model", "MSRP"];
+const tableHead = ["Model", "Trim", "MSRP"];
 let onPresses = [];
 
 //import '../src/styles/Table.css'
 
 export default function CarInfoTable({ data, num }) {
   //Array which will be used to generate table
-  console.log("I  FIRST", num)
-  console.log("THE DATA", data)
   const [tableData, setTableData] = useState([]);
-  console.log("I RECEIVED", tableData)
   const [visible, setVisible] = useState(false);
   const [popupTitle, setPopupTitle] = useState("Info about...");
   const [popupContent, setPopupContent] = useState(
