@@ -117,7 +117,13 @@ export function ScheduleDrive2({ calcButtons, mode, back, heading }) {
   );
 }
 //specific car display
-export function ScheduleDrive3({ info, handler, handleMore }) {
+export function ScheduleDrive3({
+  info,
+  handler,
+  handleMore,
+  setInfoMode,
+  setMenuButtons,
+}) {
   const moneyFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -170,7 +176,12 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
             >
               <strong>Estimated net price</strong>{" "}
               {moneyFormatter.format(info.msrp)}
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  setMenuButtons([]);
+                  setInfoMode(10);
+                }}
+              >
                 <Text>
                   {" "}
                   <u>...more</u>
@@ -193,7 +204,12 @@ export function ScheduleDrive3({ info, handler, handleMore }) {
                 dealerships[info.model][info.trim][0] +
                 ", " +
                 dealerships[info.model][info.trim][1]}
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  setMenuButtons([]);
+                  setInfoMode(3);
+                }}
+              >
                 <Text>
                   {" "}
                   <u>...more</u>

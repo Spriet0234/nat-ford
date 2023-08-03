@@ -69,24 +69,27 @@ export default async function handleInfoFlow(
             setForceUpdate(!forceUpdate);
             handleMoreInfo();
         }) }]);
-        setMessages((m) => [...m, { msg: "What other information/services would you like for this car?", author: "", line: true, zip: "" }]);
+        setMessages((m) => [...m, { msg: "What other information/services would you like for this car?", author: "Ford Chat", line: true, zip: "" }]);
         setShowCalcButtons(false);
         setMenuButtons(
             <View style={styles.optionsContainer}>
             <ScrollView horizontal={true}>
               <TouchableOpacity key={"schedule"} style={styles.optionButton} onPress={() =>{ 
+                setMessages((m) => [...m, { msg: "Schedule a test drive", author: "You", line: true, zip: "" }]);
                 setMenuButtons([]);
                 setInfoMode(3);
               }}>
                   <Text>Schedule a test drive</Text>
                 </TouchableOpacity>
                 <TouchableOpacity key={"price"} style={styles.optionButton} onPress={() =>{
+                  setMessages((m) => [...m, { msg: "Pricing estimation", author: "You", line: true, zip: "" }]);
                     setMenuButtons([]);
                     setInfoMode(10);
                  }}>
                   <Text>Pricing estimation</Text>
                 </TouchableOpacity>
                 <TouchableOpacity key={"exist"} style={styles.optionButton} onPress={() => {
+                  setMessages((m) => [...m, { msg: "More information", author: "You", line: true, zip: "" }]);
                     setMenuButtons([]);
                     handleCarInfoButton(model, trim);
                     setForceUpdate(!forceUpdate);

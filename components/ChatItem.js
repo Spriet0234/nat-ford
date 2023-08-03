@@ -26,6 +26,7 @@ export default function ChatItem({
   setOptionButtons,
   len,
   handleMore,
+  setInfoMode,
 }) {
   return (
     <View>
@@ -34,6 +35,8 @@ export default function ChatItem({
           info={carSpecInfo}
           handler={handleUserInput}
           handleMore={handleMore}
+          setInfoMode={setInfoMode}
+          setMenuButtons={setMenuButtons}
         ></ScheduleDrive3>
       )}
       {author === "Table" && <CarInfoTable data={carInfoData} num={len} />}

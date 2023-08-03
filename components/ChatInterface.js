@@ -213,6 +213,8 @@ const ChatInterface = () => {
             setMessages((m) => {
               return [...m, { msg: "Info about Ford", author: "You" }];
             });
+            setMessages(m=>{return [...m, {msg: "I'd be happy to tell you more about Ford! Feel free to ask any of your own questions or choose from the following options to learn more on a specific path.", author: "Ford Chat"}]})
+            setMenuButtons(infoButtons)	
           }}
         >
           <Text>Info about Ford</Text>
@@ -224,6 +226,7 @@ const ChatInterface = () => {
             setMessages((m) => {
               return [...m, { msg: "Negotiation Assistance", author: "You" }];
             });
+            setMessages(m=>{return [...m, {msg: "What kind of car would you like to know the price for?", author: "Ford Chat"}]});	
           }}
         >
           <Text>Negotiation Assistance</Text>
@@ -349,6 +352,85 @@ const ChatInterface = () => {
       </ScrollView>
     </View>
   );
+  const infoButtons = ( 
+    <View style={styles.optionsContainer}>
+      <ScrollView horizontal={true}>
+        <TouchableOpacity  key={""}
+          style={styles.optionButton}
+          onPress = {() => {
+            setMenuButtons(sustainButtons)
+            handleUserInput('SU');
+          }}><Text>Sustainability</Text>
+        </TouchableOpacity>
+        <TouchableOpacity  key={""}
+          style={styles.optionButton} onPress = {() => {
+            setMenuButtons(innovateButtons)
+            handleUserInput('INN');
+          }}><Text>Innovation</Text>
+        </TouchableOpacity>
+        </ScrollView>
+        </View>
+  )
+  const innovateButtons = (
+    <View style={styles.optionsContainer}>
+      <ScrollView horizontal={true}>
+      <TouchableOpacity  key={""}
+          style={styles.optionButton}
+          onPress = {() => {
+            setMenuButtons(infoButtons)
+          }}><Text>Back</Text>
+        </TouchableOpacity>
+        <TouchableOpacity  key={""}
+          style={styles.optionButton} onPress = {() => {
+            handleUserInput('NF');
+          }}><Text>New features</Text>
+        </TouchableOpacity>
+        <TouchableOpacity  key={""}
+          style={styles.optionButton} onPress = {() => {
+            handleUserInput('EV');
+          }}><Text>EV market</Text>
+        </TouchableOpacity>
+        </ScrollView>
+        </View>
+  )
+  const sustainButtons = (
+    <View style={styles.optionsContainer}>
+      <ScrollView horizontal={true}>
+      <TouchableOpacity  key={""}
+          style={styles.optionButton}
+          onPress = {() => {
+            setMenuButtons(infoButtons)
+          }}><Text>Back</Text>
+        </TouchableOpacity>
+        <TouchableOpacity  key={""}
+          style={styles.optionButton}
+          onPress = {() => {
+            handleUserInput('Cer');
+          }}><Text>Certifications</Text>
+        </TouchableOpacity>
+        <TouchableOpacity  key={""}
+          style={styles.optionButton} onPress = {() => {
+            handleUserInput('Em');
+          }}><Text>Emissions</Text>
+        </TouchableOpacity>
+        <TouchableOpacity  key={""}
+          style={styles.optionButton} onPress = {() => {
+            handleUserInput('Comm');
+          }}><Text>Our commitments</Text>
+        </TouchableOpacity>
+        <TouchableOpacity  key={""}
+          style={styles.optionButton} onPress = {() => {
+            handleUserInput('Pr');
+          }}><Text>Production management</Text>
+        </TouchableOpacity>
+        <TouchableOpacity  key={""}
+          style={styles.optionButton} onPress = {() => {
+            handleUserInput('EOF');
+          }}><Text>End of life management</Text>
+        </TouchableOpacity>
+        </ScrollView>
+        </View>
+  )
   //map functions -------------------------------------------------------->
   const selectHandler = selectHandlerFn(
     setQuery,
@@ -908,6 +990,7 @@ const ChatInterface = () => {
                 setOptionButtons={setOptionButtons}
                 len={index}
                 handleMore = {item.handleMore}
+                setInfoMode = {setInfoMode}
               />
             ))}
             {showCalcButtons &&
