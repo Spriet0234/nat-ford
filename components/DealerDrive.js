@@ -220,7 +220,7 @@ export function DealerDrive2({ dealer, selected }) {
       <View
         style={{
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "center",
           width: "100%",
         }}
       >
@@ -229,10 +229,9 @@ export function DealerDrive2({ dealer, selected }) {
             color: "#00095B",
             fontWeight: 500,
             fontSize: 22,
-            alignSelf: "flex-start",
+            alignSelf: "center",
             marginTop: 20,
             marginBottom: 10,
-
             alignSelf: "center",
           }}
         >
@@ -254,6 +253,7 @@ export function DealerDrive2({ dealer, selected }) {
         </TouchableOpacity> */}
       </View>
       <Text style={styles.text22}>Based on your selection</Text>
+      <View style={{ marginBottom: 10 }}></View>
       <ScrollView horizontal={true} style={{ flexDirection: "row" }}>
         {a.map((d) => {
           return <Conts2 inp={d[0]} imag={d[1]} />;
@@ -893,12 +893,12 @@ const styles = StyleSheet.create({
     color: "#00095B",
     fontWeight: 400,
     fontSize: 17,
-    alignSelf: "flex-start",
+    alignSelf: "center",
     marginTop: -4,
     marginBottom: 1,
     marginLeft: 0,
     padding: 0,
-    alignContent: "flex-end",
+    alignContent: "center",
     textAlign: "left",
   },
   linkText: {
