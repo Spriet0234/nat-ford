@@ -228,26 +228,6 @@ const ChatInterface = () => {
         >
           <Text>Info about Ford</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          key={"negotiate"}
-          style={styles.optionButton}
-          onPress={() => {
-            setMessages((m) => {
-              return [...m, { msg: "Negotiation Assistance", author: "You" }];
-            });
-            setMessages((m) => {
-              return [
-                ...m,
-                {
-                  msg: "What kind of car would you like to know the price for?",
-                  author: "Ford Chat",
-                },
-              ];
-            });
-          }}
-        >
-          <Text>Negotiation Assistance</Text>
-        </TouchableOpacity>
       </ScrollView>
     </View>
   );
