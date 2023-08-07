@@ -155,7 +155,6 @@ export function ScheduleDrive3({
                 resizeMode="contain" // Add this line
                 style={{
                   alignSelf: "center",
-
                   width: 220,
                   height: 180,
                   alignSelf: "center",
