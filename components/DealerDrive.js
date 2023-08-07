@@ -91,7 +91,7 @@ export function DealerDrive({ dealer, back }) {
                 marginBottom: 10,
               }}
             >
-              {dealer.toLowerCase().replace(/[^0-9a-z-A-Z]/g, "")+ ".com"}
+              {dealer.toLowerCase().replace(/[^0-9a-z-A-Z]/g, "") + ".com"}
             </Text>
           </View>
 
@@ -220,7 +220,7 @@ export function DealerDrive2({ dealer, selected }) {
       <View
         style={{
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "center",
           width: "100%",
         }}
       >
@@ -229,10 +229,9 @@ export function DealerDrive2({ dealer, selected }) {
             color: "#00095B",
             fontWeight: 500,
             fontSize: 22,
-            alignSelf: "flex-start",
+            alignSelf: "center",
             marginTop: 20,
             marginBottom: 10,
-
             alignSelf: "center",
           }}
         >
@@ -254,6 +253,7 @@ export function DealerDrive2({ dealer, selected }) {
         </TouchableOpacity> */}
       </View>
       <Text style={styles.text22}>Based on your selection</Text>
+      <View style={{ marginBottom: 10 }}></View>
       <ScrollView horizontal={true} style={{ flexDirection: "row" }}>
         {a.map((d) => {
           return <Conts2 inp={d[0]} imag={d[1]} />;
@@ -346,8 +346,9 @@ export function DealerDrive3({ press }) {
               key={index}
               selectedDate={new Date()}
               selectedTime={adjustedTime}
-              onPress={() => {
-                press("2");
+              onPress={(date, da) => {
+                press(date, da);
+                console.log("it is");
               }}
             />
           );
@@ -356,41 +357,16 @@ export function DealerDrive3({ press }) {
     </View>
   );
 }
-export function DealerDrive4({ press, selected, maintenanceMode="", model="", trim="" }) {
+export function DealerDrive4({ press, selected, maintenanceMode = "" }) {
   const a = [1, 2, 3];
   const b = [4, 5, 6];
   const [date, setDate] = useState(new Date());
-  const [mode, setMode] = useState("date");
-  const [show, setShow] = useState(true);
 
   const [time, setTime] = useState(new Date());
-  const [show2, setShow2] = useState(false);
-
-  const [hour, setHour] = useState();
 
   const hours = Array.from({ length: 24 }, (_, i) => {
     return { label: `${i}:00`, value: `${i}:00` };
   });
-
-  const showTimepicker = () => {
-    setShow(true);
-  };
-
-  const onChange2 = (event, selectedTime) => {
-    const currentTime = selectedTime ? new Date(selectedTime) : new Date(time);
-    setShow(Platform.OS === "ios"); // to keep the picker open when changing times in iOS
-    setTime(currentTime);
-  };
-
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === "ios"); // to keep the picker open when changing dates in iOS
-    setDate(currentDate);
-  };
-
-  const showDatepicker = () => {
-    setShow2(true);
-  };
 
   return (
     <View style={styles.container}>
@@ -405,10 +381,12 @@ export function DealerDrive4({ press, selected, maintenanceMode="", model="", tr
           textAlign: "center",
         }}
       >
-        Schedule a {maintenanceMode.length==0?"Test Drive":maintenanceMode} Appointment
+        Schedule a{" "}
+        {maintenanceMode.length == 0 ? "Test Drive" : maintenanceMode}{" "}
+        Appointment
       </Text>
       <Text style={styles.text23}>Look up date and time</Text>
-      {show && (
+      {/* {show && (
         <View style={{ marginTop: 10 }}>
           <DateTimePicker
             testID="dateTimePicker"
@@ -431,14 +409,7 @@ export function DealerDrive4({ press, selected, maintenanceMode="", model="", tr
             onChange={onChange2}
           />
         </View>
-      )}
-      {/* <RNPickerSelect
-        onValueChange={(value) => setHour(value)}
-        items={hours}
-        value={hour}
-      /> */}
-
-      {/* <DatePicker selected={date} onChange={(date) => setDate(date)} /> */}
+      )} */}
 
       <Text style={styles.text23}> Appointments available</Text>
 
@@ -468,7 +439,9 @@ export function DealerDrive4({ press, selected, maintenanceMode="", model="", tr
 
             return (
               <Times
-                onPress={press}
+                onPress={() => {
+                  press("1");
+                }}
                 key={index}
                 selectedDate={date}
                 selectedTime={adjustedTime}
@@ -481,7 +454,14 @@ export function DealerDrive4({ press, selected, maintenanceMode="", model="", tr
     </View>
   );
 }
-export function DealerDrive5({ press, selected, maintenanceMode="" }) {
+export function DealerDrive5({
+  press,
+  selected,
+  maintenanceMode = "",
+  selectedTime,
+  selectedDate,
+  pickedDealer,
+}) {
   let a = [];
   for (var key in selected) {
     let temp = selected[key];
@@ -509,7 +489,9 @@ export function DealerDrive5({ press, selected, maintenanceMode="" }) {
           textAlign: "center",
         }}
       >
-        Schedule a {maintenanceMode.length==0?"Test Drive":maintenanceMode} Appointment
+        Schedule a{" "}
+        {maintenanceMode.length == 0 ? "Test Drive" : maintenanceMode}{" "}
+        Appointment
       </Text>
       <View
         style={{
@@ -530,44 +512,46 @@ export function DealerDrive5({ press, selected, maintenanceMode="" }) {
             textAlign: "center",
           }}
         >
-          Wayne Ford - Thursday, 7/13@ 12:00pm
+          {`${pickedDealer} - ${selectedDate} @${selectedTime}`}
         </Text>
       </View>
 
       <View style={{ flexDirection: "row" }}>
         <View>
-          {maintenanceMode.length>0&&<View>
-            <Text
-              style={{
-                color: "#00095B",
-                fontWeight: 500,
-                fontSize: 22,
-                textAlign: "center",
-                alignSelf: "center",
-                marginTop: 15,
-                marginBottom: 5,
-              }}
-            >
-              Trims to test drive
-            </Text>
-            <Text
-              style={{
-                textAlign: "center",
-                color: "#00095B",
-                fontSize: 16,
-                marginTop: 5,
-                marginBottom: 10,
-              }}
-            >
-              Limited to 2 cars to test drive during your appointment
-            </Text>
+          {maintenanceMode.length > 0 && (
+            <View>
+              <Text
+                style={{
+                  color: "#00095B",
+                  fontWeight: 500,
+                  fontSize: 22,
+                  textAlign: "center",
+                  alignSelf: "center",
+                  marginTop: 15,
+                  marginBottom: 5,
+                }}
+              >
+                Trims to test drive
+              </Text>
+              <Text
+                style={{
+                  textAlign: "center",
+                  color: "#00095B",
+                  fontSize: 16,
+                  marginTop: 5,
+                  marginBottom: 10,
+                }}
+              >
+                Limited to 2 cars to test drive during your appointment
+              </Text>
 
-            <ScrollView horizontal={true} style={{ flexDirection: "row" }}>
-              {a.map((d) => {
-                return <Conts2 inp={d[0]} imag={d[1]} />;
-              })}
-            </ScrollView>
-          </View>}
+              <ScrollView horizontal={true} style={{ flexDirection: "row" }}>
+                {a.map((d) => {
+                  return <Conts2 inp={d[0]} imag={d[1]} />;
+                })}
+              </ScrollView>
+            </View>
+          )}
           <Text
             style={{
               color: "#00095B",
@@ -642,7 +626,16 @@ export function DealerDrive5({ press, selected, maintenanceMode="" }) {
     </View>
   );
 }
-export function DealerDrive6({ names, emails, phones, notess, selected }) {
+export function DealerDrive6({
+  names,
+  emails,
+  phones,
+  notess,
+  selected,
+  selectedTime,
+  selectedDate,
+  pickedDealer,
+}) {
   let a = [];
   for (var key in selected) {
     let temp = selected[key];
@@ -704,7 +697,7 @@ export function DealerDrive6({ names, emails, phones, notess, selected }) {
             textAlign: "center",
           }}
         >
-          Wayne Ford - Thursday, 7/13@ 12:00pm
+          {`${pickedDealer} - ${selectedDate} @${selectedTime}`}{" "}
         </Text>
       </View>
 
@@ -796,7 +789,11 @@ export function Times({ selectedDate, selectedTime, onPress, num }) {
   return (
     <TouchableOpacity
       style={{ width: "100%", marginTop: 10 }}
-      onPress={onPress}
+      onPress={() => {
+        onPress(formattedTime, formattedDate);
+        console.log(formattedTime);
+        console.log();
+      }}
     >
       <View
         style={{
@@ -896,12 +893,12 @@ const styles = StyleSheet.create({
     color: "#00095B",
     fontWeight: 400,
     fontSize: 17,
-    alignSelf: "flex-start",
+    alignSelf: "center",
     marginTop: -4,
     marginBottom: 1,
     marginLeft: 0,
     padding: 0,
-    alignContent: "flex-end",
+    alignContent: "center",
     textAlign: "left",
   },
   linkText: {
