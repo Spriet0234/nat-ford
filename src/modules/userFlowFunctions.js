@@ -922,6 +922,7 @@ export function Conts({ inp, onPress }) {
           textAlign: "center",
           fontWeight: 500,
           color: "#00095B",
+          fontFamily: 'Antenna, sans-serif'
         }}
       >
         {inp}
@@ -962,6 +963,7 @@ export function Conts2({ inp, imag, onPress }) {
           fontWeight: 400,
           fontSize: 12,
           alignSelf: "center",
+          fontFamily: 'Antenna, sans-serif'
         }}
       >
         {inp}

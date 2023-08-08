@@ -98,7 +98,7 @@ export default function handlePaymentFlow(
                   setMenuButtons([]);
                 }}
               >
-                <Text>{option}</Text>
+                <Text style = {{fontFamily: 'Antenna, sans-serif'}}>{option}</Text>
               </TouchableOpacity>
             ))}
           </ScrollView>
@@ -197,7 +197,7 @@ export default function handlePaymentFlow(
                           setMenuButtons([]);
                         }}
                       >
-                        <Text>{dur.toString()}</Text>
+                        <Text style = {{fontFamily: 'Antenna, sans-serif'}}>{dur.toString()}</Text>
                       </TouchableOpacity>
                     ))}
                   </ScrollView>
@@ -270,7 +270,7 @@ export default function handlePaymentFlow(
                           setMenuButtons([]);
                         }}
                       >
-                        <Text>{dur.toString()}</Text>
+                        <Text style = {{fontFamily: 'Antenna, sans-serif'}}>{dur.toString()}</Text>
                       </TouchableOpacity>
                     ))}
                   </ScrollView>
@@ -358,7 +358,7 @@ export default function handlePaymentFlow(
                       setMenuButtons([]);
                     }}
                   >
-                    <Text>{o}</Text>
+                    <Text style = {{fontFamily: 'Antenna, sans-serif'}}>{o}</Text>
                   </TouchableOpacity>
                 ))}
               </ScrollView>
@@ -393,7 +393,7 @@ export default function handlePaymentFlow(
                       setMenuButtons([]);
                     }}
                   >
-                    <Text>{o}</Text>
+                    <Text style = {{fontFamily: 'Antenna, sans-serif'}}>{o}</Text>
                   </TouchableOpacity>
                 ))}
               </ScrollView>
@@ -429,7 +429,7 @@ export default function handlePaymentFlow(
                     setMenuButtons([]);
                   }}
                 >
-                  <Text>{o}</Text>
+                  <Text style = {{fontFamily: 'Antenna, sans-serif'}}>{o}</Text>
                 </TouchableOpacity>
               ))}
             </ScrollView>
@@ -467,7 +467,7 @@ export default function handlePaymentFlow(
                       setMenuButtons([]);
                     }}
                   >
-                    <Text>{o}</Text>
+                    <Text style = {{fontFamily: 'Antenna, sans-serif'}}>{o}</Text>
                   </TouchableOpacity>
                 ))}
               </ScrollView>
@@ -601,6 +601,7 @@ export function Conts2({ inp, imag, onPress }) {
           color: "#00095B",
           fontWeight: 400,
           fontSize: 17,
+          fontFamily: 'Antenna, sans-serif'
         }}
       >
         {inp}

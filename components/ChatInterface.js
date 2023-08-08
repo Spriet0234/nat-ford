@@ -431,7 +431,7 @@ const ChatInterface = () => {
             setMenuButtons(infoButtons);
           }}
         >
-          <Text>Back</Text>
+          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Back</Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={""}
@@ -440,7 +440,7 @@ const ChatInterface = () => {
             handleUserInput("Cer");
           }}
         >
-          <Text>Certifications</Text>
+          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Certifications</Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={""}
@@ -449,7 +449,7 @@ const ChatInterface = () => {
             handleUserInput("Em");
           }}
         >
-          <Text>Emissions</Text>
+          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Emissions</Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={""}
@@ -458,7 +458,7 @@ const ChatInterface = () => {
             handleUserInput("Comm");
           }}
         >
-          <Text>Our commitments</Text>
+          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Our commitments</Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={""}
@@ -467,7 +467,7 @@ const ChatInterface = () => {
             handleUserInput("Pr");
           }}
         >
-          <Text>Production management</Text>
+          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Production management</Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={""}
@@ -476,7 +476,7 @@ const ChatInterface = () => {
             handleUserInput("EOF");
           }}
         >
-          <Text>End of life management</Text>
+          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>End of life management</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
@@ -1100,7 +1100,7 @@ const ChatInterface = () => {
                   setMessage("");
                 }}
               >
-                <Text>Send</Text>
+                <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Send</Text>
               </TouchableOpacity>
             ) : null}
           </View>

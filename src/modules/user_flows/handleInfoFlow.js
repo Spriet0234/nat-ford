@@ -138,7 +138,7 @@ export default async function handleInfoFlow(
               setInfoMode(3);
             }}
           >
-            <Text>Schedule a test drive</Text>
+            <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Schedule a test drive</Text>
           </TouchableOpacity>
           <TouchableOpacity
             key={"price"}
@@ -157,7 +157,7 @@ export default async function handleInfoFlow(
               setInfoMode(10);
             }}
           >
-            <Text>Pricing estimation</Text>
+            <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Pricing estimation</Text>
           </TouchableOpacity>
           <TouchableOpacity
             key={"exist"}
@@ -169,7 +169,7 @@ export default async function handleInfoFlow(
               handleMoreInfo();
             }}
           >
-            <Text>More information</Text>
+            <Text style = {{fontFamily: 'Antenna, sans-serif'}}>More information</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>
