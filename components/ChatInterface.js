@@ -202,7 +202,7 @@ const ChatInterface = () => {
             setMessages((m) => {
               return [...m, { msg: "", author: "Login" }];
             });
-            setMenuButtons([])
+            setMenuButtons([]);
           }}
         >
           <Text>I'm an existing owner</Text>
@@ -227,26 +227,6 @@ const ChatInterface = () => {
           }}
         >
           <Text>Info about Ford</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          key={"negotiate"}
-          style={styles.optionButton}
-          onPress={() => {
-            setMessages((m) => {
-              return [...m, { msg: "Negotiation Assistance", author: "You" }];
-            });
-            setMessages((m) => {
-              return [
-                ...m,
-                {
-                  msg: "What kind of car would you like to know the price for?",
-                  author: "Ford Chat",
-                },
-              ];
-            });
-          }}
-        >
-          <Text>Negotiation Assistance</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
@@ -823,76 +803,76 @@ const ChatInterface = () => {
   useEffect(() => {
     handleUserFlow(
       origButtons,
-  tableForceUpdate,
-  setTableForceUpdate,
-  handleMoreInfo,
-  handleCarInfoButton,
-  fixTrimQueryQuotation,
-  query,
-  dealerList,
-  carInfoData,
-  setCarInfoData,
-  extractFiveDigitString,
-  findLocations,
-  handleUserInput,
-  blockQueries,
-  choice,
-  setQuery,
-  zipMode,
-  setZipCode,
-  messages,
-  setMessages,
-  setZipMode,
-  setDistance,
-  setCalcButtons,
-  calcButtonHandler,
-  zipCode,
-  distance,
-  findMode,
-  selectHandler,
-  setFind,
-  appendSelect,
-  setSelect,
-  questionnaireStep,
-  setQuestionnaireAnswers,
-  setQuestionnaireStep,
-  questionnaireAnswers,
-  setForceUpdate,
-  forceUpdate,
-  calcStep,
-  model,
-  setModel,
-  setCalcStep,
-  trim,
-  setTrim,
-  calcMode,
-  setCalcMode,
-  setLeaseStep,
-  setFinanceStep,
-  leaseStep,
-  financeStep,
-  changeChoice,
-  history,
-  setHistory,
-  infoMode,
-  setInfoMode,
-  vehicle,
-  setVehicle,
-  showCalcButtons,
-  setShowCalcButtons,
-  calcHeadingText,
-  setCalcHeadingText,
-  payment,
-  setPayment,
-  setMenuButtons,
-  locateDealershipsFn,
-  changeSelected,
-  setDealers,
-  selected,
-  cat,
-  setCat,
-  setOptionButtons,
-  locateDealershipsRad
+      tableForceUpdate,
+      setTableForceUpdate,
+      handleMoreInfo,
+      handleCarInfoButton,
+      fixTrimQueryQuotation,
+      query,
+      dealerList,
+      carInfoData,
+      setCarInfoData,
+      extractFiveDigitString,
+      findLocations,
+      handleUserInput,
+      blockQueries,
+      choice,
+      setQuery,
+      zipMode,
+      setZipCode,
+      messages,
+      setMessages,
+      setZipMode,
+      setDistance,
+      setCalcButtons,
+      calcButtonHandler,
+      zipCode,
+      distance,
+      findMode,
+      selectHandler,
+      setFind,
+      appendSelect,
+      setSelect,
+      questionnaireStep,
+      setQuestionnaireAnswers,
+      setQuestionnaireStep,
+      questionnaireAnswers,
+      setForceUpdate,
+      forceUpdate,
+      calcStep,
+      model,
+      setModel,
+      setCalcStep,
+      trim,
+      setTrim,
+      calcMode,
+      setCalcMode,
+      setLeaseStep,
+      setFinanceStep,
+      leaseStep,
+      financeStep,
+      changeChoice,
+      history,
+      setHistory,
+      infoMode,
+      setInfoMode,
+      vehicle,
+      setVehicle,
+      showCalcButtons,
+      setShowCalcButtons,
+      calcHeadingText,
+      setCalcHeadingText,
+      payment,
+      setPayment,
+      setMenuButtons,
+      locateDealershipsFn,
+      changeSelected,
+      setDealers,
+      selected,
+      cat,
+      setCat,
+      setOptionButtons,
+      locateDealershipsRad
     );
   }, [
     query,
@@ -978,7 +958,7 @@ const ChatInterface = () => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
       >
-        {menuVisible && <Menu handleClick={handleClicks}></Menu>}
+        {/* {menuVisible && <Menu handleClick={handleClicks}></Menu>}  */}
         <View
           style={{
             backgroundColor: "white",
@@ -995,7 +975,7 @@ const ChatInterface = () => {
             style={styles.img2}
             source={require("../assets/header.png")}
           ></Image>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{ position: "absolute", right: 30 }}
             onPress={() => {
               if (!menuVisible) {
@@ -1010,7 +990,7 @@ const ChatInterface = () => {
             }}
           >
             <Image source={require("../assets/sand.png")} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View style={styles.chatContainer}>
           <ScrollView

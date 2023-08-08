@@ -211,6 +211,7 @@ export const locateDealershipsFn = function (
   return () => {
     //go through the dealerships that have the cars we want
     //pass in the list of dealership names
+    console.log(selected)
     const dealers = new Set();
     for (const m in selected) {
       if (selected[m].length != 0) {

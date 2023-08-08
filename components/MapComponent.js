@@ -33,9 +33,9 @@ export function MapComponent({
   loc,
   deal,
   coords,
-  maintenanceMode="",
-  selectedModel="",
-  selectedTrim="",
+  maintenanceMode = "",
+  selectedModel = "",
+  selectedTrim = "",
   inf,
   selected,
 }) {
@@ -48,6 +48,8 @@ export function MapComponent({
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
+  const [selectedTime, setSelectedTime] = useState();
+  const [selectedDate, setSelectedDate] = useState();
 
   const [count, setCount] = useState(0);
 
@@ -58,11 +60,14 @@ export function MapComponent({
     setRenderSched2(false);
     setCount(1);
   };
-  const press2 = () => {
+  const press2 = (selected) => {
     //if time ... is clicked
     setRenderDealer(false);
     setRenderSched1(false);
     setRenderSched2(true);
+    setSelectedTime(selected);
+    console.log(selectedTime);
+    console.log("aanjn");
   };
   const press3 = (name, email, phone, notes) => {
     //if time ... is clicked
@@ -74,6 +79,8 @@ export function MapComponent({
     setPhone(phone);
     setNotes(notes);
     setMenuButtons(origButtons);
+    console.log("asdfasdf");
+    console.log(selectedTime);
     setMessages((m) => {
       return [
         ...m,
@@ -93,7 +100,7 @@ export function MapComponent({
     setRenderSched3(false);
     console.log("aa");
   };
-  const pressHandler = (option) => {
+  const pressHandler = (option, b) => {
     if (option === "1") {
       setCount(1);
       setRenderSched1(true);
@@ -101,6 +108,9 @@ export function MapComponent({
       setCount(1);
       setRenderSched2(true);
       console.log("here");
+      setSelectedTime(option);
+      console.log(selectedTime);
+      setSelectedDate(b);
     }
     setRenderSched3(false);
   };
@@ -118,15 +128,30 @@ export function MapComponent({
       {renderDealer && (
         <View>
           <DealerDrive dealer={pickedDealer} back={backDealer} />
-          {maintenanceMode.length==0&&<DealerDrive2 dealer={pickedDealer} selected={selected} />}
+          {maintenanceMode.length == 0 && (
+            <DealerDrive2 dealer={pickedDealer} selected={selected} />
+          )}
           <DealerDrive3 press={pressHandler} />
         </View>
       )}
       {count === 1 && renderSched1 && (
-        <DealerDrive4 press={press2} selected={selected} maintenanceMode={maintenanceMode} model={selectedModel} trim={selectedTrim}/>
+        <DealerDrive4
+          press={press2}
+          selected={selected}
+          maintenanceMode={maintenanceMode}
+          model={selectedModel}
+          trim={selectedTrim}
+        />
       )}
       {renderSched2 && count === 1 && (
-        <DealerDrive5 press={press3} selected={selected} maintenanceMode={maintenanceMode}/>
+        <DealerDrive5
+          press={press3}
+          selected={selected}
+          maintenanceMode={maintenanceMode}
+          selectedTime={selectedTime}
+          selectedDate={selectedDate}
+          pickedDealer={pickedDealer}
+        />
       )}
       {renderSched3 && count === 1 && (
         <DealerDrive6
@@ -135,6 +160,9 @@ export function MapComponent({
           phones={phone}
           notess={notes}
           selected={selected}
+          selectedTime={selectedTime}
+          selectedDate={selectedDate}
+          pickedDealer={pickedDealer}
         />
       )}
 

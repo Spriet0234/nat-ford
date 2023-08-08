@@ -292,15 +292,6 @@ const onResaleButton = async (car) => {
           <Text style={{ color: "white" }}>Sign in</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={handlePress} style={{ marginTop: 10 }}>
-        <Text style={styles.linkText}>Forgot my password</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={handlePress}
-        style={{ marginTop: 5, marginBottom: 10 }}
-      >
-        <Text style={styles.linkText}>Create an account</Text>
-      </TouchableOpacity>
       </View>
       }
     </View>

@@ -352,7 +352,19 @@ export function handleUserInputFn(
       }
   };
 }
-
+const fixTrimQueryQuotation2 = (model, trim) => {
+  console.log(model)
+  if (
+    model !== "Transit Cargo Van" &&
+    model !== "E-Transit Cargo Van" &&
+    model !== "Transit Crew Van" &&
+    model !== "Transit Passenger Van"
+  ) {
+    return trim;
+  }
+  trim = trim.replaceAll(/"/g, '""');
+  return "\""+trim+"\"";
+};
 export function handleUserFlow(
   origButtons,
   tableForceUpdate,
@@ -497,6 +509,7 @@ export function handleUserFlow(
                   key={trim}
                   value={trim}
                   onPress={() => {
+                    console.log(trim)
                     handleInfoFlow(
                       handleMoreInfo,
                       tableForceUpdate,
@@ -735,6 +748,7 @@ export function handleUserFlow(
                   key={trim}
                   value={trim}
                   onPress={() => {
+                    console.log(fixTrimQueryQuotation2(model,trim));
                     let copy, copy2;
                     if (trim in selected[model]) {
                       copy = selected[model];
@@ -745,7 +759,7 @@ export function handleUserFlow(
                       changeSelected(copy2);
                     } else {
                       copy = selected[model];
-                      copy.push(trim);
+                      copy.push(fixTrimQueryQuotation2(model,trim));
                       copy2 = selected;
                       delete copy2[model];
                       copy2[model] = copy;
@@ -753,8 +767,8 @@ export function handleUserFlow(
                     }
                     setForceUpdate(!forceUpdate);
                   }}
-                  inp={trim}
-                  imag={images[model][trim]}
+                  inp={fixTrimQueryQuotation2(model,trim)}
+                  imag={images[model][fixTrimQueryQuotation2(model,trim)]}
                 />
               ))
             );
