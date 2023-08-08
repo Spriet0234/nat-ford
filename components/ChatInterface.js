@@ -1,5 +1,6 @@
 import styles from "../styles/ChatStyle.js";
 import React, { useState, useRef, useEffect } from "react";
+import * as Font from "expo-font";
 
 import ChatItem from "./ChatItem.js";
 import {
@@ -97,7 +98,7 @@ const ChatInterface = () => {
   useEffect(() => {
     async function loadFont() {
       await Font.loadAsync({
-        'Antenna': require('../assets/fonts/ford-antenna-medium-cnd-587bd97171cbd.otf'),
+        Antenna: require("../assets/fonts/ford-antenna-medium-cnd-587bd97171cbd.otf"),
       });
       setFontLoaded(true);
     }
@@ -200,7 +201,9 @@ const ChatInterface = () => {
             });
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Buying a Ford</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+            Buying a Ford
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={"exist"}
@@ -215,7 +218,9 @@ const ChatInterface = () => {
             setMenuButtons([]);
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>I'm an existing owner</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+            I'm an existing owner
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={"info"}
@@ -236,7 +241,9 @@ const ChatInterface = () => {
             setMenuButtons(infoButtons);
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Info about Ford</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+            Info about Ford
+          </Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
@@ -251,7 +258,7 @@ const ChatInterface = () => {
             setMenuButtons([origButtons]);
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Back</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>Back</Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={"I"}
@@ -261,7 +268,9 @@ const ChatInterface = () => {
             setMenuButtons([]);
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Info about a specific car</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+            Info about a specific car
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={"A"}
@@ -270,7 +279,9 @@ const ChatInterface = () => {
             handleUserInput("A");
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Car recommendation</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+            Car recommendation
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={"D"}
@@ -280,7 +291,9 @@ const ChatInterface = () => {
             setMenuButtons([]);
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Car pricing estimator</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+            Car pricing estimator
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={"B"}
@@ -290,7 +303,9 @@ const ChatInterface = () => {
             setMenuButtons([]);
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Find a dealership</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+            Find a dealership
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={"C"}
@@ -300,7 +315,9 @@ const ChatInterface = () => {
             setMenuButtons([]);
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Schedule a test drive</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+            Schedule a test drive
+          </Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
@@ -315,7 +332,7 @@ const ChatInterface = () => {
             setMenuButtons([buyingFordButtons]);
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Back</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>Back</Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={""}
@@ -333,7 +350,9 @@ const ChatInterface = () => {
             setMenuButtons([]);
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Ask my own questions</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+            Ask my own questions
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={""}
@@ -357,7 +376,9 @@ const ChatInterface = () => {
             setQuestionnaireStep(1);
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Take questionnaire</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+            Take questionnaire
+          </Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
@@ -373,7 +394,9 @@ const ChatInterface = () => {
             handleUserInput("SU");
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Sustainability</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+            Sustainability
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={""}
@@ -383,7 +406,7 @@ const ChatInterface = () => {
             handleUserInput("INN");
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Innovation</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>Innovation</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
@@ -398,7 +421,7 @@ const ChatInterface = () => {
             setMenuButtons(infoButtons);
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>Back</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>Back</Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={""}
@@ -407,7 +430,9 @@ const ChatInterface = () => {
             handleUserInput("NF");
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>New features</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+            New features
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           key={""}
@@ -416,7 +441,7 @@ const ChatInterface = () => {
             handleUserInput("EV");
           }}
         >
-          <Text style = {{fontFamily: 'Antenna, sans-serif'}}>EV market</Text>
+          <Text style={{ fontFamily: "Antenna, sans-serif" }}>EV market</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
