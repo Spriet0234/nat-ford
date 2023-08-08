@@ -941,7 +941,7 @@ const ChatInterface = () => {
     // } else if (count === 2 || (optionMessage === "null" && count !== 0)) {
 
     //   // Send a POST request to your API with the user's message
-    //   fetch("http://fordchat.franklinyin.com/quer", {
+    //   fetch("https://fordchat.franklinyin.com/quer", {
     //     method: "POST",
     //     headers: {
     //       "Content-Type": "application/json",
