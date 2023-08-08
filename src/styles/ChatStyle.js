@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
       display: "flex",
       flexDirection: "row",
       marginBottom: 10,
+      fontFamily: "Antenna"
     },
     optionButton: {
       marginRight: 10,

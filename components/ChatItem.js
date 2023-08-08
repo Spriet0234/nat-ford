@@ -23,10 +23,6 @@ export default function ChatItem({origButtons, buyingFordButtons, msg, author, l
 
     loadFont();
   }, []);
-
-  if (!fontLoaded) {
-    return null; // You can show a loading screen here
-  }
   return (<View>
       {author === "Info" && (
         <ScheduleDrive3
