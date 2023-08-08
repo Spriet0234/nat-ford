@@ -4,12 +4,29 @@ import {
     Text,
     Image
   } from "react-native";
+import React, { useEffect } from "react";
 import {ScheduleDrive3} from './ScheduleDrive.js'
 import {MapComponent} from './MapComponent.js'
 import CarInfoTable from './CarInfoTable.js';
 import { Login } from './login.js';
+import * as Font from 'expo-font'; 
 
 export default function ChatItem({origButtons, buyingFordButtons, msg, author, line, darkMode, textSize, zip, locs, dropDownOptions, carInfoData, carInfoMode, carSpecInfo, setMessages, setMenuButtons, handleUserInput, selectedCar, setSelectedCar, tableFunctions, messageIndex, selectedCars, setOptionButtons, len, handleMore, setInfoMode}) {
+  const [fontLoaded, setFontLoaded] = React.useState(false);
+  useEffect(() => {
+    async function loadFont() {
+      await Font.loadAsync({
+        'Antenna': require('../assets/fonts/ford-antenna-medium-cnd-587bd97171cbd.otf'),
+      });
+      setFontLoaded(true);
+    }
+
+    loadFont();
+  }, []);
+
+  if (!fontLoaded) {
+    return null; // You can show a loading screen here
+  }
   return (<View>
       {author === "Info" && (
         <ScheduleDrive3
@@ -71,7 +88,7 @@ export default function ChatItem({origButtons, buyingFordButtons, msg, author, l
           )}
 
           <View style={styles.messageContent(author === "You")}>
-            <Text style={{ color: "white", padding: 3 }}>{msg}</Text>
+            <Text style={{ color: "white", padding: 3, fontFamily: 'Antenna, sans-serif'}}>{msg}</Text>
           </View>
         </View>
       )}
