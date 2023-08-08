@@ -1,6 +1,8 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import data from "../src/images/image_link.json";
 import dealerships from "../src/jsons/trimToDealer.json";
+import * as Font from "expo-font";
+
 import {
   View,
   Text,
@@ -14,6 +16,17 @@ import {
 } from "react-native";
 //choose vehicle category
 export function ScheduleDrive({ calcButtons, heading }) {
+  const [fontLoaded, setFontLoaded] = React.useState(false);
+  useEffect(() => {
+    async function loadFont() {
+      await Font.loadAsync({
+        Antenna: require("../assets/fonts/ford-antenna-medium-cnd-587bd97171cbd.otf"),
+      });
+      setFontLoaded(true);
+    }
+
+    loadFont();
+  }, []);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{heading}</Text>
@@ -40,11 +53,24 @@ export function ScheduleDrive({ calcButtons, heading }) {
 }
 //model with back button
 export function ScheduleDrive2({ calcButtons, mode, back, heading }) {
+  const [fontLoaded, setFontLoaded] = React.useState(false);
+  useEffect(() => {
+    async function loadFont() {
+      await Font.loadAsync({
+        Antenna: require("../assets/fonts/ford-antenna-medium-cnd-587bd97171cbd.otf"),
+      });
+      setFontLoaded(true);
+    }
+
+    loadFont();
+  }, []);
   return (
     <View style={styles.container}>
       {mode === 0 ? (
         <Text
           style={{
+            fontFamily: "Antenna, sans-serif",
+
             color: "#00095B",
             fontWeight: 600,
             fontSize: 21,
@@ -58,6 +84,8 @@ export function ScheduleDrive2({ calcButtons, mode, back, heading }) {
       ) : (
         <Text
           style={{
+            fontFamily: "Antenna, sans-serif",
+
             color: "#00095B",
             fontWeight: 600,
             fontSize: 21,
@@ -124,6 +152,17 @@ export function ScheduleDrive3({
   setInfoMode,
   setMenuButtons,
 }) {
+  const [fontLoaded, setFontLoaded] = React.useState(false);
+  useEffect(() => {
+    async function loadFont() {
+      await Font.loadAsync({
+        Antenna: require("../assets/fonts/ford-antenna-medium-cnd-587bd97171cbd.otf"),
+      });
+      setFontLoaded(true);
+    }
+
+    loadFont();
+  }, []);
   console.log(info);
   const moneyFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -165,6 +204,8 @@ export function ScheduleDrive3({
             </View>
             <Text
               style={{
+                fontFamily: "Antenna, sans-serif",
+
                 color: "#00095B",
                 fontWeight: 400,
                 fontSize: 17,
@@ -190,6 +231,8 @@ export function ScheduleDrive3({
             </Text>
             <Text
               style={{
+                fontFamily: "Antenna, sans-serif",
+
                 color: "#00095B",
                 fontWeight: 400,
                 fontSize: 17,
@@ -273,7 +316,10 @@ export function ScheduleDrive3({
         }}
         onPress={handleMore}
       >
-        <Text> Detailed info</Text>
+        <Text style={{ fontFamily: "Antenna, sans-serif" }}>
+          {" "}
+          Detailed info
+        </Text>
         <Image
           source={require("../assets/RArrow.png")}
           resizeMode="contain"
@@ -289,12 +335,25 @@ export function ScheduleDrive3({
 }
 //Selecting trim
 export function ScheduleDrive4({ calcButtons, locate, back }) {
+  const [fontLoaded, setFontLoaded] = React.useState(false);
+  useEffect(() => {
+    async function loadFont() {
+      await Font.loadAsync({
+        Antenna: require("../assets/fonts/ford-antenna-medium-cnd-587bd97171cbd.otf"),
+      });
+      setFontLoaded(true);
+    }
+
+    loadFont();
+  }, []);
   return (
     <View style={styles.container}>
       <View style={{ marginTop: 20 }}></View>
       {/* <Text style={styles.title}>Choose specific trim</Text> */}
       <Text
         style={{
+          fontFamily: "Antenna, sans-serif",
+
           color: "#00095B",
           fontWeight: 600,
           fontSize: 21,
@@ -331,7 +390,13 @@ export function ScheduleDrive4({ calcButtons, locate, back }) {
         onPress={locate}
       >
         <Text
-          style={{ color: "white", fontSize: 17, fontWeight: 500, padding: 5 }}
+          style={{
+            color: "white",
+            fontSize: 17,
+            fontWeight: 500,
+            padding: 5,
+            fontFamily: "Antenna, sans-serif",
+          }}
         >
           Locate my closest dealerships
         </Text>
@@ -359,12 +424,23 @@ export function ScheduleDrive4({ calcButtons, locate, back }) {
             marginRight: 0,
           }}
         ></Image>
-        <Text> Back</Text>
+        <Text style={{ fontFamily: "Antenna, sans-serif" }}> Back</Text>
       </TouchableOpacity>
     </View>
   );
 }
 export function Conts({ inp }) {
+  const [fontLoaded, setFontLoaded] = React.useState(false);
+  useEffect(() => {
+    async function loadFont() {
+      await Font.loadAsync({
+        Antenna: require("../assets/fonts/ford-antenna-medium-cnd-587bd97171cbd.otf"),
+      });
+      setFontLoaded(true);
+    }
+
+    loadFont();
+  }, []);
   return (
     <View
       style={{
@@ -379,11 +455,24 @@ export function Conts({ inp }) {
         padding: 5,
       }}
     >
-      <Text style={{ fontSize: 19 }}>{inp}</Text>
+      <Text style={{ fontSize: 19, fontFamily: "Antenna, sans-serif" }}>
+        {inp}
+      </Text>
     </View>
   );
 }
 export function Conts2() {
+  const [fontLoaded, setFontLoaded] = React.useState(false);
+  useEffect(() => {
+    async function loadFont() {
+      await Font.loadAsync({
+        Antenna: require("../assets/fonts/ford-antenna-medium-cnd-587bd97171cbd.otf"),
+      });
+      setFontLoaded(true);
+    }
+
+    loadFont();
+  }, []);
   return (
     <View>
       <Image
@@ -421,6 +510,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     // Shadow settings for Android
     elevation: 3,
+    fontFamily: "Antenna, sans-serif",
   },
   container2: {
     textAlign: "flex-start",
@@ -442,6 +532,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     // Shadow settings for Android
     elevation: 5,
+    fontFamily: "Antenna, sans-serif",
   },
   titles: {
     color: "#00095B",
@@ -450,6 +541,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 20,
     marginBottom: 5,
+    fontFamily: "Antenna, sans-serif",
   },
   title2: {
     color: "#00095B",
@@ -460,6 +552,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: "center",
     flexWrap: "wrap",
+    fontFamily: "Antenna, sans-serif",
   },
   textSub: {
     color: "#00095B",
@@ -468,6 +561,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 0,
     textAlign: "center",
+    fontFamily: "Antenna, sans-serif",
   },
   text2: {
     color: "#00095B",
@@ -476,6 +570,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 0,
     textAlign: "center",
+    fontFamily: "Antenna, sans-serif",
   },
   text22: {
     color: "#00095B",
@@ -486,5 +581,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     padding: 0,
     textAlign: "center",
+    fontFamily: "Antenna, sans-serif",
   },
 });
